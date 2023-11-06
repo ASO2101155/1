@@ -45,7 +45,7 @@
             $sql = "INSERT INTO User(mail,password,user_name,school_code,school_year,major,gender) VALUES (?,?,?,?,?,?,?)";
 		    $ps = $pdo->prepare($sql);
 		    $ps->bindValue(1, $mail,PDO::PARAM_INT);
-		    $ps->bindValue(2, $password,PDO::PARAM_STR);
+		    $ps->bindValue(2, password_hash($password,PASSWORD_DEFAULT),PDO::PARAM_STR);
             $ps->bindValue(3, $user_name,PDO::PARAM_STR);
             $ps->bindValue(4, $school_code, PDO::PARAM_STR);
             $ps->bindValue(5, $school_year, PDO::PARAM_INT);
