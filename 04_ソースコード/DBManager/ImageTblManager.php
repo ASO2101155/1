@@ -2,11 +2,18 @@
     require_once 'DBConnect.php';
     class ImageTblManager{
 
-    //DBConnectクラス
-    private function DBconnect(){
-        $dbConnectCls = new DBConnect();
-        return $dbConnectCls;
-    }
+        private $dbConnectCls;
+        //DBConnectクラス
+        public function __construct(){
+            $this->dbConnectCls = new DBconnect();
+        }
     
+        public function InsertImageTbl($image_path){
+
+        }
+
+        public function UpdateImageTblByEventId($event_id, $image_path){
+
+        }
     }
 ?>
