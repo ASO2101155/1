@@ -20,6 +20,7 @@
         }
     } catch (Exception $ex) {
         //throw $th;
-        
+        header('Location:../Login.html?errMsg="データベースとの接続に失敗しました"');
+        exit;
     }
 ?>
