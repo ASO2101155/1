@@ -153,13 +153,13 @@
         public function DeleteEventReplyByEventId($event_reply_id){
             //EventReplyTblManagerで作成したUpdateの処理を使う
             //EventReplyテーブルのevent_reply_statusカラムの値をfalseにする
-            $this->eventTblCls->UpdateEventReplyStatusByEventId($event_reply_id);
+            $this->eventReplyTblCls->UpdateEventReplyStatusByEventId($event_reply_id);
         }
 
         //掲示板情報をSelectするメソッド
         public function SelectForumTbl(){
             //ForumTblManagerで作成したSelectの処理を使う
-            $selectData = $this->forumTblCls->SelectEventTbl();
+            $selectData = $this->forumTblCls->SelectForumTbl();
             return $selectData;
         }
 
@@ -183,7 +183,7 @@
         public function InsertForumTbl($user_id, $for_cate_code, $building_num, $title, $post_content){
             //ForumTblManagerで作成したInsertの処理を使う
             //日時はSQL文の中で現在日時を取得してInsertする
-            $this->eventTblCls->InsertEventTbl($user_id, $for_cate_code, $building_num, $title, $post_content);
+            $this->forumTblCls->InsertForumTbl($user_id, $for_cate_code, $building_num, $title, $post_content);
         }
 
         //掲示板メッセージ情報をInsertするメソッド
@@ -203,14 +203,14 @@
         public function SelectCalendarTblByUserId($user_id){
             //CalendarTblManagerで作成したSelectの処理を使う
             //カレンダーテーブル・イベントテーブルを結合してSelectする
-            $selectData = $this->calendarTblCls->SelectEventTblByUser_id($user_id);
+            $selectData = $this->calendarTblCls->SelectCalendarTblByUser_id($user_id);
             return $selectData;
         }
 
         //カレンダー情報をInsertするメソッド
         public function InsertCalendarTbl($user_id, $event_id, $registration_status){
             //ForumMessageTblManagerで作成したInsertの処理を使う
-            $this->forumMessageTblCls->InsertForumMessageTbl($event_id, $user_id, $registration_status);
+            $this->calendarTblCls->InsertCalendarMessageTbl($event_id, $user_id, $registration_status);
         }
 
         //ユーザー情報をUpdateするメソッド
