@@ -1,0 +1,47 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #0E1331;
+    }
+
+header {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    top: 0;
+    left: 0;
+    background-color: #0E397B;
+    align-items:center;
+    
+    
+    }
+
+.moji {
+    color: #d7bc61;
+}
+.footer {
+    /*display: flex;*/
+    display: grid;
+    width: 100%;
+    height: 90px;
+    background-color: #0E397B;
+    align-items:center;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+
+img {
+width: 50px;
+margin: 5px;
+
+}
+.img2 {
+width:100px;
+height:100px;
+position:fixed;
+top:15px;
+  right:-30px;
+}
