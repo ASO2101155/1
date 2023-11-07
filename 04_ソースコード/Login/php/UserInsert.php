@@ -6,10 +6,10 @@
         $cls->InsertUserTbl($_POST['mail'],$_POST['password'],$_POST['user_name'],$_POST['school_code'],$_POST['school_year'],$_POST['major'],$_POST['gender']);
     } catch (Exception $ex) {
         //throw $th;
-        header('Location: InsertError.html');
+        header('Location: ../Sign.html?errMsg="データベースとの接続に失敗しました"');
         exit;
     }
     //イベント画面に遷移
-    header('Location: ../Event/Event.html');
+    header('Location: ../../Event/Event.html');
     exit;
 ?>
