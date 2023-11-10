@@ -5,7 +5,7 @@
     $selectData = $cls->SelectUserTblByMail($_POST['mail']);
     if(!empty($selectData)){
         $errMsg="すでに使用されているメールアドレスです。";
-        header('Location:Sign.html?errMsg='.$errMsg);
+        header('Location:SignUp.html?errMsg='.$errMsg);
         exit;
     }
 ?>
@@ -14,15 +14,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/SignUp.js"></script> <!-- SignUp.js ファイルを読み込む -->
     </head>
     <body>
         
-        <form action="php/UserInsert.php" method="post">
+        <form action="php/UserInsert.php" method="post" name="myForm" onsubmit="return validateForm2()">
             <?php 
                 echo '<input type="hidden" name="mail" value="'.$_POST['mail'].'">';
                 echo '<input type="hidden" name="password" value="'.$_POST['password'].'">';
             ?>
-            <input type="text" name="user_name" placeholder="full name"><br>
+            <input type="text" name="user_name" placeholder="ユーザー名"><br>
             <input type="text" name="major" placeholder="専攻"><br>
             <select name="school_code">
                 <option value="null" hidden>学校名</option>
@@ -61,5 +62,6 @@
             <input type="submit" value="登録">
         </form>
         <a href="SignUp.html">戻る</a>
+        <div id="errMsg"></div>
     </body>
 </html>
