@@ -11,14 +11,13 @@ body{
 main{
     height: 100%;
     width: 100%;
-    
+    background-color: #0E1331;
 }
 
 #event_main {
     /* position: relative; */
     padding-top: 90px;
     padding-bottom: 90px;
-    background-color: #0E1331;
     z-index: 0;
 }
 
@@ -59,6 +58,7 @@ main{
     border-radius: 20px;
     background-color: white;
     color: black;
+    box-shadow: 0 4px 15px rgba(213, 240, 255, 0.418);
 }
 
 .event_card > div{
