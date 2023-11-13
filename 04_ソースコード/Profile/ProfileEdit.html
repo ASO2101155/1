@@ -1,0 +1,38 @@
+<?php
+    require_once 'UserInfo.php';
+    $cls = new UserInfo();
+    //todo セッションに入ってるuser_idで検索
+    $userData = $cls->userInfo(1);
+    foreach($userData as $row){
+        $user_name = $row['user_name'];
+        $gender = $row['gender'];
+        $school_name = $row['school_name'];
+        $school_year = $row['school_year'];
+        $major = $row['major'];
+    }
+?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <?php 
+            echo $user_name;
+            if($gender==1){
+                echo "男";
+            }else if($gender==2){
+                echo "女";
+            }else{
+                echo "その他";
+            }
+            echo $school_name.$major.$school_year;
+        ?>
+        <br>
+        <form action="php/ProfileUpdate.php" method="POST">
+            <textarea rows="7" cols="20"><?php echo $comment; ?></textarea>
+            <input type="text" value="<?php echo $major;?>">
+        </form>
+    </body>
+</html>
