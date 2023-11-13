@@ -1,0 +1,140 @@
+html{
+    height:100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    color: #D7BC61;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    background-color: #0E1331;
+}
+
+input {
+    margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+#event_detail_main {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    z-index: 0;
+}
+
+#event_detail_area {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    height: 95%;
+    width: 87%;
+    /* background-color: aliceblue; */
+}
+
+#event_user {
+    height: 4vh;
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+}
+
+#user_icon {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color:brown;
+}
+
+#user_name {
+    margin-left: 2%;
+    font-size: 120%;
+}
+
+#event_detail_card {
+    margin-top: 1%;
+    padding: 0.5% 3%;
+    height: 80%;
+    width: 100%;
+    overflow: scroll;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 4px 15px rgba(213, 240, 255, 0.418);
+}
+
+#event_detail_card > div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 10%;
+}
+
+#event_title {
+    font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
+    font-size: 130%;
+}
+
+#bookmark {
+    position: absolute;
+    top: 2%;
+    right: 0;
+}
+
+#event_date {
+    margin-top: 2vh;
+}
+
+#event_content {
+    margin-bottom: 2vh;
+}
+
+#hensin { 
+    border-bottom: 1px solid black;
+}
+
+#event_reply_input_area {
+    position: sticky;
+    height: 9%;
+    width: 100%;
+    bottom: -1%;
+    /* background-color: #D7BC61; */
+    background-color: white;
+}
+
+#event_reply_input_area > div {
+    display: flex;
+    height: 70%;
+}
+
+#event_reply_input_text {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(219, 219, 219);
+    /* border: 1px solid #8d8d8d; */
+    border-radius: 5px;
+}
