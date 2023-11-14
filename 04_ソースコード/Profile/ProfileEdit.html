@@ -1,9 +1,13 @@
 <?php
     require_once 'UserInfo.php';
+    require_once '../DBManager/DBAccess.php';
     $cls = new UserInfo();
+    $schoolcls = new DBAccess();
+    $selectArray = $schoolcls->SelectSchoolTbl();
     //todo セッションに入ってるuser_idで検索
     $userData = $cls->userInfo(1);
     foreach($userData as $row){
+        $user_id = $row['user_id'];
         $user_name = $row['user_name'];
         $gender = $row['gender'];
         $school_name = $row['school_name'];
@@ -31,8 +35,38 @@
         ?>
         <br>
         <form action="php/ProfileUpdate.php" method="POST">
-            <textarea rows="7" cols="20"><?php echo $comment; ?></textarea>
-            <input type="text" value="<?php echo $major;?>">
+            <input type="hidden" value="<?php echo $user_id;?>" name="user_id">
+            <input type="text" value="<?php echo $user_name;?>" name="user_name">
+            <select name="school_code">
+                <option value="null" hidden><?php echo $school_name;?></option>
+                <?php
+                foreach($selectArray as $row){
+                    echo '<option value="'.$row['school_code'].'">'.$row['school_name'].'</option>';
+                }
+            ?>
+            </select>
+            <select name="school_year">
+                <option value="null" hidden><?php echo $school_year;?></option>
+                <optgroup label="4年制">
+                    <option value="4年制1年">1</option>
+                    <option value="4年制2年">2</option>
+                    <option value="4年制3年">3</option>
+                    <option value="4年制4年">4</option>
+                </optgroup>
+                <optgroup label="3年制">
+                    <option value="3年制1年">1</option>
+                    <option value="3年制2年">2</option>
+                    <option value="3年制3年">3</option>
+                </optgroup>
+                <optgroup label="2年制">
+                    <option value="2年制1年">1</option>
+                    <option value="2年制2年">2</option>
+                </optgroup>
+            </select>
+            <textarea rows="7" cols="20" name="comment"><?php echo $comment; ?></textarea>
+            <input type="text" value="<?php echo $major;?>" name="major">
+            <input type="submit" value="確定">
         </form>
+        <button></button>
     </body>
 </html>
