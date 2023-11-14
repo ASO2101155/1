@@ -214,9 +214,9 @@
         }
 
         //ユーザー情報をUpdateするメソッド
-        public function UpdateUserTbl($school_code, $school_year, $major, $comment, $icon){
+        public function UpdateUserTbl($user_name,$school_code,$school_year,$major,$comment,$icon,$user_id){
             //UserTblManagerで作成したUpdateの処理を使う
-            $this->userTblCls->UpdateUserTbl($school_code, $school_year, $major, $comment, $icon);
+            $this->userTblCls->UpdateUserTbl($user_name,$school_code,$school_year,$major,$comment,$icon,$user_id);
         }
 
         
