@@ -16,10 +16,10 @@
     <body>
         <main>
             <!-- ↓ ヘッダー読み込み ↓ -->
-                <!-- <?php include("Headline.php")?> -->
+                <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
             <!-- ↓ 後で消す ↓ -->
-            <header style="height: 90px; width: 100%; position: fixed; top: 0; background-color: #0E397B; z-index: 99999;"></header>
+            <!-- <header style="height: 90px; width: 100%; position: fixed; top: 0; background-color: #0E397B; z-index: 99999;"></header> -->
             <!-- ↑ 後で消す ↑ -->
             <div id="event_detail_main">
                 <div id="event_detail_area">
@@ -71,6 +71,9 @@
                                 ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
                             </div>
                             <div id="hensin">返信</div>
+                            <div class="">
+
+                            </div>
                             <div>楽しそうですね！ぜひ参加してみたいです！</div>
                             <div id="event_reply_input_area">
                                 <div>
@@ -85,8 +88,11 @@
                 </div>
             </div>
             <!-- ↓ 後で消す ↓ -->
-            <footer style="height: 90px; width: 100%; position: fixed; bottom: 0; background-color: #0E397B; z-index: 99999;"></footer>
+            <!-- <footer style="height: 90px; width: 100%; position: fixed; bottom: 0; background-color: #0E397B; z-index: 99999;"></footer> -->
             <!-- ↑ 後で消す ↑ -->
+            <!-- ↓ フッター読み込み ↓ -->
+            <?php include("../Common/Footer.html");?>
+            <!-- ↑ フッター読み込み ↑ -->
         </main>
         <script src="js/EventDetail.js"></script>
     </body>
