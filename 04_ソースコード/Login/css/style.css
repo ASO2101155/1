@@ -1,0 +1,149 @@
+body {
+  background-color: #0E1331; 
+}
+
+.textbox-001 {
+  width: 40%;/*テキストボックスの長さ*/
+  padding: 20px;/*テキストボックスの幅*/
+ border: 1px solid #0E397B;/*テキストボックスの外側の色*/
+background-color: #0E397B;/* テキストボックスの背景色を設定 */
+ color: #ffffff;/* 文字の色*/
+ text-align: center;
+
+  border-radius: 1px;/*テキストボックスの角*/
+  position: absolute;
+  top: 25%;
+  left: 57%;
+  transform: translateY(-50%) translateX(-50%);   
+}
+
+.textbox-001::placeholder {
+  color: #D7BC61;
+  text-align: center; /* テキストを中央揃えに調整 */
+}
+
+.textbox-002 {
+  width: 50%;/*テキストボックスの長さ*/
+  padding: 20px;/*テキストボックスの幅*/
+ border: 1px solid #0E397B;/*テキストボックスの外側の色*/
+background-color: #0E397B;/* テキストボックスの背景色を設定 */
+ color: #ffffff;/* 文字の色*/
+  border-radius: 1px;/*テキストボックスの角*/
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+}
+.textbox-002::placeholder {
+  color: #D7BC61;
+}
+
+
+.textbox-003 {
+  width: 5%;/*テキストボックスの長さ*/
+  padding: 20px;/*テキストボックスの幅*/
+ border: 1px solid #0E397B;/*テキストボックスの外側の色*/
+background-color: #0E397B;/* テキストボックスの背景色を設定 */
+  border-radius: 1px;/*テキストボックスの角*/
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  transform: translateY(-50%) translateX(-50%);   
+}
+
+
+button[type="submit"] {
+  width: 40%;/*ボタンの長さ*/
+  padding: 20px;/*ボタンの幅*/
+  margin-left: 100px;/* 左側のマージンを設定 */
+    position: absolute;
+    top: 55%;
+    left: 26%;
+    transform: translateY(-50%) translateX(-50%);
+    display: block;
+  background-color: #0E397B;/* ボタン背景色*/
+  color: #D7BC61;/* 文字の色*/
+  border: none;
+  border-radius: 1px;/*ボタンの角*/
+  cursor: pointer;
+}
+
+/* リンクテキストのスタイル */
+a.top3 {
+  color: #D7BC61; /* リンクのテキストカラーを設定 */
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+ul {
+  position: absolute;
+  top: 23%;
+  left: 8%;
+ 
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #0E1331;
+  }
+
+header {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: #0E397B;
+  align-items:center;
+  
+
+  }
+
+.moji{
+  color: #d7bc61;
+}
+.footer {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: #0E397B;
+  align-items:center;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+  }
+
+
+  /*img {
+    width: 8%;
+    height: auto;
+    display: block;
+    margin: 113px 60px ;
+  }*/
+  .container {
+    position: relative;
+    width: 25px; /* 画像の幅に合わせて調整 */
+}
+
+.image {
+    width: 150%;
+    height: auto;
+    display: block;
+    margin: 114px 86px ;
+}
+
+.box {
+  border: #4e7bcc 1px solid; /*境界線の指定*/
+  padding:10px;
+  }
+  .box p {
+  margin:0;
+  padding:0;
+  }
+
