@@ -116,6 +116,47 @@ main{
     color: black;
 }
 
+#date_area {
+    display: flex;
+    margin-bottom: 2%;
+}
+
+#calendar_icon {
+    width: 10%;
+}
+
+#held_datetime_area {
+    width: 40%;
+    text-align: right;
+}
+
+#held_datetime_area > div{
+    font-size: 80%;
+}
+
+#held_datetime {
+    width: 100%;
+}
+
+#kara {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 5%;
+}
+
+#end_datetime_area {
+    width: 40%;
+    text-align: right;
+}
+
+#end_datetime_area > div{
+    font-size: 80%;
+}
+
+#end_datetime {
+    width: 100%;
+}
+
 #e_comment {
     display: block;
     margin: 0 auto;
