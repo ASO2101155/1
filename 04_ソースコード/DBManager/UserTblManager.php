@@ -48,14 +48,27 @@
 		    $ps->bindValue(2, password_hash($password,PASSWORD_DEFAULT),PDO::PARAM_STR);
             $ps->bindValue(3, $user_name,PDO::PARAM_STR);
             $ps->bindValue(4, $school_code, PDO::PARAM_STR);
-            $ps->bindValue(5, $school_year, PDO::PARAM_INT);
+            $ps->bindValue(5, $school_year, PDO::PARAM_STR);
             $ps->bindValue(6, $major, PDO::PARAM_STR);
             $ps->bindValue(7, $gender, PDO::PARAM_STR);
 		    $ps->execute();
         }
 
-        public function UpdateUserTbl(){
-
+        public function UpdateUserTbl($user_name,$school_code,$school_year,$major,$comment,$icon,$user_id){
+            $pdo = $this->dbConnectCls->dbconnect();
+            //update処理
+            $sql = "UPDATE User SET user_name = ?, school_code = ?, school_year = ?, major = ?, comment = ?, icon = ? WHERE user_id = ?";
+            $ps = $pdo->prepare($sql);
+    
+            // 値をバインドしてクエリの実行
+            $ps->bindValue(1, $user_name, PDO::PARAM_STR);
+            $ps->bindValue(2, $school_code, PDO::PARAM_STR);
+            $ps->bindValue(3, $school_year, PDO::PARAM_STR);
+            $ps->bindValue(4, $major, PDO::PARAM_STR);
+            $ps->bindValue(5, $comment, PDO::PARAM_STR);
+            $ps->bindValue(6, $icon, PDO::PARAM_STR);
+            $ps->bindValue(7, $user_id, PDO::PARAM_INT);
+            $ps->execute();
         }
     }
 ?>
