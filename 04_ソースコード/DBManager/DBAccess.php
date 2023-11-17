@@ -1,10 +1,19 @@
 <?php
     require_once 'UserTblManager.php';
     require_once 'SchoolTblManager.php';
+    require_once 'EventTblManager.php';
+    require_once 'EventCategoryTblManager.php';
+    require_once 'EventReplyTblManager.php';
+    require_once 'ImageTblManager.php';
+    require_once 'CalendarTblManager.php';
+    require_once 'ForumTblManager.php';
+    require_once 'ForumMessageTblManager.php';
+    require_once 'NoticeTblManager.php';
     class DBAccess{
         private $userTblCls;
         private $schoolTblCls;
         private $eventTblCls;
+        private $eventCategoryTblCls;
         private $eventReplyTblCls;
         private $imageTblCls;
         private $calendarTblCls;
@@ -17,6 +26,7 @@
             $this->userTblCls = new UserTblManager();
             $this->schoolTblCls = new SchoolTblManager();
             $this->eventTblCls = new EventTblManager();
+            $this->eventCategoryTblCls = new EventCategoryTblManager();
             $this->eventReplyTblCls = new EventReplyTblManager();
             $this->imageTblCls = new ImageTblManager();
             $this->calendarTblCls = new CalendarTblManager();
@@ -122,6 +132,13 @@
         public function InsertImageTbl($image_path){
             //ImageTblManagerで作成したInsertの処理を使う
             $this->imageTblCls->InsertImageTbl($image_path);
+        }
+
+        //イベントカテゴリー情報をSelectするメソッド
+        public function SelectEventCategoryTbl(){
+            //EventTblManagerで作成したSelectの処理を使う
+            $selectData = $this->eventCategoryTblCls->SelectEventCategoryTbl();
+            return $selectData;
         }
 
         //イベント返信情報をInsertするメソッド

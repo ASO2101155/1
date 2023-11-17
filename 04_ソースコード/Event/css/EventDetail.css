@@ -112,7 +112,43 @@ button{
 }
 
 #hensin { 
+    width: 50%;
+    margin-bottom: 2%;
     border-bottom: 1px solid black;
+}
+
+#event_reply_show_area {
+    width: 100%;
+    display: flex;
+}
+
+.event_reply_left {
+    width: 10%;
+}
+
+.event_reply_icon {
+    width: 90%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: aqua;
+}
+
+.event_reply_right {
+    width: 80%;
+}
+
+.event_reply_user_name {
+    color: #D7BC61;
+}
+
+.event_more_reply {
+    text-align: right;
+}
+
+.event_more_reply_button {
+    /* width: 20%; */
+    display: inline-block;
+    font-size: 70%;
 }
 
 #event_reply_input_area {
