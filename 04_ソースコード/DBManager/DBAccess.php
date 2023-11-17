@@ -125,13 +125,14 @@
         public function InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したInsertの処理を使う
             //日時はSQL文の中で現在日時を取得してInsertする
-            $this->eventTblCls->InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            $last_insert_id = $this->eventTblCls->InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            return $last_insert_id;
         }
 
         //画像情報をInsertするメソッド
-        public function InsertImageTbl($image_path){
+        public function InsertImageTbl($event_id, $image_path){
             //ImageTblManagerで作成したInsertの処理を使う
-            $this->imageTblCls->InsertImageTbl($image_path);
+            $this->imageTblCls->InsertImageTbl($event_id, $image_path);
         }
 
         //イベントカテゴリー情報をSelectするメソッド

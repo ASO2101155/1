@@ -12,7 +12,7 @@
             $dbconnectCls = $this->DBconnect();
             $pdo = $dbconnectCls->dbconnect();
             //select処理（学校テーブルのデータ全件取得）
-            $sql = "SELECT * FROM eventcategory";
+            $sql = "SELECT * FROM EventCategory";
             $ps = $pdo->prepare($sql);
             $ps->execute();
 
