@@ -1,5 +1,5 @@
 <?php
-    require_once 'UserInfo.php';
+    require_once '../Login/UserInfo.php';
     require_once '../DBManager/DBAccess.php';
     $cls = new UserInfo();
     $schoolcls = new DBAccess();
@@ -11,8 +11,11 @@
         $user_name = $row['user_name'];
         $gender = $row['gender'];
         $school_name = $row['school_name'];
+        $school_code = $row['school_code'];
         $school_year = $row['school_year'];
         $major = $row['major'];
+        $icon = $row['icon'];
+        $comment = $row['comment'];
     }
 ?>
 
@@ -22,23 +25,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <div>
+            <img src="../img/<?php echo $icon;?>" style="width: 10%;">
         <?php 
             echo $user_name;
             if($gender==1){
-                echo "男";
+                echo "<div>男</div>";
             }else if($gender==2){
-                echo "女";
+                echo "<div>女</div>";
             }else{
-                echo "その他";
+                echo "<div>その他</div>";
             }
-            echo $school_name.$major.$school_year;
+            echo "<div>".$school_name."</div><div>".$major."</div><div>".$school_year."</div>";
         ?>
+        </div>
         <br>
-        <form action="php/ProfileUpdate.php" method="POST">
+        <form action="php/ProfileUpdate.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $user_id;?>" name="user_id">
             <input type="text" value="<?php echo $user_name;?>" name="user_name">
             <select name="school_code">
-                <option value="null" hidden><?php echo $school_name;?></option>
+                <option value="<?php echo $school_code;?>" hidden><?php echo $school_name;?></option>
                 <?php
                 foreach($selectArray as $row){
                     echo '<option value="'.$row['school_code'].'">'.$row['school_name'].'</option>';
@@ -46,7 +52,7 @@
             ?>
             </select>
             <select name="school_year">
-                <option value="null" hidden><?php echo $school_year;?></option>
+                <option value="<?php echo $school_year;?>" hidden><?php echo $school_year;?></option>
                 <optgroup label="4年制">
                     <option value="4年制1年">1</option>
                     <option value="4年制2年">2</option>
@@ -63,8 +69,9 @@
                     <option value="2年制2年">2</option>
                 </optgroup>
             </select>
-            <textarea rows="7" cols="20" name="comment"><?php echo $comment; ?></textarea>
+            <textarea rows="7" cols="20" name="comment" value="<?php echo $comment; ?>"><?php echo $comment; ?></textarea>
             <input type="text" value="<?php echo $major;?>" name="major">
+            <input type="file" name="icon">
             <input type="submit" value="確定">
         </form>
         <button></button>

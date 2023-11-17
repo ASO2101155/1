@@ -63,7 +63,7 @@
             // 値をバインドしてクエリの実行
             $ps->bindValue(1, $user_name, PDO::PARAM_STR);
             $ps->bindValue(2, $school_code, PDO::PARAM_STR);
-            $ps->bindValue(3, $school_year, PDO::PARAM_INT);
+            $ps->bindValue(3, $school_year, PDO::PARAM_STR);
             $ps->bindValue(4, $major, PDO::PARAM_STR);
             $ps->bindValue(5, $comment, PDO::PARAM_STR);
             $ps->bindValue(6, $icon, PDO::PARAM_STR);

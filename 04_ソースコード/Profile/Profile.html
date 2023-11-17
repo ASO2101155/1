@@ -1,14 +1,18 @@
 <?php
-    require_once 'UserInfo.php';
+    require_once '../Login/UserInfo.php';
     $cls = new UserInfo();
     //todo セッションに入ってるuser_idで検索
     $userData = $cls->userInfo(1);
     foreach($userData as $row){
+        $user_id = $row['user_id'];
         $user_name = $row['user_name'];
         $gender = $row['gender'];
         $school_name = $row['school_name'];
+        $school_code = $row['school_code'];
         $school_year = $row['school_year'];
         $major = $row['major'];
+        $icon = $row['icon'];
+        $comment = $row['comment'];
     }
 ?>
 
@@ -18,6 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <img src="../img/<?php echo $icon;?>" style="width: 10%;">
         <?php 
             echo $user_name;
             if($gender==1){
@@ -27,8 +32,9 @@
             }else{
                 echo "その他";
             }
-            echo $school_name.$major.$school_year.$comment;
+            echo $school_name.$major.$school_year;
         ?>
+        <textarea rows="7" cols="20" name="comment" readonly><?php echo $comment; ?></textarea>
         <button onclick="location.href='ProfileEdit.html'"></button>
     </body>
 </html>
