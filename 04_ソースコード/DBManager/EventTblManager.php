@@ -33,6 +33,11 @@
             $ps->bindValue(6, $held_datetime, PDO::PARAM_STR);
             $ps->bindValue(7, $end_datetime, PDO::PARAM_STR);
             $ps->execute();
+
+            $sql2 = "SELECT MAX(event_id) AS event_id FROM Event;";
+            $res = $pdo->query($sql2);
+            $last_insert_id = $res->fetchAll();
+            return $last_insert_id;
         }
 
         public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
