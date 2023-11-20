@@ -1,6 +1,6 @@
 <?php
     require_once 'DBConnect.php';
-    class SchoolTblManager{
+    class EventCategoryTblManager{
 
     //DBConnectクラス
     private function DBconnect(){
@@ -8,11 +8,11 @@
         return $dbConnectCls;
     }
     
-        public function SelectSchoolTbl(){
+        public function SelectEventCategoryTbl(){
             $dbconnectCls = $this->DBconnect();
             $pdo = $dbconnectCls->dbconnect();
             //select処理（学校テーブルのデータ全件取得）
-            $sql = "SELECT * FROM School";
+            $sql = "SELECT * FROM EventCategory";
             $ps = $pdo->prepare($sql);
             $ps->execute();
 
