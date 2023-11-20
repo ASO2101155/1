@@ -1,5 +1,5 @@
 <?php
-    require_once '../Login/UserInfo.php';
+    require_once '../Login/php/UserInfo.php';
     $cls = new UserInfo();
     //todo セッションに入ってるuser_idで検索
     $userData = $cls->userInfo(1);
@@ -22,6 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <img src="../Login/php/UserInfo.php">
         <img src="../img/<?php echo $icon;?>" style="width: 10%;">
         <?php 
             echo $user_name;
