@@ -1,5 +1,5 @@
 <?php
-    require_once '../Login/UserInfo.php';
+    require_once '../Login/php/UserInfo.php';
     require_once '../DBManager/DBAccess.php';
     $cls = new UserInfo();
     $schoolcls = new DBAccess();
@@ -26,7 +26,7 @@
     </head>
     <body>
         <div>
-            <img src="../img/<?php echo $icon;?>" style="width: 10%;">
+            <img src="../IconImage/<?php echo $icon;?>" style="width: 10%;">
         <?php 
             echo $user_name;
             if($gender==1){
