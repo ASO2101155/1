@@ -203,6 +203,12 @@
             $this->forumTblCls->InsertForumTbl($user_id, $for_cate_code, $building_num, $title, $post_content);
         }
 
+        //掲示板情報をUpdateするメソッド
+        public function UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num){
+            //ForumTblManagerで作成したUpdateの処理を使う
+            $this->forumTblCls->UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num);
+        }
+
         //掲示板メッセージ情報をInsertするメソッド
         public function InsertForumMessageTbl($event_id, $user_id, $message_content){
             //ForumMessageTblManagerで作成したInsertの処理を使う
