@@ -21,6 +21,9 @@
   
   .moji{
     color: #d7bc61;
+    text-decoration: none;
+    line-height: 50px;
+    
   }
   .footer {
     display: flex;
@@ -33,7 +36,7 @@
     }
   .box{
     /* text-align:  center;        中央寄せ */
-    height: 400px;              /* 高さ指定 */
+    height: 65vh;              /* 高さ指定 */
     width: 100%;
     text-align: center;
     
@@ -45,29 +48,30 @@
     background-color: #0E397B;/* テキストボックスの背景色を設定 */
     color: #d7bc61;/* 文字の色*/
     text-align: center;
-    margin-top:70px;
+    margin-top:8vh;
+    margin-bottom:3vh;
      
-      }
-    .next{
+    }
+    
+.next{
         color: #d7bc61;
         background-color: #0E397B;
-        width: 70px;
+        width:100px;
         height: 50px;
         padding: 10px;
-        margin: 20px;
+        margin: 5vh;
+        border-style: none;
         
-        
-    }
+}
 #errMsg{
     color: white;
     text-align: center;
 }
 
 .link{
-    color: #d7bc61;
     background-color: #0E397B;
     width: 100px;
-    height: 35px;
-    padding: 10px;
+    height: 50px;
     margin: auto;
+    text-align:center;  
   }
