@@ -147,3 +147,8 @@ header {
   padding:0;
   }
 
+
+  .link{
+    position:absolute;
+    bottom: 20px;
+  }
