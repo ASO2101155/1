@@ -1,3 +1,8 @@
+<?php
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectEventTbl();
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -22,6 +27,40 @@
             <!-- <header style="height: 90px; width: 100%; position: fixed; top: 0; background-color: #0E397B; z-index: 99999;"></header> -->
             <!-- ↑ 後で消す ↑ -->
             <div id="event_main">
+                <!-- ↓ ループ ↓ -->
+                <?php 
+                    foreach($selectArray as $row) {
+                ?>
+                <div class="event_area">
+                    <div class="event_user">
+                        <div class="user_icon"></div>
+                        <div class="user_name"><?php echo $row['user_name'];?></div>
+                    </div>
+                    <form action="EventDetail.html" method="post">
+                        <button class="event_card">
+                            <div>
+                                <div class="event_title">
+                                    <?php echo $row['title'];?>
+                                </div>
+                                <div class="bookmark">
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star-fill" hidden></i>
+                                </div>
+                                <div class="event_content">
+                                    <?php echo $row['comment'];?>
+                                </div>
+                            </div>
+                        </button>
+                        <input type="hidden" name="event_id" value="<?php echo $row['event_id']?>">
+                    </form>
+                </div>
+                <?php 
+                    }
+                ?>
+                <!-- ↑ ループ ↑ -->
+
+
+
                 <div class="event_area">
                     <div class="event_user">
                         <div class="user_icon"></div>
@@ -72,10 +111,13 @@
                     <div id="event_category">
                         <div>カテゴリー<i class="bi bi-filter-left"></i></div>
                     </div>
-                    <div id="event_post">
+                    <button id="event_post">
                         <div><i class="bi bi-pencil-fill" style="height: auto; width: auto;"></i></div>
-                    </div>
+                    </button>
                 </div>
+            </div>
+            <div id="show_event_post" hidden>
+                <?php include("./EventPost.html");?>
             </div>
             <!-- ↑ カテゴリー・イベント投稿 ↑ -->
             <!-- ↓ 後で消す ↓ -->
@@ -84,6 +126,7 @@
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>
             <!-- ↑ フッター読み込み ↑ -->
+            <script src="./js/Event.js"></script>
         </main>
     </body>
 </html>
