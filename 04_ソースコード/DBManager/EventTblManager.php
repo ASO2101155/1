@@ -10,8 +10,8 @@
 
         public function SelectEventTbl(){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT e.*, u.user_name FROM event as e 
-                    INNER JOIN user as u
+            $sql = "SELECT e.*, u.user_name FROM Event as e 
+                    INNER JOIN User as u
                     ON e.user_id = u.user_id";
             $res = $pdo->query($sql);
             $searchArray= $res->fetchAll();
@@ -24,8 +24,8 @@
 
         public function SelectEventDetailById($event_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT e.*, u.user_name FROM event as e 
-                    INNER JOIN user as u
+            $sql = "SELECT e.*, u.user_name FROM Event as e 
+                    INNER JOIN User as u
                     ON e.user_id = u.user_id
                     WHERE event_id = ?";
             $ps = $pdo->prepare($sql);
@@ -37,7 +37,7 @@
 
         public function InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "INSERT INTO event(user_id, event_category_code, title, datetime, comment, building_number, held_datetime, end_datetime)
+            $sql = "INSERT INTO Event(user_id, event_category_code, title, datetime, comment, building_number, held_datetime, end_datetime)
                                VALUES(?, ?, ?, cast(NOW() AS DATETIME), ?, ?, ? ,?)";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $user_id, PDO::PARAM_INT);

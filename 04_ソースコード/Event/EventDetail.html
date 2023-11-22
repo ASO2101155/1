@@ -25,14 +25,8 @@
             <!-- ↓ ヘッダー読み込み ↓ -->
                 <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
-            <!-- ↓ 後で消す ↓ -->
-            <!-- <header style="height: 90px; width: 100%; position: fixed; top: 0; background-color: #0E397B; z-index: 99999;"></header> -->
-            <!-- ↑ 後で消す ↑ -->
             <div id="event_detail_main">
                 <div id="event_detail_area">
-                    <?php
-
-                    ?>
                     <div id="event_user">
                         <div id="user_icon"></div>
                         <div id="user_name"><?php echo $selectArray['user_name']?></div>
@@ -106,14 +100,10 @@
                             <?php
                                 }
                             ?>
-                            <div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div><div>埋めるよう</div>
                             <!-- ↑ 返信表示 ↑ -->
-                            
                         </div>
-                        <!-- ↓ 返信送信 ↓ -->
-                        
-                        <!-- ↑ 返信送信 ↑ -->
                     </div>
+                    <!-- ↓ 返信送信 ↓ -->
                     <div id="event_reply_input_area">
                         <form action="php/EventReplyInsert.php" method="post">
                             <input id="event_reply_input_text" type="text" name="event_reply">
@@ -123,14 +113,12 @@
                             </button>
                         </form>
                     </div>
+                    <!-- ↑ 返信送信 ↑ -->
                     </div>
                     <!-- ↑ カード部分 ↑ -->
                     <a href="Event.html" id="e_back">戻る</a>
                 </div>
             </div>
-            <!-- ↓ 後で消す ↓ -->
-            <!-- <footer style="height: 90px; width: 100%; position: fixed; bottom: 0; background-color: #0E397B; z-index: 99999;"></footer> -->
-            <!-- ↑ 後で消す ↑ -->
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>
             <!-- ↑ フッター読み込み ↑ -->

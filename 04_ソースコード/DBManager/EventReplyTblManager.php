@@ -10,8 +10,8 @@
 
         public function SelectEventCommentByEventId($event_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT * FROM eventreply AS e
-                    INNER JOIN user AS u
+            $sql = "SELECT * FROM EventReply AS e
+                    INNER JOIN User AS u
                     ON e.user_id = u.user_id
                     WHERE event_id = ?";
             $ps = $pdo->prepare($sql);
@@ -23,7 +23,7 @@
     
         public function InsertEventReplyTbl($event_id, $user_id, $reply_content, $parent_event_reply_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "INSERT INTO eventreply(event_id, user_id, datetime, reply_content, parent_event_reply_id, event_reply_status)
+            $sql = "INSERT INTO EventReply(event_id, user_id, datetime, reply_content, parent_event_reply_id, event_reply_status)
                                VALUES(?, ?, cast(NOW() AS DATETIME), ?, ?, true)";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $event_id, PDO::PARAM_INT);
