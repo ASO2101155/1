@@ -113,11 +113,18 @@
         }
 
         //イベント詳細情報をSelectするメソッド
-        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
         public function SelectEventDetailByEventId($event_id){
-            //EventTblManagerで作成したSelectの処理を使う
-            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            //EventReplyTblManagerで作成したSelectの処理を使う
             $selectData = $this->eventTblCls->SelectEventDetailById($event_id);
+            return $selectData;
+        }
+
+        //イベント返信情報をSelectするメソッド
+        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
+        public function SelectEventCommentByEventId($event_id){
+            //EventReplyTblManagerで作成したSelectの処理を使う
+            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            $selectData = $this->eventReplyTblCls->SelectEventCommentByEventId($event_id);
             return $selectData;
         }
 
@@ -159,6 +166,13 @@
         public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したUpdateの処理を使う
             $this->eventTblCls->UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+        }
+
+        //画像情報をSelectするメソッド
+        public function SelectImageTblById($event_id){
+            //ImageTblManagerで作成したSelectの処理を使う
+            $selectData = $this->imageTblCls->SelectImageTblById($event_id);
+            return $selectData;
         }
 
         //画像情報をUpdateするメソッド
