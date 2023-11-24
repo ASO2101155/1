@@ -6,10 +6,10 @@
          $cls->InsertForumMessageTbl($_POST['forum_id'],$_POST['user_id'],$_POST['message_content']);
      } catch (Exception $ex) {
          //throw $th;
-         header('Location: ../ForumDetail.html');
+         header('Location: ../ForumDetail.htmlforum_id='.$_POST['forum_id']);
          exit;
      }
      //掲示板詳細画面に遷移
-     header('Location: ../ForumDetail.html');
+     header('Location: ../ForumDetail.html?forum_id='.$_POST['forum_id']);
      exit;
 ?>

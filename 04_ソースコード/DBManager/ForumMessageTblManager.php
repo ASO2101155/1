@@ -22,5 +22,16 @@
         public function UpdateForumMessageStatusByEventId($forum_message_id){
 
         }
+
+        public function SelectForumMessageByForumId($forum_id){
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT * FROM ForumMessage INNER JOIN User ON User.user_id = ForumMessage.user_id AND forum_id = ?";
+		    $ps = $pdo->prepare($sql);
+		    $ps->bindValue(1,$forum_id,PDO::PARAM_INT);
+		    $ps->execute();
+
+		    $selectData = $ps->fetchAll();
+		    return $selectData;
+        }
     }
 ?>

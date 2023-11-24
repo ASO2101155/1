@@ -3,7 +3,7 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectForumCategoryTbl();
-    $selectData = $cls->SelectForumTblByid($_POST['forum_id']);
+    $selectData = $cls->SelectForumDetailByid($_POST['forum_id']);
 ?>
 
 <!DOCTYPE html>

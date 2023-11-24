@@ -10,6 +10,6 @@
          exit;
      }
      //掲示板詳細画面に遷移
-     header('Location: ../ForumDetail.html');
+     header('Location: ../Forum.html');
      exit;
 ?>

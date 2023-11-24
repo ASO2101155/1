@@ -3,7 +3,6 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectForumCategoryTbl();
-    $selectData = $cls->SelectForumTblByid($_POST['forum_id']);
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +10,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/ForumPost.js"></script> <!-- SignUp.js ファイルを読み込む -->
+        <link rel="stylesheet" href="./css/ForumPost.css">
     </head>
     <body>
-        
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
         <form action="php/ForumInsert.php" method="post" name="myForm" onsubmit="return validateForm()">
             <?php 
                 echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
@@ -24,7 +26,7 @@
                 <option value="null" hidden>カテゴリー</option>
                 <?php
                 foreach($selectArray as $row){
-                    echo '<option value="'.$row['forum_category_code'].'">'.$row['forum_category_name'].'</option>';
+                    echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
                 }
             ?>
             </select>
@@ -35,9 +37,13 @@
                 <option value="3">３号館</option>
             </select>
             <br>
+            <div id="errMsg"></div>
             <input type="submit" value="登録">
         </form>
         <a href="Forum.html">戻る</a>
         <div id="errMsg"></div>
+        <!-- ↓ フッター読み込み ↓ -->
+<?php include("../Common/Footer.html");?>
+<!-- ↑ フッター読み込み ↑ -->
     </body>
 </html>

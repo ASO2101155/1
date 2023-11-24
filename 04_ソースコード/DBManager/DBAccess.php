@@ -180,6 +180,10 @@
             return $selectData;
         }
 
+        public function SelectForumCategoryTbl(){
+            $selectData = $this->forumTblCls->SelectForumCategoryTbl();
+            return $selectData;
+        }
         
         //掲示板情報をcategory_codeでSelectするメソッド
         public function SelectForumTblByCategoryCode($category_code){
@@ -189,7 +193,7 @@
         }
 
         //掲示板詳細情報をSelectするメソッド
-        public function SelectForumDetailByEventId($forum_id){
+        public function SelectForumDetailById($forum_id){
             //ForumTblManagerで作成したSelectの処理を使う
             //掲示板テーブル・掲示板メッセージテーブルを結合してSelectする
             $selectData = $this->forumTblCls->SelectForumDetailById($forum_id);
@@ -220,6 +224,11 @@
             //ForumMessageyTblManagerで作成したUpdateの処理を使う
             //ForumMessageテーブルのforum_message_statusカラムの値をfalseにする
             $this->forumMessageTblCls->UpdateForumMessageStatusByEventId($forum_message_id);
+        }
+
+        public function SelectForumMessageByForumId($forum_id){
+            $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
+            return $selectData;
         }
 
         //カレンダー情報をuser_idでSelectするメソッド
