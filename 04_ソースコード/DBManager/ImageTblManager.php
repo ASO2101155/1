@@ -10,7 +10,7 @@
 
         public function SelectImageTblById($event_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT * FROM image 
+            $sql = "SELECT * FROM Image 
                     WHERE event_id = ?;";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $event_id, PDO::PARAM_INT);
