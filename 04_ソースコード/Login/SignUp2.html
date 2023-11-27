@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectSchoolTbl();
@@ -8,7 +8,7 @@
         header('Location:SignUp.html?errMsg='.$errMsg);
         exit;
     }
-?> -->
+?>
 
 <!DOCTYPE html>
     <head>
@@ -27,10 +27,10 @@
         <!-- ヘッダー -->
 
         <form action="php/UserInsert.php" method="post" name="myForm" onsubmit="return validateForm2()">
-        <!-- <?php 
+        <?php 
                 echo '<input type="hidden" name="mail" value="'.$_POST['mail'].'">';
                 echo '<input type="hidden" name="password" value="'.$_POST['password'].'">';
-            ?> -->
+            ?>
             <div class="box">
             <input type="text" class="textbox" name="user_name" placeholder="ユーザー名"><br>
             <input type="text" class="textbox" name="major" placeholder="専攻"><br>
@@ -38,11 +38,11 @@
             
             <select name="school_code" class="radio">
                 <option value="null" hidden>学校名</option>
-        <!-- <?php
+        <?php
                 foreach($selectArray as $row){
                     echo '<option value="'.$row['school_code'].'">'.$row['school_name'].'</option>';
                 }
-            ?> -->
+            ?>
             </select>
             <select name="gender"  class="radio">
                 <option value="null" hidden>性別</option>
