@@ -157,3 +157,32 @@ color: #D7BC61;
     width: 49%;
     height: 5vh;
 }
+
+.event_card {
+    margin-top: 1%;
+    padding: 0.5% 3%;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    text-align: left;
+    color: black;
+    box-shadow: 0 4px 15px rgba(213, 240, 255, 0.418);
+}
+ 
+.event_card > div{
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+ 
+.event_title {
+    font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
+    font-size: 130%;
+}
+ 
+ 
+.event_content {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}

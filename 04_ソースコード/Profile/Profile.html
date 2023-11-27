@@ -17,6 +17,7 @@
         $comment = $row['comment'];
     }
     $selectArray = $dbcls->SelectForumTbl();
+    $selectEvent = $dbcls->SelectEventTbl();
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +52,29 @@
         </div>
         <button onclick="eventToggleVisibility('event')" id="eventToggle">イベント</button>
         <button onclick="forumToggleVisibility('forum')" id="forumToggle">掲示板</button>
-        <div id="event">イベント</div>
+        <div id="event">
+            <?php 
+                foreach($selectEvent as $row){
+                    if($row['user_id']==$_SESSION['user_id']){
+                        ?>
+                        <form action="../Event/EventDetail.html" method="post">
+                        <button class="event_card">
+                            <div>
+                                <div class="event_title">
+                                    <?php echo $row['title']; ?>
+                                </div>
+                                <div class="event_content">
+                                    <?php echo $row['comment']; ?>
+                                </div>
+                            </div>
+                        </button>
+                        <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
+                    </form>
+            <?php
+                    }
+                }
+            ?>
+        </div>
         <div id="forum">
             <?php
                 foreach($selectArray as $row){
