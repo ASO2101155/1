@@ -63,9 +63,9 @@
         }
 
         //通知情報をSelectするメソッド
-        public function SelectNoticeTbl(){
+        public function SelectNoticeTblByUserId($user_id){
             //NoticeTblManagerで作成したSelectの処理を使う
-            $selectData = $this->noticeTblCls->SelectNoticeTbl();
+            $selectData = $this->noticeTblCls->SelectNoticeTblByUserId($user_id);
             return $selectData;
         }
         
