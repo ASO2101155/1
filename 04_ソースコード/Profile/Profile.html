@@ -1,6 +1,8 @@
 <?php
     require_once '../Login/php/UserInfo.php';
+    require_once '../DBManager/DBAccess.php';
     $cls = new UserInfo();
+    $dbcls = new DBAccess();
     //todo セッションに入ってるuser_idで検索
     $userData = $cls->userInfo(1);
     foreach($userData as $row){
@@ -14,27 +16,75 @@
         $icon = $row['icon'];
         $comment = $row['comment'];
     }
+    $selectArray = $dbcls->SelectForumTbl();
 ?>
 
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/Profile.css">
+        <script src="js/Profile.js"></script>
     </head>
     <body>
-        <img src="../IconImage/<?php echo $icon;?>" style="width: 10%;">
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <div id="profile_info">
+            <div id="user_icon_name_gender">
+            <img src="../IconImage/<?php echo $icon;?>" id="icon">
         <?php 
-            echo $user_name;
+            echo '<div id="user_name">'.$user_name.'</div>';
             if($gender==1){
-                echo "男";
+                echo '<div id="gender">男</div>';
             }else if($gender==2){
-                echo "女";
+                echo '<div id="gender">女</div>';
             }else{
-                echo "その他";
+                echo '<div id="gender">その他</div>';
             }
+        ?>
+        <button onclick="location.href='ProfileEdit.html'" id="edit">✎</button></div>
+        <?php
             echo $school_name.$major.$school_year;
         ?>
-        <textarea rows="7" cols="20" name="comment" readonly><?php echo $comment; ?></textarea>
-        <button onclick="location.href='ProfileEdit.html'"></button>
+        <textarea rows="7" cols="20" name="comment" id="comment" readonly><?php echo $comment; ?></textarea>
+        </div>
+        <button onclick="eventToggleVisibility('event')" id="eventToggle">イベント</button>
+        <button onclick="forumToggleVisibility('forum')" id="forumToggle">掲示板</button>
+        <div id="event">イベント</div>
+        <div id="forum">
+            <?php
+                foreach($selectArray as $row){
+                    if($row['user_id']==$_SESSION['user_id']){
+                    $selectUser = $dbcls->SelectUserTblById($row['user_id']);
+                    foreach($selectUser as $row2){
+                        $user_name = $row2['user_name'];
+                        $user_icon = $row2['icon'];
+                    }
+                    echo '<div class="forumbox">
+                        <a href="../Forum/ForumDetail.html?forum_id='.$row['forum_id'].'" class="link"></a>
+                        <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                    
+                   
+                            <div id="forum_title">
+                                '.$row['title'].'
+                            </div>
+                            
+                            <div id="forum_date">
+                                '.$row['datetime'].'
+                            </div>
+                            
+                            <div id="forum_content">
+                               '.$row['post_content'].'
+                            </div>
+                            
+                    </div>';
+                }
+                }
+            ?>
+        </div>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
     </body>
 </html>
