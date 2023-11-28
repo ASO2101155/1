@@ -3,34 +3,46 @@ body {
 
 }
 
-.flexbox {/*縦に並べる*/
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/*.flexbox {/*縦に並べる
   display: flex;
   flex-direction: column;
   text-align: center;
-}
+}*/
 
 .flexbox {
 display: flex;
 flex-direction: column;
 align-items: center; /* 横方向の中央揃え */
 text-align: center;
+
 }
 
 .flexbox input {
 /*padding: 0px; /* テキストボックスの内側の余白 */
-margin: 70px 0px 0px; /* 上に余白を追加（必要に応じて値を調整） */
+margin: 55px 0px 0px; /* 上に余白を追加（必要に応じて値を調整） */
 border: 1px solid #0E397B; /* 枠線のスタイルと色 */
 border-radius: 1px; /* テキストボックスの角の丸み */
-width: 300px; /* テキストボックスの長さ*/
-padding: 15px;
+width: 200px; /* テキストボックスの長さ*/
+padding: 20px;
 background: #0E397B;
 color: #FFF;
+
+
 }
 
 /* プレースホルダーのスタイル */
 .flexbox input::placeholder {
 color: #D7BC61; /* プレースホルダーの文字色 */
 }
+
 
 
 .button-panel {
@@ -40,7 +52,7 @@ color: #D7BC61; /* プレースホルダーの文字色 */
 
 .btn {
   margin: 20px;
-  width: 250px; /* ボタンの長さ*/
+  width: 150px; /* ボタンの長さ*/
   padding: 15px;
   color: #D7BC61;
   background: #0E397B;
@@ -57,6 +69,9 @@ color: #D7BC61; /* プレースホルダーの文字色 */
   padding: 15px;
   color: #D7BC61;
 }
+
+
+
 
 *{
   margin: 0px;
@@ -91,3 +106,4 @@ body {
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
   }
+
