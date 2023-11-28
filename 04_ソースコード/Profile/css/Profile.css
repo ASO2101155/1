@@ -1,0 +1,188 @@
+body{
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+#profile_info{
+    color:white;
+}
+
+#icon{
+    border-radius: 50%;
+}
+
+#comment{
+    background-color: #0E1331;
+    color: white;
+    border: #0E1331;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+#user_icon_name_gender{
+    display: flex;
+}
+
+#gender{
+    display: flex;
+    align-items: center;
+    margin-left: 5vh;
+}
+
+#user_name{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#event{
+    display:block;
+}
+
+#forum{
+    display: none;
+}
+
+.forumbox{
+    margin: 10px auto;
+    width: 95%;
+    height: 100px;
+    background-color:white;
+    position: relative;
+}
+
+.logout{
+    color: black;
+}
+
+.link{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%; 
+}
+
+#forum_date{
+    left:50%;
+    top:5%;
+    position:absolute;
+  }
+
+  #event_other {
+    position: fixed;
+    bottom: calc(90px + 1%);
+    right: 2.5%;
+    height: 8%;
+    width: 50%;
+    /* background-color: #d0ffde; */
+}
+
+#event_other > div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#event_category {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 65%;
+    border-radius: 15px;
+    background-color: #0E397B;
+}
+
+#event_category > div {
+    /* font-size: 22px; */
+    font-size: 120%;
+color: #D7BC61;
+}
+
+#event_post {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #0E397B;
+}
+
+#event_post > div {
+    /* font-size: 18px; */
+    font-size: 110%;
+color: #D7BC61;
+}
+
+#user_icon{
+    width: 5vh;
+    margin: unset;
+}
+
+#edit{
+    margin-left: auto;
+    margin-right: 2vh;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 50%;
+}
+
+#eventToggle{
+    background-color: #0E397B;
+    color: #D7BC61;
+    border-color: white;
+    width: 49%;
+    height: 5vh;
+}
+
+#forumToggle{
+    background-color: #0E397B;
+    color: #D7BC61;
+    border-color: white;
+    width: 49%;
+    height: 5vh;
+}
+
+.event_card {
+    margin-top: 1%;
+    padding: 0.5% 3%;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    text-align: left;
+    color: black;
+    box-shadow: 0 4px 15px rgba(213, 240, 255, 0.418);
+}
+ 
+.event_card > div{
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+ 
+.event_title {
+    font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
+    font-size: 130%;
+}
+ 
+ 
+.event_content {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}

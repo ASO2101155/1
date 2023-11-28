@@ -40,15 +40,15 @@
     // データベースの更新処理
     $icon = $fileName;
     $cls->UpdateUserTbl($_POST['user_name'],$_POST['school_code'],$_POST['school_year'],$_POST['major'],$_POST['comment'],$icon,$_POST['user_id']);
-    header('Location: Profile.html');
+    header('Location: ../Profile.html');
     exit;
   } else {
     // リダイレクト
-    header('Location:Profile.html?error=1');
+    header('Location:../Profile.html?error=1');
     exit;
   }
     }
   $cls->UpdateUserTbl($_POST['user_name'],$_POST['school_code'],$_POST['school_year'],$_POST['major'],$_POST['comment'],$icon,$_POST['user_id']);
-    header('Location: Profile.html');
+    header('Location: ../Profile.html');
     exit;
 ?>
