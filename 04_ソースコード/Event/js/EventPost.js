@@ -6,12 +6,14 @@ var event_image_area = document.getElementById('event_image_area');
 var event_image_input = document.getElementsByClassName('event_image_input');
 var event_image_delete = document.getElementsByClassName('event_image_delete');
 var event_image_clone = document.getElementById('event_image_clone');
+var back = document.getElementById('back');
 window.addEventListener("load", function() {
     category_select.addEventListener("change", ChangeCategorySelectColor);
     bnum_select.addEventListener("change", ChangeBnumSelectColor);
     held_datetime.addEventListener("change", EnabledEndTime);
     event_image_input[0].addEventListener("change", AddEventImage);
     event_image_delete[0].addEventListener("click", DeleteEventImage);
+    back.addEventListener("click", HideEventPost);
 }) 
 
 function ChangeCategorySelectColor(){
@@ -87,3 +89,7 @@ function DeleteEventImage(e){
     }
 }
 
+function HideEventPost(){
+    event_post.disabled = false;
+    show_event_post.hidden = true;
+}

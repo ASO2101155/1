@@ -9,7 +9,13 @@
         }
 
         public function SelectEventTbl(){
-
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT e.*, u.user_name FROM Event as e 
+                    INNER JOIN User as u
+                    ON e.user_id = u.user_id";
+            $res = $pdo->query($sql);
+            $searchArray= $res->fetchAll();
+            return $searchArray;
         }
     
         public function SelectEventTblByCategoryCode($category_code){
@@ -17,7 +23,16 @@
         }
 
         public function SelectEventDetailById($event_id){
-
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT e.*, u.user_name FROM Event as e 
+                    INNER JOIN User as u
+                    ON e.user_id = u.user_id
+                    WHERE event_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1, $event_id, PDO::PARAM_INT);
+            $ps->execute();
+            $searchArray = $ps->fetch();
+            return $searchArray;
         }
 
         public function InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){

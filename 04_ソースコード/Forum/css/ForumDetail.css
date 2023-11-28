@@ -5,6 +5,7 @@
 
 body {
     background-color: #0E1331;
+    margin-top: 90px;
     }
 
 header {
@@ -194,4 +195,9 @@ top:15px;
     color: #d7bc61;
     display: block;
     margin: 0px auto;
+}
+
+#user_icon{
+  width: 5vh;
+  margin: unset;
 }

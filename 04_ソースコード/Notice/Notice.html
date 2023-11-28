@@ -1,0 +1,95 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $user_id = $_SESSION['user_id'];
+    $selectArray = $cls->SelectNoticeTblByUserId($user_id);
+?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <meta name="description" content="ここにサイト説明を入れます">
+        <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="./css/Notice.css">
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <script>
+            window.OneSignalDeferred = window.OneSignalDeferred || [];
+            OneSignalDeferred.push(async function(OneSignal) {
+                await OneSignal.init({
+                    appId: "6e8a7b28-bfdf-4db5-9cc4-e43213398d68",
+                });
+                OneSignal.Notifications.setDefaultTitle("Powered by OneSignal!");
+                let customUserId = "<?php echo $user_id?>";
+                
+                OneSignal.User.addAlias("external_id", customUserId);
+                OneSignal.login(customUserId);
+            });
+        </script>
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <div id="notice_main">
+            <?php
+                foreach($selectArray as $row){
+                    if($row['event_id'] != null){ $action = "Event/EventDetail.html"; $sendname="event_id"; $sendvalue=$row['event_id'];}
+                    if($row['forum_id'] != null){ $action = "Forum/ForumDetail.html"; $sendname="forum_id"; $sendvalue=$row['forum_id'];}
+            ?>
+            <form action="../<?php echo $action;?>" method="post">
+                <button class="notice_area">
+                    <div class="notice_content">
+                        <?php
+                            if($row['notification_type'] == 0){
+                                echo $row['user_name']."さんがあなたのイベントにコメントしました";
+                            }else if($row['notification_type'] == 1){
+                                echo $row['user_name']."さんがあなたの掲示板にコメントしました";
+                            }
+                        ?>
+                    </div>
+                </button>
+                <input type="hidden" name="<?php echo $sendname;?>" value="<?php echo $sendvalue;?>">
+            </form>
+            <?php
+                }
+            ?>
+        </div>
+        <div id="notice_category">
+            フィルター<i class="bi bi-filter-left"></i></div>
+        </div>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+        <script>
+        
+            if ('serviceWorker' in navigator) {
+
+
+                navigator.serviceWorker.register('../sw.js').then(function() {
+
+
+                    console.log('サービスワーカーの登録成功');
+
+
+                }).catch(function(err) {
+
+
+                    console.log('サービスワーカーの登録ができませんでした：', err);
+
+
+                });
+
+
+            }
+        </script>
+        <script src="./js/Notice.js"></script>
+    </body>
+</html>

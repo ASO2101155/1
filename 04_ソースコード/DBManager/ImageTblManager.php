@@ -7,6 +7,17 @@
         public function __construct(){
             $this->dbConnectCls = new DBconnect();
         }
+
+        public function SelectImageTblById($event_id){
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT * FROM Image 
+                    WHERE event_id = ?;";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1, $event_id, PDO::PARAM_INT);
+            $ps->execute();
+            $searchArray = $ps->fetchAll();
+            return $searchArray;
+        }
     
         public function InsertImageTbl($event_id, $image_path){
             $pdo = $this->dbConnectCls->dbConnect();

@@ -63,9 +63,9 @@
         }
 
         //通知情報をSelectするメソッド
-        public function SelectNoticeTbl(){
+        public function SelectNoticeTblByUserId($user_id){
             //NoticeTblManagerで作成したSelectの処理を使う
-            $selectData = $this->noticeTblCls->SelectNoticeTbl();
+            $selectData = $this->noticeTblCls->SelectNoticeTblByUserId($user_id);
             return $selectData;
         }
         
@@ -113,11 +113,18 @@
         }
 
         //イベント詳細情報をSelectするメソッド
-        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
         public function SelectEventDetailByEventId($event_id){
-            //EventTblManagerで作成したSelectの処理を使う
-            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            //EventReplyTblManagerで作成したSelectの処理を使う
             $selectData = $this->eventTblCls->SelectEventDetailById($event_id);
+            return $selectData;
+        }
+
+        //イベント返信情報をSelectするメソッド
+        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
+        public function SelectEventCommentByEventId($event_id){
+            //EventReplyTblManagerで作成したSelectの処理を使う
+            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            $selectData = $this->eventReplyTblCls->SelectEventCommentByEventId($event_id);
             return $selectData;
         }
 
@@ -161,6 +168,13 @@
             $this->eventTblCls->UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
         }
 
+        //画像情報をSelectするメソッド
+        public function SelectImageTblById($event_id){
+            //ImageTblManagerで作成したSelectの処理を使う
+            $selectData = $this->imageTblCls->SelectImageTblById($event_id);
+            return $selectData;
+        }
+
         //画像情報をUpdateするメソッド
         public function UpdateImageTblByEventId($event_id, $image_path){
             //EventTblManagerで作成したInsertの処理を使う
@@ -181,6 +195,10 @@
             return $selectData;
         }
 
+        public function SelectForumCategoryTbl(){
+            $selectData = $this->forumTblCls->SelectForumCategoryTbl();
+            return $selectData;
+        }
         
         //掲示板情報をcategory_codeでSelectするメソッド
         public function SelectForumTblByCategoryCode($category_code){
@@ -190,7 +208,7 @@
         }
 
         //掲示板詳細情報をSelectするメソッド
-        public function SelectForumDetailByEventId($forum_id){
+        public function SelectForumDetailById($forum_id){
             //ForumTblManagerで作成したSelectの処理を使う
             //掲示板テーブル・掲示板メッセージテーブルを結合してSelectする
             $selectData = $this->forumTblCls->SelectForumDetailById($forum_id);
@@ -204,6 +222,12 @@
             $this->forumTblCls->InsertForumTbl($user_id, $for_cate_code, $building_num, $title, $post_content);
         }
 
+        //掲示板情報をUpdateするメソッド
+        public function UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num){
+            //ForumTblManagerで作成したUpdateの処理を使う
+            $this->forumTblCls->UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num);
+        }
+
         //掲示板メッセージ情報をInsertするメソッド
         public function InsertForumMessageTbl($event_id, $user_id, $message_content){
             //ForumMessageTblManagerで作成したInsertの処理を使う
@@ -215,6 +239,11 @@
             //ForumMessageyTblManagerで作成したUpdateの処理を使う
             //ForumMessageテーブルのforum_message_statusカラムの値をfalseにする
             $this->forumMessageTblCls->UpdateForumMessageStatusByEventId($forum_message_id);
+        }
+
+        public function SelectForumMessageByForumId($forum_id){
+            $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
+            return $selectData;
         }
 
         //カレンダー情報をuser_idでSelectするメソッド
