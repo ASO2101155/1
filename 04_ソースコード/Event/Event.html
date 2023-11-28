@@ -5,7 +5,11 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectEventTbl();
-    $user_id = $_SESSION['user_id'];
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }else{
+        header('Location: ../Login/Login.html', true, 307);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,6 +36,7 @@
                 OneSignal.User.addAlias("external_id", customUserId);
                 OneSignal.login(customUserId);
             });
+            user_id = <?php echo $user_id;?>;
         </script>
     </head>
     <body>
@@ -58,10 +63,15 @@
                                 <div class="event_title">
                                     <?php echo $row['title'];?>
                                 </div>
+                                <!-- ↓ ボタンとして実装 ↓ -->
+                                <?php 
+                                    $isbookmark = $cls->SelectCalendarTblByEventIdUserId($row['event_id'], $user_id);
+                                ?>
                                 <div class="bookmark">
-                                    <i class="bi bi-star"></i>
-                                    <i class="bi bi-star-fill" hidden></i>
+                                    <i class="bi bi-star<?php if(count($isbookmark) >= 1 && $isbookmark[0]['registration_status'] == 1) echo '-fill'?>"></i>
                                 </div>
+                                <div hidden><?php if(count($isbookmark) >= 1) echo $isbookmark[0]['calendar_id']?></div>
+                                <!-- ↑ ボタンとして実装 ↑ -->
                                 <div class="event_content">
                                     <?php echo $row['comment'];?>
                                 </div>
