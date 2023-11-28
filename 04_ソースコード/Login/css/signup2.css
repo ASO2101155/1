@@ -109,9 +109,17 @@
     background-color: #0E397B;/* テキストボックスの背景色を設定 */
     color: #d7bc61;/* 文字の色*/
     text-align: center;
-    margin-right: 30px;
     margin-left: 40px;
+    
+}
 
+.radio2{
+    width: 30%;/*テキストボックスの長さ*/
+    background-color: #0E397B;/* テキストボックスの背景色を設定 */
+    color: #d7bc61;/* 文字の色*/
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 60px;
 }
 
 #errMsg{
