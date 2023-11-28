@@ -165,7 +165,6 @@ margin: 5px;
   .forumbox{
     margin: 10px auto;
     width: 95%;
-    height: 100px;
     background-color:white;
     position: relative;
 }
@@ -239,6 +238,7 @@ color: #D7BC61;
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #0E397B;
+    color: #D7BC61;
 }
 
 #event_post > div {
@@ -250,4 +250,21 @@ color: #D7BC61;
 #user_icon{
     width: 5vh;
     margin: unset;
+}
+
+.categoryButton{
+  position: relative;
+  top: -128px;
+    display: block;
+    height: 60%;
+    width: 65%;
+}
+
+#categoryBox{
+  display: none;
+}
+
+#forum_content{
+  display: contents;
+  overflow-wrap: anywhere;
 }
