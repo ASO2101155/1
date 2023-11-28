@@ -241,14 +241,16 @@
             $this->forumMessageTblCls->UpdateForumMessageStatusByEventId($forum_message_id);
         }
 
+        public function SelectForumMessageByForumId($forum_id){
+            $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
+            return $selectData;
+        }
+
 
         //カレンダー情報をevent_id,user_idでSelectするメソッド
         public function SelectCalendarTblByEventIdUserId($event_id, $user_id){
             //CalendarTblManagerで作成したSelectの処理を使う
             $selectData = $this->calendarTblCls->SelectCalendarTblByEventIdUserId($event_id, $user_id);
-
-        public function SelectForumMessageByForumId($forum_id){
-            $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
             return $selectData;
         }
 
