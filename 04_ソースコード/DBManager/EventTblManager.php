@@ -12,14 +12,15 @@
             $pdo = $this->dbConnectCls->dbConnect();
             $sql = "SELECT e.*, u.user_name FROM Event as e 
                     INNER JOIN User as u
-                    ON e.user_id = u.user_id";
+                    ON e.user_id = u.user_id
+                    ORDER BY datetime DESC";
             $res = $pdo->query($sql);
             $searchArray= $res->fetchAll();
             return $searchArray;
         }
     
         public function SelectEventTblByCategoryCode($category_code){
-
+            
         }
 
         public function SelectEventDetailById($event_id){
