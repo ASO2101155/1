@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/SignUp.js"></script> <!-- SignUp.js ファイルを読み込む -->
+    </head>
+    <body>
+        
+        <form action="SignUp2.html" method="post" name="myForm" onsubmit="return validateForm()">
+            <input type="text" name="mail" placeholder="Mail">
+            <input type="text" name="password" placeholder="Password">
+            <input type="submit" value="次へ">
+        </form>
+        <a href="Login.html">Loginに戻る</a>
+        <?php
+            if(isset($_GET['errMsg'])){
+                echo '<div id="errMsg">'.$_GET['errMsg'].'</div>';
+            }
+        ?>
+        <div id="errMsg"></div>
+    </body>
+</html>
