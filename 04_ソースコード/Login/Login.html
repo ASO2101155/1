@@ -2,7 +2,7 @@
 <html>
   <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
@@ -13,27 +13,25 @@
         <a class="moji"></a>
     </h1>
 </header>
-<div>
-  <form action="php/UserCheck.php" method="post">
-    <input type="text" class="textbox-003">
-      <input type="text" class="textbox-001" placeholder="Mail" name="mail">
-    <input type="text" class="textbox-002" placeholder="Password" name="password">
-    <button type="submit">Login</button>
-  </form>
-</div>
-<a class="top3" href="SignUp.html">新規登録はこちら</a>
+  <form>
+      <div class="flexbox">
+    <input type='text' name='email' placeholder="Mail">
+    <input type='text' name='password' placeholder="Password">
+  </div>
+      <div class="button-panel">
+          <button class="btn btn-secondary" type="submit">Login</button><br>
+      </div>
+    </form>
+      <div class="button-panel2">
+        <a class="btn2 btn-secondary" href=" SiginUp.html  ">新規登録はこちら</a>
+      </div>
+    </form>
 <!-- フッダー -->
 <footer>
     <h1 class="footer">
         <a class="moji"></a>
     </h1>
 </footer>
-<div class="container">
-  <img src="img/hito.png" alt="画像の説明" class="image">
-  <div class="text-box">
-      <p>重ねるテキスト</p>
-
-
   </div>
 </div>
   </body>
