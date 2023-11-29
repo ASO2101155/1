@@ -30,24 +30,25 @@
         <!-- ↓ ヘッダー読み込み ↓ -->
         <?php include("../Common/Header.html");?>
         <!-- ↑ ヘッダー読み込み ↑ -->
-        <div>
-            <img src="../IconImage/<?php echo $icon;?>" style="width: 10%;">
+        <div id="profile_info">
+            <div id="user_icon_name_gender">
+            <img src="../IconImage/<?php echo $icon;?>" id="icon">
         <?php 
-            echo $user_name;
+            echo '<div id="user_name">'.$user_name.'</div>';
             if($gender==1){
-                echo "<div>男</div>";
+                echo '<div id="gender">男</div>';
             }else if($gender==2){
-                echo "<div>女</div>";
+                echo '<div id="gender">女</div>';
             }else{
-                echo "<div>その他</div>";
+                echo '<div id="gender">その他</div>';
             }
-            echo "<div>".$school_name."</div><div>".$major."</div><div>".$school_year."</div>";
+            echo "</div><div>".$school_name." ".$major." ".$school_year."</div>";
         ?>
         </div>
         <br>
         <form action="php/ProfileUpdate.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $user_id;?>" name="user_id">
-            <input type="text" value="<?php echo $user_name;?>" name="user_name">
+            <input type="text" value="<?php echo $user_name;?>" name="user_name" id="input_name">
             <select name="school_code">
                 <option value="<?php echo $school_code;?>" hidden><?php echo $school_name;?></option>
                 <?php
@@ -74,12 +75,12 @@
                     <option value="2年制2年">2</option>
                 </optgroup>
             </select>
-            <textarea rows="7" cols="20" name="comment" value="<?php echo $comment; ?>"><?php echo $comment; ?></textarea>
-            <input type="text" value="<?php echo $major;?>" name="major">
-            <input type="file" name="icon">
-            <input type="submit" value="確定">
+            <textarea rows="7" cols="20" name="comment" value="<?php echo $comment; ?>" id="comment"><?php echo $comment; ?></textarea>
+            <input type="text" value="<?php echo $major;?>" name="major" id="input_major">
+            <input type="file" name="icon" id="input_icon">
+            <input type="submit" value="確定" id="btn">
         </form>
-        <button onclick="location.href='Profile.html'">戻る</button>
+        <button onclick="location.href='Profile.html'" id="backbtn">戻る</button>
         <!-- ↓ フッター読み込み ↓ -->
         <?php include("../Common/Footer.html");?>
         <!-- ↑ フッター読み込み ↑ -->
