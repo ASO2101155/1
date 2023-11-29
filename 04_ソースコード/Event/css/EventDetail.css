@@ -138,7 +138,7 @@ button{
     border-bottom: 1px solid black;
 }
 
-#event_reply_show_area {
+.event_reply_show_area {
     width: 100%;
     display: flex;
 }
@@ -166,11 +166,53 @@ button{
     text-align: right;
 }
 
+.show_event_more_reply {
+    margin-right: 10%;
+    color: blue;
+}
+
 .event_more_reply_button {
     /* width: 20%; */
     display: inline-block;
     font-size: 70%;
 }
+
+.event_more_reply_main {
+    margin-bottom: 1%;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.event_more_reply_area {
+    width: 100%;
+    display: flex;
+}
+
+.event_more_reply_input_area {
+    height: 4vh;
+    width: 100%;
+    margin-bottom: 2%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius: 0 0 20px 20px;
+    background-color: white;
+}
+
+.event_more_reply_input_area > form {
+    display: flex;
+    height: 70%;
+}
+
+.event_more_reply_input_text {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(219, 219, 219);
+    /* border: 1px solid #8d8d8d; */
+    border-radius: 5px;
+}
+
 
 #event_reply_input_area {
     /* position: sticky; */
