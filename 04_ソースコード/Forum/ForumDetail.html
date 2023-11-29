@@ -56,14 +56,14 @@
 
                             $selectMessage = $cls->SelectForumMessageByForumId($_GET['forum_id']);
                             foreach($selectMessage as $row){
-                                echo $row['user_name'].$row['message_content'].'<hr>';
+                                echo '<div id="user_name">'.$row['user_name'].'</div><div id="forum_content">'.$row['message_content'].'</div><hr>';
                             }
                     ?>
                     <form action="php/ForumMessageInsert.php" method="POST">
                         <input type="hidden" name="forum_id" value="<?php echo $_GET['forum_id']; ?>"> 
                         <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 
-                        <input type="text" name="message_content">
-                        <input type="submit" value="送信">
+                        <input type="text" name="message_content" id="message_content">
+                        <input type="submit" value="▷" id="sendbtn">
                     </form>
                 </div>
             <!-- 戻るボタン -->
