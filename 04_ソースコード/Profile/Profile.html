@@ -1,10 +1,11 @@
 <?php
+    session_start();
     require_once '../Login/php/UserInfo.php';
     require_once '../DBManager/DBAccess.php';
     $cls = new UserInfo();
     $dbcls = new DBAccess();
     //todo セッションに入ってるuser_idで検索
-    $userData = $cls->userInfo(1);
+    $userData = $cls->userInfo($_SESSION['user_id']);
     foreach($userData as $row){
         $user_id = $row['user_id'];
         $user_name = $row['user_name'];
