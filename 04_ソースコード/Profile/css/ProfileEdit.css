@@ -3,10 +3,6 @@ body{
     margin-bottom: 90px;
 }
 
-#user_icon{
-
-}
-
 #user_icon_name_gender{
     display: flex;
 }
