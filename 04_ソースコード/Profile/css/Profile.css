@@ -47,7 +47,6 @@ body{
 .forumbox{
     margin: 10px auto;
     width: 95%;
-    height: 100px;
     background-color:white;
     position: relative;
 }
@@ -186,3 +185,9 @@ color: #D7BC61;
     margin-top: 2vh;
     margin-bottom: 2vh;
 }
+
+#forum_content{
+    display: contents;
+    overflow-wrap: anywhere;
+  }
+  
