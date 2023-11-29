@@ -84,7 +84,7 @@
         }
 
         //通知情報をInsertするメソッド
-        //コメントが届いた掲示板の主に送信する通知
+        //開催時間が１日前のイベントをカレンダーに登録しているユーザーに送信する通知
         public function InsertNoticeTblForCalendar($rec_user_id, $event_id){
             //NoticeTblManagerで作成したInsertの処理を使う
             $this->noticeTblCls->InsertNoticeTbl($rec_user_id, null, 3, $event_id, null);
@@ -123,8 +123,15 @@
         //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
         public function SelectEventCommentByEventId($event_id){
             //EventReplyTblManagerで作成したSelectの処理を使う
-            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            //イベントテーブル・ユーザーテーブルを結合してSelectする
             $selectData = $this->eventReplyTblCls->SelectEventCommentByEventId($event_id);
+            return $selectData;
+        }
+
+        //イベント返信情報をSelectするメソッド
+        public function SelectEventReplyByEventReplyId($event_reply_id){
+            //EventReplyTblManagerで作成したSelectの処理を使う
+            $selectData = $this->eventReplyTblCls->SelectEventReplyByEventReplyId($event_reply_id);
             return $selectData;
         }
 
@@ -245,7 +252,6 @@
             $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
             return $selectData;
         }
-
 
         //カレンダー情報をevent_id,user_idでSelectするメソッド
         public function SelectCalendarTblByEventIdUserId($event_id, $user_id){
