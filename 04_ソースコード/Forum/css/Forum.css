@@ -5,7 +5,6 @@
 
 body {
     background-color: #0E1331;
-    margin-top: 100px;
     }
 
 header {
@@ -32,16 +31,6 @@ header {
     align-items:center;
     position: absolute;/*←絶対位置*/
     bottom: 0; /*下に固定*/
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
-  color: #D7BC61;
 }
 
 img {
@@ -90,7 +79,6 @@ margin: 5px;
 .box {
     position: absolute;
     right: 0px;
-    z-index: 2;
 }
 
 
@@ -178,8 +166,6 @@ margin: 5px;
     width: 95%;
     background-color:white;
     position: relative;
-    padding: 1%;
-    z-index: 1;
 }
 
 .logout{
@@ -194,92 +180,3 @@ margin: 5px;
    height: 100%; 
 }
 
-#forum_date{
-    left:50%;
-    top:5%;
-    position:absolute;
-  }
-
-  #event_other {
-    position: fixed;
-    bottom: calc(90px + 1%);
-    right: 2.5%;
-    height: 8%;
-    width: 50%;
-    /* background-color: #d0ffde; */
-}
-
-#event_other > div{
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
-#event_category {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60%;
-    width: 65%;
-    border-radius: 15px;
-    background-color: #0E397B;
-}
-
-#event_category > div {
-    /* font-size: 22px; */
-    font-size: 120%;
-color: #D7BC61;
-}
-
-#event_post {
-    position: absolute;
-    top: 50%;
-    right: 0%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background-color: #0E397B;
-    color: #D7BC61;
-}
-
-#event_post > div {
-    /* font-size: 18px; */
-    font-size: 110%;
-color: #D7BC61;
-}
-
-#user_icon{
-    width: 5vh;
-    margin: unset;
-}
-
-.categoryButton{
-  position: relative;
-  top: -128px;
-    display: block;
-    height: 60%;
-    width: 65%;
-  background-color: #0E397B;
-  border: #0E1331 solid 1px;
-}
-
-#categoryBox{
-  display: none;
-}
-
-#forum_content{
-  display: contents;
-  overflow-wrap: anywhere;
-}

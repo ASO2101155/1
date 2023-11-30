@@ -5,7 +5,6 @@
 
 body {
     background-color: #0E1331;
-    margin-top: 90px;
     }
 
 header {
@@ -175,7 +174,7 @@ top:15px;
   }
 
   #forum_detail_area {
-    margin-top: 100px;
+    margin-top: 90px;
     margin-bottom: 90px;
     z-index: 0;
   }
@@ -186,7 +185,6 @@ top:15px;
     height: auto;
     background-color:white;
     position: relative;
-    padding: 1%;
 }
 
 .backbutton{
@@ -196,29 +194,4 @@ top:15px;
     color: #d7bc61;
     display: block;
     margin: 0px auto;
-}
-
-#user_icon{
-  width: 5vh;
-  margin: unset;
-}
-
-#forum_content{
-  display: contents;
-  overflow-wrap: anywhere;
-}
-
-#message_content{
-  width:90%;
-  margin-left: 5px;
-}
-
-#sendbtn{
-  border: none;
-  background-color: white;
-}
-
-form{
-  position: relative;
-    top: -7px;
 }
