@@ -97,9 +97,10 @@
                                     ?>
                                     <div class="event_more_reply">
                                         <?php if(count($replyArray) > 0){?>
-                                        <button class="show_event_more_reply">さらに返信を表示する</button>
+                                        <button class="show_event_more_reply"><?php echo count($replyArray);?>件の返信を表示する</button>
                                         <?php }?>
                                         <button class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</button>
+                                        <data value="<?php echo count($replyArray)?>"></data>
                                     </div>
                                     <div class="event_more_reply_main" hidden>
                                         <?php 
