@@ -23,8 +23,7 @@
     
         public function SelectCalendarTblByUserId($user_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT * FROM Calendar
-                    WHERE user_id = ?";
+            $sql = "SELECT * FROM Calendar INNER JOIN Event ON Event.event_id = Calendar.event_id AND user_id = ?";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $user_id, PDO::PARAM_INT);
             $ps->execute();
