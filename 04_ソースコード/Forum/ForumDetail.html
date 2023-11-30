@@ -1,0 +1,82 @@
+<?php
+    session_start();
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectForumDetailById($_POST['forum_id']);
+    foreach($selectArray as $row){
+        $user_name = $row['user_name'];
+        $icon = $row['icon'];
+        $post_content = $row['post_content'];
+        $datetime = $row['datetime'];
+        $title = $row['title'];
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <meta name="description" content="ここにサイト説明を入れます">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./css/ForumDetail.css">
+        <style>
+
+        </style>
+    </head>
+    <body bgcolor="背景色">
+        <!--ヘッダー-->
+            <!-- ↓ ヘッダー読み込み ↓ -->
+            <?php include("../Common/Header.html");?>
+            <!-- ↑ ヘッダー読み込み ↑ -->
+
+            <div id="forum_detail_area">
+                
+                <div class="forumbox">
+                    <?php
+                    echo '
+                        <div><img src="../IconImage/'.$icon.'" id="user_icon"></div>
+                        <div id="user_name">'.$user_name.'</div>
+                    
+                   
+                            <div id="forum_title">
+                                '.$title.'
+                            </div>
+                            
+                            <div id="forum_date">
+                                '.$datetime.'
+                            </div>
+                            
+                            <div id="forum_content">
+                               '.$post_content.'
+                            </div><hr>';
+
+                            $selectMessage = $cls->SelectForumMessageByForumId($_POST['forum_id']);
+                            foreach($selectMessage as $row){
+                                echo '<div id="user_name">'.$row['user_name'].'</div><div id="forum_content">'.$row['message_content'].'</div><hr>';
+                            }
+                    ?>
+                    <form action="php/ForumMessageInsert.php" method="POST">
+                        <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']; ?>"> 
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 
+                        <input type="text" name="message_content" id="message_content">
+                        <input type="submit" value="▷" id="sendbtn">
+                    </form>
+                </div>
+            <!-- 戻るボタン -->
+            <?php if(isset($_GET['insert'])){?>
+                <button type="button" onclick="location.href='Forum.html'" class="backbutton">戻る</button>
+            <?php }else{?>
+                <button type="button" onclick="history.back()" class="backbutton">戻る</button>
+            <?php }?>
+            </div>
+<!-- フッダー -->
+<!-- ↓ フッター読み込み ↓ -->
+    <?php include("../Common/Footer.html");?>
+<!-- ↑ フッター読み込み ↑ -->
+
+</body>
+</html>

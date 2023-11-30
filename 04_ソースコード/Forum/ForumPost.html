@@ -1,0 +1,48 @@
+<?php 
+    session_start();
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectForumCategoryTbl();
+?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/ForumPost.js"></script> <!-- SignUp.js ファイルを読み込む -->
+        <link rel="stylesheet" href="./css/ForumPost.css">
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <form action="php/ForumInsert.php" method="post" name="myForm" onsubmit="return validateForm()">
+            <?php 
+                echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
+            ?>
+            <input type="text" name="title" placeholder="タイトル"><br>
+            <textarea name="post_content" placeholder="投稿内容" id="content"></textarea><br>
+            <select name="for_cate_code">
+                <option value="null" hidden>カテゴリー</option>
+                <?php
+                foreach($selectArray as $row){
+                    echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
+                }
+            ?>
+            </select>
+            <select name="building_num">
+                <option value="null" hidden>号館</option>
+                <option value="1">１号館</option>
+                <option value="2">2号館</option>
+                <option value="3">３号館</option>
+            </select>
+            <br>
+            <div id="errMsg"></div>
+            <input type="submit" value="登録" id="btn">
+        </form>
+        <a href="Forum.html" id="backbtn">戻る</a>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+    </body>
+</html>

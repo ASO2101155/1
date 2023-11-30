@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once '../../DBManager/DBAccess.php';
     $cls = new DBAccess();
     try {
@@ -8,6 +11,10 @@
         //throw $th;
         header('Location: ../Sign.html?errMsg="データベースとの接続に失敗しました"');
         exit;
+    }
+    $selectarray = $cls->SelectUserTblByMail($_POST['mail']);
+    foreach($selectarray as $row){
+        $_SESSION['user_id'] = $row['user_id'];
     }
     //イベント画面に遷移
     header('Location: ../../Event/Event.html');

@@ -1,3 +1,8 @@
+<?php
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectEventDetailByEventId($_POST['event_id']);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -6,6 +11,8 @@
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/flickity.css"/>
+        <script src="./js/flickity.pkgd.js"></script>
         <meta name="description" content="ここにサイト説明を入れます">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="./css/EventDetail.css">
@@ -18,90 +25,136 @@
             <!-- ↓ ヘッダー読み込み ↓ -->
                 <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
-            <!-- ↓ 後で消す ↓ -->
-            <!-- <header style="height: 90px; width: 100%; position: fixed; top: 0; background-color: #0E397B; z-index: 99999;"></header> -->
-            <!-- ↑ 後で消す ↑ -->
             <div id="event_detail_main">
                 <div id="event_detail_area">
                     <div id="event_user">
                         <div id="user_icon"></div>
-                        <div id="user_name">麻生　花子</div>
+                        <div id="user_name"><?php echo $selectArray['user_name']?></div>
                     </div>
+                    <!-- ↓ カード部分 ↓ -->
+                    <div id="event_detail_card_wrapper">
                     <div id="event_detail_card">
                         <div>
                             <div id="event_title">
-                                野球部部員募集！
+                                <?php echo $selectArray['title']?>
                             </div>
                             <div id="bookmark">
                                 <i class="bi bi-star"></i>
                                 <i class="bi bi-star-fill" hidden></i>
                             </div>
                             <div id="event_date">
-                                2023/10/20  開催日/期限
+                                <?php
+                                    if($selectArray['end_datetime'] != '0000-00-00 00:00:00'){
+                                ?>
+                                    期間：<?php echo date('Y年n月j日 g:i',strtotime($selectArray['held_datetime']))
+                                                     .'～'.
+                                                     date('Y年n月j日 g:i',strtotime($selectArray['end_datetime']));
+                                          ?>
+                                <?php
+                                    }else{
+                                ?>
+                                    開催日：<?php echo date('Y年n月j日 g:i',strtotime($selectArray['held_datetime']));?>
+                                <?php
+                                    }
+                                ?>
                             </div>
                             <div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
-                            </div><div id="event_content">
-                                ぜひうちの部活に入ってみませんか？初心者でも大歓迎！
+                                <?php echo $selectArray['comment']?>
                             </div>
+                            <!-- ↓ 画像表示 ↓ -->
+                            <?php
+                                $selectArray = $cls->SelectImageTblById($_POST['event_id']);
+                                if(count($selectArray) > 0){
+                            ?>
+                            <div class="flickity-syncer">
+                                <?php
+                                    foreach($selectArray as $image){
+                                ?>
+                                <img style="width: 100%;" src="../Image/Event/<?php echo $image['file_path']?>"/>
+                                <?php
+                                    }
+                                ?>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                            <!-- ↑ 画像表示 ↑ -->
                             <!-- ↓ 返信表示 ↓ -->
                             <div id="hensin">返信</div>
-                            <div id="event_reply_show_area">
+                            <?php 
+                                $commentArray = $cls->SelectEventCommentByEventId($_POST['event_id']);
+                                foreach($commentArray as $comment){
+                            ?>
+                            <div class="event_reply_show_area">
                                 <div class="event_reply_left">
                                     <div class="event_reply_icon"></div>
                                 </div>
-                                <div class="event_reply_right">
-                                    <div class="event_reply_user_name">山田　太郎</div>
-                                    <div class="event_reply_content">楽しそうですね！ぜひ参加してみたいです！</div>
+                                <div class="event_reply_right parent_event_reply_right">
+                                    <div class="event_reply_user_name"><?php echo $comment['user_name'];?></div>
+                                    <div class="event_reply_content"><?php echo $comment['reply_content'];?></div>
+                                    <?php 
+                                        $replyArray = $cls->SelectEventReplyByEventReplyId($comment['event_reply_id']);
+                                    ?>
                                     <div class="event_more_reply">
-                                        <div class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</div>
+                                        <?php if(count($replyArray) > 0){?>
+                                        <button class="show_event_more_reply">さらに返信を表示する</button>
+                                        <?php }?>
+                                        <button class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</button>
+                                    </div>
+                                    <div class="event_more_reply_main" hidden>
+                                        <?php 
+                                            foreach($replyArray as $reply){
+                                        ?>
+                                        <div class="event_more_reply_area">
+                                            <div class="event_reply_left">
+                                                <div class="event_reply_icon"></div>
+                                            </div>
+                                            <div class="event_reply_right">
+                                                <div class="event_reply_user_name"><?php echo $reply['user_name'];?></div>
+                                                <div class="event_reply_content"><?php echo $reply['reply_content'];?></div>
+                                                <div class="event_more_reply">
+                                                    <button class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php 
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="event_more_reply_input_area" hidden>
+                                        <form action="./php/EventMoreReplyInsert.php" method="post">
+                                            <input class="event_more_reply_input_text" type="text" name="event_more_reply">
+                                            <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>">
+                                            <input type="hidden" name="parent_event_reply_id" value="<?php echo $comment['event_reply_id']?>">
+                                            <button class="event_more_reply_send_button">
+                                                <i class="bi bi-send"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                }
+                            ?>
                             <!-- ↑ 返信表示 ↑ -->
-                            <!-- ↓ 返信送信 ↓ -->
-                            <div id="event_reply_input_area">
-                                <div>
-                                    <input id="event_reply_input_text" type="text">
-                                    <button id="event_reply_send_button">
-                                        <i class="bi bi-send"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- ↑ 返信送信 ↑ -->
                         </div>
                     </div>
+                    <!-- ↓ 返信送信 ↓ -->
+                    <div id="event_reply_input_area">
+                        <form action="php/EventReplyInsert.php" method="post">
+                            <input id="event_reply_input_text" type="text" name="event_reply">
+                            <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>">
+                            <button id="event_reply_send_button">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- ↑ 返信送信 ↑ -->
+                    </div>
+                    <!-- ↑ カード部分 ↑ -->
+                    <a href="Event.html" id="e_back">戻る</a>
                 </div>
             </div>
-            <!-- ↓ 後で消す ↓ -->
-            <!-- <footer style="height: 90px; width: 100%; position: fixed; bottom: 0; background-color: #0E397B; z-index: 99999;"></footer> -->
-            <!-- ↑ 後で消す ↑ -->
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>
             <!-- ↑ フッター読み込み ↑ -->

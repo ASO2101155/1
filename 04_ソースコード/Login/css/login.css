@@ -10,7 +10,6 @@ body {
 }
 
 
-
 /*.flexbox {/*縦に並べる
   display: flex;
   flex-direction: column;
@@ -106,4 +105,3 @@ body {
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
   }
-

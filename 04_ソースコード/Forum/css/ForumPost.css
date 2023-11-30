@@ -1,0 +1,54 @@
+body{
+    margin-top: 90px;
+}
+
+form{
+    text-align: center;
+}
+
+#errMsg{
+    color: white;
+}
+
+#backbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    background-color:#0E397B;
+    color: #d7bc61;
+    height: 6vh;
+}
+
+input{
+    margin-top: 3vh;
+    height: 3vh;
+}
+
+select{
+    margin-top: 3vh;
+    height: 3vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 15vh;
+}
+
+#content{
+    margin-top: 20px;
+    line-height: 1.5;
+    height: 11.5em;
+    width: 70%;
+}
+
+#btn{
+    background-color:#0E397B;
+    color: #d7bc61;
+    height: 6vh;
+    width: 30%;
+    border: none;
+    font-size: unset;
+}

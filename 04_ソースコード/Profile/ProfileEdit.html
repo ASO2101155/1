@@ -1,0 +1,88 @@
+<?php
+    session_start();
+    require_once '../Login/php/UserInfo.php';
+    require_once '../DBManager/DBAccess.php';
+    $cls = new UserInfo();
+    $schoolcls = new DBAccess();
+    $selectArray = $schoolcls->SelectSchoolTbl();
+    //todo セッションに入ってるuser_idで検索
+    $userData = $cls->userInfo($_SESSION['user_id']);
+    foreach($userData as $row){
+        $user_id = $row['user_id'];
+        $user_name = $row['user_name'];
+        $gender = $row['gender'];
+        $school_name = $row['school_name'];
+        $school_code = $row['school_code'];
+        $school_year = $row['school_year'];
+        $major = $row['major'];
+        $icon = $row['icon'];
+        $comment = $row['comment'];
+    }
+?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/ProfileEdit.css">
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <div id="profile_info">
+            <div id="user_icon_name_gender">
+            <img src="../IconImage/<?php echo $icon;?>" id="icon">
+        <?php 
+            echo '<div id="user_name">'.$user_name.'</div>';
+            if($gender==1){
+                echo '<div id="gender">男</div>';
+            }else if($gender==2){
+                echo '<div id="gender">女</div>';
+            }else{
+                echo '<div id="gender">その他</div>';
+            }
+            echo "</div><div>".$school_name." ".$major." ".$school_year."</div>";
+        ?>
+        </div>
+        <br>
+        <form action="php/ProfileUpdate.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" value="<?php echo $user_id;?>" name="user_id">
+            <input type="text" value="<?php echo $user_name;?>" name="user_name" id="input_name">
+            <select name="school_code">
+                <option value="<?php echo $school_code;?>" hidden><?php echo $school_name;?></option>
+                <?php
+                foreach($selectArray as $row){
+                    echo '<option value="'.$row['school_code'].'">'.$row['school_name'].'</option>';
+                }
+            ?>
+            </select>
+            <select name="school_year">
+                <option value="<?php echo $school_year;?>" hidden><?php echo $school_year;?></option>
+                <optgroup label="4年制">
+                    <option value="4年制1年">1</option>
+                    <option value="4年制2年">2</option>
+                    <option value="4年制3年">3</option>
+                    <option value="4年制4年">4</option>
+                </optgroup>
+                <optgroup label="3年制">
+                    <option value="3年制1年">1</option>
+                    <option value="3年制2年">2</option>
+                    <option value="3年制3年">3</option>
+                </optgroup>
+                <optgroup label="2年制">
+                    <option value="2年制1年">1</option>
+                    <option value="2年制2年">2</option>
+                </optgroup>
+            </select>
+            <textarea rows="7" cols="20" name="comment" value="<?php echo $comment; ?>" id="comment"><?php echo $comment; ?></textarea>
+            <input type="text" value="<?php echo $major;?>" name="major" id="input_major">
+            <input type="file" name="icon" id="input_icon">
+            <input type="submit" value="確定" id="btn">
+        </form>
+        <button onclick="location.href='Profile.html'" id="backbtn">戻る</button>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+    </body>
+</html>

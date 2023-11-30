@@ -53,9 +53,9 @@
         }
 
         //通知情報をSelectするメソッド
-        public function SelectNoticeTbl(){
+        public function SelectNoticeTblByUserId($user_id){
             //NoticeTblManagerで作成したSelectの処理を使う
-            $selectData = $this->noticeTblCls->SelectNoticeTbl();
+            $selectData = $this->noticeTblCls->SelectNoticeTblByUserId($user_id);
             return $selectData;
         }
         
@@ -74,7 +74,7 @@
         }
 
         //通知情報をInsertするメソッド
-        //コメントが届いた掲示板の主に送信する通知
+        //開催時間が１日前のイベントをカレンダーに登録しているユーザーに送信する通知
         public function InsertNoticeTblForCalendar($rec_user_id, $event_id){
             //NoticeTblManagerで作成したInsertの処理を使う
             $this->noticeTblCls->InsertNoticeTbl($rec_user_id, null, 3, $event_id, null);
@@ -103,11 +103,25 @@
         }
 
         //イベント詳細情報をSelectするメソッド
-        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
         public function SelectEventDetailByEventId($event_id){
-            //EventTblManagerで作成したSelectの処理を使う
-            //イベントテーブル・イベント返信テーブル・画像テーブルを結合してSelectする
+            //EventReplyTblManagerで作成したSelectの処理を使う
             $selectData = $this->eventTblCls->SelectEventDetailById($event_id);
+            return $selectData;
+        }
+
+        //イベント返信情報をSelectするメソッド
+        //イベント返信テーブルのevent_reply_statusの値がfalseの場合、その返信は削除済みである
+        public function SelectEventCommentByEventId($event_id){
+            //EventReplyTblManagerで作成したSelectの処理を使う
+            //イベントテーブル・ユーザーテーブルを結合してSelectする
+            $selectData = $this->eventReplyTblCls->SelectEventCommentByEventId($event_id);
+            return $selectData;
+        }
+
+        //イベント返信情報をSelectするメソッド
+        public function SelectEventReplyByEventReplyId($event_reply_id){
+            //EventReplyTblManagerで作成したSelectの処理を使う
+            $selectData = $this->eventReplyTblCls->SelectEventReplyByEventReplyId($event_reply_id);
             return $selectData;
         }
 
@@ -115,13 +129,14 @@
         public function InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したInsertの処理を使う
             //日時はSQL文の中で現在日時を取得してInsertする
-            $this->eventTblCls->InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            $last_insert_id = $this->eventTblCls->InsertEventTbl($user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            return $last_insert_id;
         }
 
         //画像情報をInsertするメソッド
-        public function InsertImageTbl($image_path){
+        public function InsertImageTbl($event_id, $image_path){
             //ImageTblManagerで作成したInsertの処理を使う
-            $this->imageTblCls->InsertImageTbl($image_path);
+            $this->imageTblCls->InsertImageTbl($event_id, $image_path);
         }
 
         //イベント返信情報をInsertするメソッド
@@ -141,6 +156,13 @@
         public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したUpdateの処理を使う
             $this->eventTblCls->UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+        }
+
+        //画像情報をSelectするメソッド
+        public function SelectImageTblById($event_id){
+            //ImageTblManagerで作成したSelectの処理を使う
+            $selectData = $this->imageTblCls->SelectImageTblById($event_id);
+            return $selectData;
         }
 
         //画像情報をUpdateするメソッド
@@ -163,6 +185,10 @@
             return $selectData;
         }
 
+        public function SelectForumCategoryTbl(){
+            $selectData = $this->forumTblCls->SelectForumCategoryTbl();
+            return $selectData;
+        }
         
         //掲示板情報をcategory_codeでSelectするメソッド
         public function SelectForumTblByCategoryCode($category_code){
@@ -172,7 +198,7 @@
         }
 
         //掲示板詳細情報をSelectするメソッド
-        public function SelectForumDetailByEventId($forum_id){
+        public function SelectForumDetailById($forum_id){
             //ForumTblManagerで作成したSelectの処理を使う
             //掲示板テーブル・掲示板メッセージテーブルを結合してSelectする
             $selectData = $this->forumTblCls->SelectForumDetailById($forum_id);
@@ -184,6 +210,12 @@
             //ForumTblManagerで作成したInsertの処理を使う
             //日時はSQL文の中で現在日時を取得してInsertする
             $this->forumTblCls->InsertForumTbl($user_id, $for_cate_code, $building_num, $title, $post_content);
+        }
+
+        //掲示板情報をUpdateするメソッド
+        public function UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num){
+            //ForumTblManagerで作成したUpdateの処理を使う
+            $this->forumTblCls->UpdateForumTbl($forum_id,$title,$post_content,$for_cate_code,$building_num);
         }
 
         //掲示板メッセージ情報をInsertするメソッド
@@ -199,26 +231,50 @@
             $this->forumMessageTblCls->UpdateForumMessageStatusByEventId($forum_message_id);
         }
 
+        public function SelectForumMessageByForumId($forum_id){
+            $selectData = $this->forumMessageTblCls->SelectForumMessageByForumId($forum_id);
+            return $selectData;
+        }
+
+        //カレンダー情報をevent_id,user_idでSelectするメソッド
+        public function SelectCalendarTblByEventIdUserId($event_id, $user_id){
+            //CalendarTblManagerで作成したSelectの処理を使う
+            $selectData = $this->calendarTblCls->SelectCalendarTblByEventIdUserId($event_id, $user_id);
+            return $selectData;
+        }
+
         //カレンダー情報をuser_idでSelectするメソッド
         public function SelectCalendarTblByUserId($user_id){
             //CalendarTblManagerで作成したSelectの処理を使う
             //カレンダーテーブル・イベントテーブルを結合してSelectする
-            $selectData = $this->calendarTblCls->SelectCalendarTblByUser_id($user_id);
+            $selectData = $this->calendarTblCls->SelectCalendarTblByUserId($user_id);
             return $selectData;
         }
 
         //カレンダー情報をInsertするメソッド
-        public function InsertCalendarTbl($user_id, $event_id, $registration_status){
-            //ForumMessageTblManagerで作成したInsertの処理を使う
-            $this->calendarTblCls->InsertCalendarMessageTbl($event_id, $user_id, $registration_status);
+        public function InsertCalendarTbl($user_id, $event_id){
+            //CalendarTblManagerで作成したInsertの処理を使う
+            $this->calendarTblCls->InsertCalendarMessageTbl($event_id, $user_id);
+        }
+
+        //カレンダー情報をUpdateするメソッド
+        public function UpdateRegistrationStatusTrue($calendar_id){
+            //CarendarTblManagerで作成したUpdateの処理を使う
+            //Calendarテーブルのregistration_statusカラムの値をtrueにする
+            $this->calendarTblCls->UpdateRegistrationStatusTrue($calendar_id);
+        }
+
+        //カレンダー情報をUpdateするメソッド
+        public function UpdateRegistrationStatusFalse($calendar_id){
+            //CarendarTblManagerで作成したUpdateの処理を使う
+            //Calendarテーブルのregistration_statusカラムの値をfalseにする
+            $this->calendarTblCls->UpdateRegistrationStatusFalse($calendar_id);
         }
 
         //ユーザー情報をUpdateするメソッド
-        public function UpdateUserTbl($school_code, $school_year, $major, $comment, $icon){
+        public function UpdateUserTbl($user_name,$school_code,$school_year,$major,$comment,$icon,$user_id){
             //UserTblManagerで作成したUpdateの処理を使う
-            $this->userTblCls->UpdateUserTbl($school_code, $school_year, $major, $comment, $icon);
+            $this->userTblCls->UpdateUserTbl($user_name,$school_code,$school_year,$major,$comment,$icon,$user_id);
         }
-
-        
     }
 ?>

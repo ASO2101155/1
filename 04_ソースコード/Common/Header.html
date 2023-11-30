@@ -1,3 +1,10 @@
+<?php 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    
+    
+?>
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="../Common/css/style.css">
@@ -9,11 +16,10 @@
       
 </head>
 <body bgcolor="背景色">
-
     <!--ヘッダー-->
 <header>
     <div class="header">
-        <a class="moji">smple</a>
+        <a id="moji">temp</a>
         <div class="menu_box">
             <label id="menu" for="toggle">
                 <img src="../Common/image/setting.png">
@@ -34,5 +40,6 @@
         </div>
     </div>
 </header>
+<script src="../Common/js/Header.js"></script>
 </body>
 </html>
