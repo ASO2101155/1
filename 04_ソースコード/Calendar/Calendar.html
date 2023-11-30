@@ -9,6 +9,7 @@
     }else{
         header('Location: ../Login/Login.html', true, 307);
     }
+    $Calendar = $cls->SelectCalendarTblByUserId($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -44,7 +45,13 @@
             <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
             <div id="calendar_main">
-                <div></div>
+                <div class="calendar">
+                    <?php
+                    foreach($Calendar as $row){
+                    echo $row['calendar_id'];
+                   } 
+                   ?>
+                </div>
             </div>
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>

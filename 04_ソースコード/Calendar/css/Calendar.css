@@ -4,3 +4,13 @@
     padding-bottom: 90px;
     z-index: 0;
 }
+
+body{
+    margin-top: 100px;
+}
+
+.calendar{
+    background-color: white;
+    color: #d7bc61;
+    margin: 10px;
+}
