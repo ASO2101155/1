@@ -22,7 +22,14 @@
         }
     
         public function SelectCalendarTblByUserId($user_id){
-
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT * FROM Calendar
+                    WHERE user_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1, $user_id, PDO::PARAM_INT);
+            $ps->execute();
+            $searchArray = $ps->fetchAll();
+            return $searchArray;
         }
 
         public function InsertCalendarMessageTbl($event_id, $user_id){
