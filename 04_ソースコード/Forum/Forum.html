@@ -2,6 +2,7 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectForumTbl();
+    $selectCategory = $cls->SelectForumCategoryTbl();
 ?>
 
 <!DOCTYPE html>
@@ -15,35 +16,12 @@
         <meta name="description" content="ここにサイト説明を入れます">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="./css/Forum.css">
+        <script src="js/Forum.js"></script>
         <style>
 
         </style>
     </head>
-    <body bgcolor="背景色">
-        <!--ヘッダー-->
-            <!-- <header>
-                <div class="header">
-                    <a class="moji">smple</a>
-                        <div class="menu_box">
-                        <label id="menu" for="toggle">
-                            <img src="img/setting.png">
-                        </label>
-                        <input type="checkbox" id="toggle">
-                        <ul class="dropdown_menu">
-                            <div class="box">
-                                <li class="switchArea">
-                                    <a class="text">通知on/off</a>
-                                    <input type="checkbox" id="switch1">
-                                    <label for="switch1"><span></span></label>
-                                    <div id="swImg"></div>
-                                </li>
-                                <li><a href="logout.html" class="logout">ログアウト</a>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-            </header> -->
+    <body>
             <!-- ↓ ヘッダー読み込み ↓ -->
             <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
@@ -54,51 +32,47 @@
                         $user_name = $row2['user_name'];
                         $user_icon = $row2['icon'];
                     }
-                    echo '<div class="forumbox">
-                        <a href="ForumDetail.html?forum_id='.$row['forum_id'].'" class="link"></a>
-                        <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                    echo '<form action="ForumDetail.html" method="post">
+                        <div class="forumbox" data-category="' . $row['category_name'] . '">
+                            <button type="submit" class="link"></button>
+                            <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
+                            <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                        
                     
-                   
-                            <div id="forum_title">
-                                '.$row['title'].'
-                            </div>
-                            
-                            <div id="forum_date">
-                                '.$row['datetime'].'
-                            </div>
-                            
-                            <div id="forum_content">
-                               '.$row['post_content'].'
-                            </div>
-                            
-                    </div>';
+                                <div id="forum_title">
+                                    '.$row['title'].'
+                                </div>
+                                
+                                <div id="forum_date">
+                                    '.$row['datetime'].'
+                                </div>
+                                
+                                <div id="forum_content">
+                                '.$row['post_content'].'
+                                </div>
+                                
+                        </div>
+                    </form>';
                 }
             ?>
             <div id="event_other">
                 <div>
-                    <div id="event_category">
+                    <div id="event_category" onclick="categoryToggle('categoryBox')">
                         <div>カテゴリー<i class="bi bi-filter-left"></i></div>
+                    </div>
+                    <div id="categoryBox">
+                    <?php  
+                        foreach($selectCategory as $row){
+                            echo '<button class="categoryButton" onclick="selectCategory(\''.$row['category_name'].'\')">'.$row['category_name'].'</button>';
+                        } 
+                    ?>
+                    <button class="categoryButton" onclick="selectCategory('all')">すべて</button>
                     </div>
                     <div id="event_post">
                         <div><i class="bi bi-pencil-fill" style="height: auto; width: auto;"  onclick="location.href='ForumPost.html'"></i></div>
                     </div>
                 </div>
             </div>
-            
-<!-- フッダー -->
-<!-- <footer>
-    <div class="footer">
-        <class="img">
-            <div class="img2">
-            <a href="Notice.html"><img src="img/notice.png"></a>
-            <a href="Event.html"><img src="img/event.png"></a>
-            <a href="Forum.html"><img src="img/forum.png"></a>
-            <a href="Calendar.html"><img src="img/calendar.png"></a>
-            <a href="Profile.html"><img src="img/profile.png"></a>
-            </div>
-        </class>
-    </div>
-</footer> -->
 <!-- ↓ フッター読み込み ↓ -->
 <?php include("../Common/Footer.html");?>
 <!-- ↑ フッター読み込み ↑ -->

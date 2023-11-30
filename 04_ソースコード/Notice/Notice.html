@@ -48,10 +48,11 @@
                 <button class="notice_area">
                     <div class="notice_content">
                         <?php
-                            if($row['notification_type'] == 0){
-                                echo $row['user_name']."さんがあなたのイベントにコメントしました";
-                            }else if($row['notification_type'] == 1){
-                                echo $row['user_name']."さんがあなたの掲示板にコメントしました";
+                            switch($row['notification_type']){
+                                case 0: echo $row['user_name']."さんがあなたのイベントにコメントしました"; break;
+                                case 1: echo $row['user_name']."さんがあなたのコメントに返信しました"; break;
+                                case 2: echo $row['user_name']."さんがあなたの掲示板にメッセージを送信しました"; break;
+                                case 3: echo "イベントの開催時間が１日前になりました"; break;
                             }
                         ?>
                     </div>

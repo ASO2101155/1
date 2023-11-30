@@ -21,7 +21,7 @@
                 echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
             ?>
             <input type="text" name="title" placeholder="タイトル"><br>
-            <input type="text" name="post_content" placeholder="投稿内容"><br>
+            <textarea name="post_content" placeholder="投稿内容" id="content"></textarea><br>
             <select name="for_cate_code">
                 <option value="null" hidden>カテゴリー</option>
                 <?php
@@ -38,12 +38,11 @@
             </select>
             <br>
             <div id="errMsg"></div>
-            <input type="submit" value="登録">
+            <input type="submit" value="登録" id="btn">
         </form>
-        <a href="Forum.html">戻る</a>
-        <div id="errMsg"></div>
+        <a href="Forum.html" id="backbtn">戻る</a>
         <!-- ↓ フッター読み込み ↓ -->
-<?php include("../Common/Footer.html");?>
-<!-- ↑ フッター読み込み ↑ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
     </body>
 </html>
