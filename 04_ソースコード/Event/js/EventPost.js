@@ -10,7 +10,7 @@ var back = document.getElementById('back');
 window.addEventListener("load", function() {
     category_select.addEventListener("change", ChangeCategorySelectColor);
     bnum_select.addEventListener("change", ChangeBnumSelectColor);
-    held_datetime.addEventListener("change", EnabledEndTime);
+    end_datetime.addEventListener("change", EnabledHeldTime);
     event_image_input[0].addEventListener("change", AddEventImage);
     event_image_delete[0].addEventListener("click", DeleteEventImage);
     back.addEventListener("click", HideEventPost);
@@ -24,20 +24,21 @@ function ChangeBnumSelectColor(){
     bnum_select.style.color = "black";
 }
 
-function EnabledEndTime(){
-    var bi_calendar = document.getElementsByClassName('bi_calendar');
-    var bi_calendar_check = document.getElementsByClassName('bi_calendar_check');
-    if(held_datetime.value != ""){
-        end_datetime.disabled = false;
-        bi_calendar.hidden = true;
-        bi_calendar_check.hidden = false;
+function EnabledHeldTime(){
+    var bi_calendar = document.getElementsByClassName('bi bi-calendar');
+    var bi_calendar_check = document.getElementsByClassName('bi bi-calendar-check');
+    if(end_datetime.value != ""){
+        held_datetime.disabled = false;
+        bi_calendar[0].hidden = true;
+        bi_calendar_check[0].hidden = false;
     }else{
-        end_datetime.value = "";
-        end_datetime.disabled = true;
-        bi_calendar_check.hidden = true;
-        bi_calendar.hidden = false;
+        held_datetime.value = "";
+        held_datetime.disabled = true;
+        bi_calendar_check[0].hidden = true;
+        bi_calendar[0].hidden = false;
         console.log(bi_calendar_check.hidden);
     }
+    console.log(bi_calendar)
 }
 
 function AddEventImage(e){

@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                             <div id="bnum_area">
-                                <select id="bnum_select" name="building_num" required>
+                                <select id="bnum_select" name="building_num">
                                     <option value="" disabled selected style="display: none;">何号館(任意)</option>
                                     <option value="1">１号館</option>
                                     <option value="2">２号館</option>
@@ -50,13 +50,13 @@
                                 <i class="bi bi-calendar-check" hidden></i>
                             </div>
                             <div id="held_datetime_area">
-                                <input type="datetime-local" id="held_datetime" name="held_datetime">
-                                <div>必須</div>
+                                <input type="datetime-local" id="held_datetime" name="held_datetime" disabled>
+                                <div>任意</div>
                             </div>
                             <div id="kara">～</div>
                             <div id="end_datetime_area">
-                                <input type="datetime-local" id="end_datetime" name="end_datetime" disabled>
-                                <div>任意</div>
+                                <input type="datetime-local" id="end_datetime" name="end_datetime" required>
+                                <div>必須</div>
                             </div>
                         </div>
                         <!-- ↑ h開催日・終了日 ↑ -->
