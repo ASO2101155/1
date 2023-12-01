@@ -23,5 +23,10 @@ switch(pname){
 
 let switch1 = document.getElementById('switch1');
 switch1.addEventListener('change', (e) => {
-    console.log(e.target.value);
+    console.log(e.target.checked);
+    if(e.target.checked){
+        OneSignal.User.PushSubscription.optIn();
+    }else{
+        OneSignal.User.PushSubscription.optOut();
+    }
 })
