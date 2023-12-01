@@ -90,7 +90,6 @@ margin: 5px;
 .box {
     position: absolute;
     right: 0px;
-    z-index: 2;
 }
 
 
@@ -179,7 +178,6 @@ margin: 5px;
     background-color:white;
     position: relative;
     padding: 1%;
-    z-index: -1;
 }
 
 .logout{
