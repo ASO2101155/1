@@ -16,6 +16,8 @@ body{
     padding-left: 5px;
     border-radius: 10px;
     height: 30px;
+    width: 100%;
+    border-style: none;
 }
 .calendar2{
     background-color: #D7BC61;
@@ -24,4 +26,6 @@ body{
     padding-left: 5px;
     border-radius: 10px;
     height: 30px;
+    width: 100%;
+    border-style: none;
 }
