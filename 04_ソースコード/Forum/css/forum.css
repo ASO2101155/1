@@ -132,6 +132,7 @@ margin: 5px;
   border-color   : #78bd78;             /* 選択タブの枠線     */
 }
 
+
  /* === 表示する文字（標準） ================================ */
 .switchArea label span:after{
   content        : "OFF";               /* 表示する文字       */
