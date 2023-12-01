@@ -24,12 +24,12 @@ for( var i=0,l=elms.length; l>i; i++ )
 
 function toggle_event_more_reply(e){
 	cTarget = e.currentTarget;
-	if(cTarget.innerHTML == "さらに返信を表示する"){
+	if(cTarget.innerHTML == "返信を閉じる"){
+		cTarget.parentNode.parentNode.children[3].hidden = true;
+		cTarget.innerHTML = cTarget.parentNode.children[2].value+"件の返信を表示する";
+	}else{
 		cTarget.parentNode.parentNode.children[3].hidden = false;
 		cTarget.innerHTML = "返信を閉じる";
-	}else{
-		cTarget.parentNode.parentNode.children[3].hidden = true;
-		cTarget.innerHTML = "さらに返信を表示する";
 	}
 }
 
@@ -40,13 +40,18 @@ function event_more_reply(e){
 		parentTarget = parentTarget.parentNode;
 	}
 	parentTarget.children[4].hidden = false;
+	parentTarget.children[4].scrollIntoView({
+		behavior: 'smooth',
+		block: "end",
+		inline: "nearest"
+	});
 }
 
+// 返信入力閉じる
 document.addEventListener('click', (e) => {
 	if(!e.target.closest('.event_more_reply_input_text') 
 		&& !e.target.closest('.event_more_reply_send_button') 
-		&& !e.target.closest('.event_more_reply_button') 
-		&& !e.target.closest('.show_event_more_reply')){
+		&& !e.target.closest('.event_more_reply_button')){
 		event_more_reply_input_area.forEach(function(target){
 			if(target.hidden == false){
 				target.hidden = true;
