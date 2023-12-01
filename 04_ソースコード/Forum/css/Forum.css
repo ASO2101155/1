@@ -88,9 +88,10 @@ margin: 5px;
   
 }
 .box {
-  position: absolute;
-  right: 0px;
-  /* z-index: 2; */
+
+    position: absolute;
+    right: 0px;
+
 }
 
 
@@ -173,14 +174,12 @@ margin: 5px;
 
 
 
-
-.forumbox{
-  margin: 10px auto;
-  width: 95%;
-  background-color:white;
-  position: relative;
-  padding: 1%;
-  /* z-index: -1; */
+  .forumbox{
+    margin: 10px auto;
+    width: 95%;
+    background-color:white;
+    position: relative;
+    padding: 1%;
 }
 
 .logout{
@@ -262,8 +261,10 @@ color: #D7BC61;
 }
 
 #user_icon{
-  width: 5vh;
-  margin: unset;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+    margin: unset;
 }
 
 .categoryButton{
