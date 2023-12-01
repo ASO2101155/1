@@ -4,7 +4,7 @@ var bookmark = document.querySelectorAll('.bookmark');
 window.addEventListener("load", function() {
     event_post.addEventListener("click" , ShowEventPost);
     bookmark.forEach(function(target){
-        target.addEventListener('click', aaa);
+        target.addEventListener('click', BookMarkUpdate);
     });
 }) 
 
@@ -14,7 +14,7 @@ function ShowEventPost(){
     console.log("a");
 }
 
-function aaa(e) {
+function BookMarkUpdate(e) {
     cTarget = e.currentTarget;
     cTarget.disabled = true;
     e.preventDefault()

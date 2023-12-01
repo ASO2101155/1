@@ -55,7 +55,7 @@
                                 <div class="bookmark">
                                     <i class="bi bi-star<?php if(count($isbookmark) >= 1 && $isbookmark[0]['registration_status'] == 1) echo '-fill'?>"></i>
                                 </div>
-                                <div hidden><?php if(count($isbookmark) >= 1) echo $isbookmark[0]['calendar_id']?></div>
+                                <data hidden><?php if(count($isbookmark) >= 1) echo $isbookmark[0]['calendar_id']?></data>
                                 <!-- ↑ ボタンとして実装 ↑ -->
                                 <div class="event_content">
                                     <?php echo $row['comment'];?>

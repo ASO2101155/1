@@ -1,6 +1,7 @@
 var show_event_more_reply = document.querySelectorAll('.show_event_more_reply');
 var event_more_reply_button = document.querySelectorAll('.event_more_reply_button');
 var event_more_reply_input_area = document.querySelectorAll('.event_more_reply_input_area');
+var bookmark = document.getElementById('bookmark');
 window.addEventListener("load", function() {
     show_event_more_reply.forEach(function(target){
         target.addEventListener('click', toggle_event_more_reply);
@@ -8,6 +9,7 @@ window.addEventListener("load", function() {
 	event_more_reply_button.forEach(function(target){
         target.addEventListener('click', event_more_reply);
     });
+	bookmark.addEventListener('click', BookMarkUpdate);
 }) 
 
 // スライドコンテンツを後ほど操作するための配列 (グローバル変数)
@@ -59,3 +61,93 @@ document.addEventListener('click', (e) => {
 		});
 	}
 })
+
+function BookMarkUpdate(e) {
+    cTarget = e.currentTarget;
+    cTarget.disabled = true;
+    e.preventDefault()
+    console.log(cTarget.children[0].classList.contains('bi-star'));
+    event_id = cTarget.parentNode.children[2].value;
+    calendar_id = cTarget.parentNode.children[3].value;
+    // console.log(calendar_id);
+    // console.log(!calendar_id);
+    // 追加か削除か
+    if(cTarget.children[0].classList.contains('bi-star')){
+        // InsertかUpdateか
+        // calendar_idがnullかどうか
+        if(!calendar_id){
+            data = {
+                user_id: user_id,
+                event_id: event_id
+            }
+            fetch('../Calendar/php/CalendarInsert.php', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }   
+                return response.json()
+            })
+            .then(res => {
+                // console.log(res);
+                cTarget.children[0].className = 'bi bi-star-fill';
+                cTarget.parentNode.children[2].innerHTML = res;
+                cTarget.disabled = false;
+            })
+            .catch(error => {
+                console.log(error); // エラー表示
+            });
+        }else{
+            data = {
+                calendar_id: calendar_id,
+                flg: 1
+            }
+            fetch('../Calendar/php/CalendarUpdate.php', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }   
+                return response.json()
+            })
+            .then(res => {
+                // console.log(res);
+                cTarget.children[0].className = 'bi bi-star-fill';
+                cTarget.disabled = false;
+            })
+            .catch(error => {
+                console.log(error); // エラー表示
+            });
+        }
+    }else {
+        data = {
+            calendar_id: calendar_id,
+            flg: 0
+        }
+        fetch('../Calendar/php/CalendarUpdate.php', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then((response) => {
+            if(!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }   
+            return response.json()
+        })
+        .then(res => {
+            // console.log(res);
+            cTarget.children[0].className = 'bi bi-star';
+            cTarget.disabled = false;
+        })
+        .catch(error => {
+            console.log(error); // エラー表示
+        });
+    }
+}
