@@ -11,6 +11,17 @@ body{
 
 .calendar{
     background-color: white;
-    color: #d7bc61;
-    margin: 10px;
+    color: black;
+    margin: 5px;
+    padding-left: 5px;
+    border-radius: 10px;
+    height: 30px;
+}
+.calendar2{
+    background-color: #D7BC61;
+    color: black;
+    margin: 5px;
+    padding-left: 5px;
+    border-radius: 10px;
+    height: 30px;
 }

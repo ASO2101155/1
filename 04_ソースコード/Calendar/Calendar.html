@@ -45,13 +45,21 @@
             <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
             <div id="calendar_main">
-                <div class="calendar">
                     <?php
                     foreach($Calendar as $row){
-                    echo $row['calendar_id'];
+                        if($row['registration_status'] == 1){
+                            $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
+                            if(date('Y年m月d日') == $dateOnly){
+                                echo '<div class="calendar2">';
+                            }else{
+                                echo '<div class="calendar">';
+                                
+                            }
+                                echo $dateOnly." ".$row['title'];
+                                echo '</div>';
+                        }
                    } 
                    ?>
-                </div>
             </div>
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>
