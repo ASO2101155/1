@@ -14,7 +14,8 @@
                     INNER JOIN User AS u
                     ON e.user_id = u.user_id
                     WHERE event_id = ?
-                    AND e.parent_event_reply_id IS NULL";
+                    AND e.parent_event_reply_id IS NULL
+                    ORDER BY e.event_reply_id ASC;";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $event_id, PDO::PARAM_INT);
             $ps->execute();
@@ -29,7 +30,8 @@
                     ON le.parent_event_reply_id = re.event_reply_id
                     INNER JOIN User AS u
                     ON le.user_id = u.user_id
-                    WHERE re.event_reply_id = ?;";
+                    WHERE re.event_reply_id = ?
+                    ORDER BY le.event_reply_id ASC;";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $event_reply_id, PDO::PARAM_INT);
             $ps->execute();

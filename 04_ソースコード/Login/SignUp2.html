@@ -14,35 +14,47 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/signup2.css" />
         <script src="js/SignUp.js"></script> <!-- SignUp.js ファイルを読み込む -->
     </head>
     <body>
-        
+        <!-- ヘッダー -->
+        <header>
+            <h1 class="header">
+                <a class="moji"></a>
+            </h1>
+        </header>
+        <!-- ヘッダー -->
+
         <form action="php/UserInsert.php" method="post" name="myForm" onsubmit="return validateForm2()">
-            <?php 
+        <?php 
                 echo '<input type="hidden" name="mail" value="'.$_POST['mail'].'">';
                 echo '<input type="hidden" name="password" value="'.$_POST['password'].'">';
             ?>
-            <input type="text" name="user_name" placeholder="ユーザー名"><br>
-            <input type="text" name="major" placeholder="専攻"><br>
-            <select name="school_code">
+            <div class="box">
+            <input type="text" class="textbox" name="user_name" placeholder="ユーザー名"><br>
+            <input type="text" class="textbox" name="major" placeholder="専攻"><br>
+            </div>
+            
+            <select name="school_code" class="radio">
                 <option value="null" hidden>学校名</option>
-                <?php
+        <?php
                 foreach($selectArray as $row){
                     echo '<option value="'.$row['school_code'].'">'.$row['school_name'].'</option>';
                 }
             ?>
             </select>
-            <select name="gender">
+            <select name="gender"  class="radio2">
                 <option value="null" hidden>性別</option>
                 <option value="1">男</option>
                 <option value="2">女</option>
                 <option value="3">その他</option>
             </select>
             <br>
-            <select name="school_year">
+            <div class="gakunen">
+            <select name="school_year" class="gakunen2">
                 <option value="null" hidden>学年</option>
-                <optgroup label="4年制">
+                <optgroup label="4年制" class="gakunen2">
                     <option value="4年制1年">1</option>
                     <option value="4年制2年">2</option>
                     <option value="4年制3年">3</option>
@@ -58,10 +70,23 @@
                     <option value="2年制2年">2</option>
                 </optgroup>
             </select>
-            <br>
-            <input type="submit" value="登録">
+        </div>
+            <div  class="touroku">
+            <input type="submit" value="登録" class="touroku2">
+            </div>
         </form>
-        <a href="SignUp.html">戻る</a>
+        <div class="next">
+        <a href="SignUp.html" class="next2">戻る</a>
+        </div>
+        <div class="errMsg">
         <div id="errMsg"></div>
+        </div>
+        <!-- フッダー -->
+    <footer>
+        <h1 class="footer">
+            <a class="moji"></a>
+        </h1>
+    </footer>
+    <!-- フッダー -->
     </body>
 </html>

@@ -10,10 +10,11 @@
         
         public function SelectNoticeTblByUserId($user_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT * FROM Notification AS e
+            $sql = "SELECT * FROM Notification AS n
                     INNER JOIN User AS u
-                    ON e.transmission_user_id = u.user_id
-                    WHERE e.reception_user_id = ?";
+                    ON n.transmission_user_id = u.user_id
+                    WHERE n.reception_user_id = ?
+                    ORDER BY n.notification_id DESC";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $user_id, PDO::PARAM_INT);
             $ps->execute();

@@ -21,23 +21,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta name="description" content="ここにサイト説明を入れます">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-        <link rel="manifest" href="../manifest.json">
         <link rel="stylesheet" href="./css/Event.css">
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-        <script>
-            window.OneSignalDeferred = window.OneSignalDeferred || [];
-            OneSignalDeferred.push(async function(OneSignal) {
-                await OneSignal.init({
-                    appId: "6e8a7b28-bfdf-4db5-9cc4-e43213398d68",
-                });
-                OneSignal.Notifications.setDefaultTitle("Powered by OneSignal!");
-                let customUserId = "<?php echo $user_id?>";
-                
-                OneSignal.User.addAlias("external_id", customUserId);
-                OneSignal.login(customUserId);
-            });
-            user_id = <?php echo $user_id;?>;
-        </script>
+        
     </head>
     <body>
         <main>
@@ -70,7 +55,7 @@
                                 <div class="bookmark">
                                     <i class="bi bi-star<?php if(count($isbookmark) >= 1 && $isbookmark[0]['registration_status'] == 1) echo '-fill'?>"></i>
                                 </div>
-                                <div hidden><?php if(count($isbookmark) >= 1) echo $isbookmark[0]['calendar_id']?></div>
+                                <data hidden><?php if(count($isbookmark) >= 1) echo $isbookmark[0]['calendar_id']?></data>
                                 <!-- ↑ ボタンとして実装 ↑ -->
                                 <div class="event_content">
                                     <?php echo $row['comment'];?>
@@ -106,28 +91,7 @@
             <!-- ↓ フッター読み込み ↓ -->
             <?php include("../Common/Footer.html");?>
             <!-- ↑ フッター読み込み ↑ -->
-            <script>
             
-                if ('serviceWorker' in navigator) {
-    
-    
-                    navigator.serviceWorker.register('../sw.js').then(function() {
-    
-    
-                        console.log('サービスワーカーの登録成功');
-    
-    
-                    }).catch(function(err) {
-    
-    
-                        console.log('サービスワーカーの登録ができませんでした：', err);
-    
-    
-                    });
-    
-    
-                }
-            </script>
             <script src="./js/Event.js"></script>
         </main>
     </body>
