@@ -17,7 +17,7 @@ function ShowEventPost(){
 function BookMarkUpdate(e) {
     cTarget = e.currentTarget;
     cTarget.disabled = true;
-    e.preventDefault()
+    e.preventDefault();
     console.log(cTarget.children[0].classList.contains('bi-star'));
     event_id = cTarget.parentNode.parentNode.parentNode.children[1].value;
     calendar_id = cTarget.parentNode.children[2].innerHTML;

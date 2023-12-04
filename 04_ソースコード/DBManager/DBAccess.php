@@ -268,6 +268,15 @@
             return $selectData;
         }
 
+        //カレンダー情報をSelectするメソッド
+        //開催時間が１日前のイベントをカレンダーに登録しているユーザーで取得する
+        public function SelectCalendarTblByNow(){
+            //CalendarTblManagerで作成したSelectの処理を使う
+            //カレンダーテーブル・イベントテーブルを結合してSelectする
+            $selectData = $this->calendarTblCls->SelectCalendarTblByNow();
+            return $selectData;
+        }
+
         //カレンダー情報をInsertするメソッド
         public function InsertCalendarTbl($user_id, $event_id){
             //CalendarTblManagerで作成したInsertの処理を使う
