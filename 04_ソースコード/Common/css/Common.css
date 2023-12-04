@@ -55,7 +55,10 @@ top:15px;
    /* text-align     : center;               文字位置は中央     */
     font-size      : 14px; 
 }
-
+a {
+  text-decoration: none;
+  color: #000000;
+}
 .menu_box{
     position:fixed;
     text-align: right; /*右に寄せる*/
