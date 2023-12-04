@@ -58,7 +58,7 @@
                             <!-- ↑ ボタンとして実装 ↑ -->
                             <div id="event_date">
                                 <?php
-                                    if($selectArray['end_datetime'] != '0000-00-00 00:00:00'){
+                                    if($selectArray['held_datetime'] != '0000-00-00 00:00:00'){
                                 ?>
                                     期間：<?php echo date('Y年n月j日 g:i',strtotime($selectArray['held_datetime']))
                                                      .'～'.
@@ -67,7 +67,7 @@
                                 <?php
                                     }else{
                                 ?>
-                                    開催日：<?php echo date('Y年n月j日 g:i',strtotime($selectArray['held_datetime']));?>
+                                    期間：<?php echo '～'.date('Y年n月j日 g:i',strtotime($selectArray['end_datetime']));?>
                                 <?php
                                     }
                                 ?>

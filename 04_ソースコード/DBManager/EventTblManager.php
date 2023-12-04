@@ -10,9 +10,11 @@
 
         public function SelectEventTbl(){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT e.*, u.user_name FROM Event as e 
+            $sql = "SELECT e.*, u.user_name, ec.category_name FROM Event as e 
                     INNER JOIN User as u
                     ON e.user_id = u.user_id
+                    INNER JOIN EventCategory as ec
+                    ON e.event_category_code = ec.event_category_code
                     ORDER BY datetime DESC";
             $res = $pdo->query($sql);
             $searchArray= $res->fetchAll();
@@ -56,8 +58,24 @@
             return $last_insert_id;
         }
 
-        public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
-
+        public function UpdateEventTblByEventId($event_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "UPDATE Event SET event_category_code = ?,
+                                     title = ?,
+                                     comment = ?,
+                                     building_number = ?,
+                                     held_datetime = ?,
+                                     end_datetime =? 
+                    WHERE event_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1, $eve_cate_code, PDO::PARAM_INT);
+            $ps->bindValue(2, $title, PDO::PARAM_STR);
+            $ps->bindValue(3, $comment, PDO::PARAM_STR);
+            $ps->bindValue(4, $building_num, PDO::PARAM_STR);
+            $ps->bindValue(5, $held_datetime, PDO::PARAM_INT);
+            $ps->bindValue(6, $end_datetime, PDO::PARAM_STR);
+            $ps->bindValue(7, $event_id, PDO::PARAM_STR);
+            $ps->execute();
         }
     }
 ?>

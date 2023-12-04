@@ -170,9 +170,9 @@
         }
 
         //イベント情報をUpdateするメソッド
-        public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
+        public function UpdateEventTblByEventId($event_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したUpdateの処理を使う
-            $this->eventTblCls->UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            $this->eventTblCls->UpdateEventTblByEventId($event_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
         }
 
         //画像情報をSelectするメソッド
