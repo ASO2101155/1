@@ -155,3 +155,17 @@ button {
     /* font-size: 18px; */
     font-size: 110%;
 }
+
+.categoryButton{
+    position: relative;
+    top: -104px;
+      display: block;
+      height: 60%;
+      width: 65%;
+    background-color: #0E397B;
+    border: #0E1331 solid 1px;
+}
+    
+#categoryBox{
+    display: none;
+}

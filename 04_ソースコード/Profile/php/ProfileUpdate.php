@@ -3,12 +3,7 @@
     require_once '../../DBManager/DBAccess.php';
     $cls = new DBAccess();
     if(isset($_POST['icon'])){
-        $data = $cls->SelectUserTblById($_POST['user_id']);
-        foreach($data as $row){
-            $icon = $row['icon'];
-        }
-    } else {
-        // アップロードされたファイルの情報を取得
+            // アップロードされたファイルの情報を取得
   $file = $_FILES['icon'];
 
   // ファイルの一時保存パス
@@ -47,6 +42,11 @@
     header('Location:../Profile.html?error=1');
     exit;
   }
+    } else {
+  $data = $cls->SelectUserTblById($_POST['user_id']);
+        foreach($data as $row){
+            $icon = $row['icon'];
+        }
     }
   $cls->UpdateUserTbl($_POST['user_name'],$_POST['school_code'],$_POST['school_year'],$_POST['major'],$_POST['comment'],$icon,$_POST['user_id']);
     header('Location: ../Profile.html');

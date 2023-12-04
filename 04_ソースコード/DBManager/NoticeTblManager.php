@@ -11,7 +11,7 @@
         public function SelectNoticeTblByUserId($user_id){
             $pdo = $this->dbConnectCls->dbConnect();
             $sql = "SELECT * FROM Notification AS n
-                    INNER JOIN User AS u
+                    LEFT OUTER JOIN User AS u
                     ON n.transmission_user_id = u.user_id
                     WHERE n.reception_user_id = ?
                     ORDER BY n.notification_id DESC";

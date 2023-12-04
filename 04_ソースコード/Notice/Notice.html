@@ -30,14 +30,14 @@
                     if($row['forum_id'] != null){ $action = "Forum/ForumDetail.html"; $sendname="forum_id"; $sendvalue=$row['forum_id'];}
             ?>
             <form action="../<?php echo $action;?>" method="post">
-                <button class="notice_area">
+                <button class="notice_area" data-type="<?php echo $row['notification_type']?>">
                     <div class="notice_content">
                         <?php
                             switch($row['notification_type']){
                                 case 0: echo $row['user_name']."さんがあなたのイベントにコメントしました"; break;
                                 case 1: echo $row['user_name']."さんがあなたのコメントに返信しました"; break;
                                 case 2: echo $row['user_name']."さんがあなたの掲示板にメッセージを送信しました"; break;
-                                case 3: echo "イベントの開催時間が１日前になりました"; break;
+                                case 3: echo "イベントの終了日時が１日前になりました"; break;
                             }
                         ?>
                     </div>
@@ -48,8 +48,17 @@
                 }
             ?>
         </div>
-        <div id="notice_category">
-            フィルター<i class="bi bi-filter-left"></i></div>
+        <div id="notice_other">
+            <div id="notice_type" onclick="categoryToggle('typeBox')">
+                <div>フィルター<i class="bi bi-filter-left"></i></div>
+            </div>
+            <div id="typeBox">
+                <button class="typeButton" onclick="selectType('0')">イベントコメント</button>
+                <button class="typeButton" onclick="selectType('1')">イベント返信</button>
+                <button class="typeButton" onclick="selectType('2')">掲示板コメント</button>
+                <button class="typeButton" onclick="selectType('3')">カレンダー</button>
+                <button class="typeButton" onclick="selectType('all')">すべて</button>
+            </div>
         </div>
         <!-- ↓ フッター読み込み ↓ -->
         <?php include("../Common/Footer.html");?>

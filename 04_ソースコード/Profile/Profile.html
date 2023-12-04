@@ -69,6 +69,10 @@
                         </button>
                         <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
                     </form>
+                    <form action="../Event/EventEdit.html" method="POST">
+                        <button id="editbtn">編集</button>
+                        <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
+                    </form>
             <?php
                     }
                 }
@@ -83,25 +87,32 @@
                         $user_name = $row2['user_name'];
                         $user_icon = $row2['icon'];
                     }
-                    echo '<div class="forumbox">
-                        <a href="../Forum/ForumDetail.html?forum_id='.$row['forum_id'].'" class="link"></a>
-                        <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                    echo '<form action="ForumDetail.html" method="post">
+                        <div class="forumbox" data-category="' . $row['category_name'] . '">
+                            <button type="submit" class="link"></button>
+                            <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
+                            <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                        
                     
-                   
-                            <div id="forum_title">
-                                '.$row['title'].'
-                            </div>
-                            
-                            <div id="forum_date">
-                                '.$row['datetime'].'
-                            </div>
-                            
-                            <div id="forum_content">
-                               '.$row['post_content'].'
-                            </div>
-                            
-                    </div>';
-                }
+                                <div id="forum_title">
+                                    '.$row['title'].'
+                                </div>
+                                
+                                <div id="forum_date">
+                                    '.$row['datetime'].'
+                                </div>
+                                
+                                <div id="forum_content">
+                                '.$row['post_content'].'
+                                </div>
+                                
+                        </div>
+                    </form>';
+                    echo '<form action="../Forum/ForumEdit.html" method="POST" id="forum_edit_btn">
+                        <button>編集</button>
+                        <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
+                    </form>';
+                    }
                 }
             ?>
         </div>

@@ -170,9 +170,9 @@
         }
 
         //イベント情報をUpdateするメソッド
-        public function UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
+        public function UpdateEventTblByEventId($event_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime){
             //EventTblManagerで作成したUpdateの処理を使う
-            $this->eventTblCls->UpdateEventTblByEventId($event_id, $user_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
+            $this->eventTblCls->UpdateEventTblByEventId($event_id, $eve_cate_code, $title, $comment, $building_num, $held_datetime, $end_datetime);
         }
 
         //画像情報をSelectするメソッド
@@ -265,6 +265,15 @@
             //CalendarTblManagerで作成したSelectの処理を使う
             //カレンダーテーブル・イベントテーブルを結合してSelectする
             $selectData = $this->calendarTblCls->SelectCalendarTblByUserId($user_id);
+            return $selectData;
+        }
+
+        //カレンダー情報をSelectするメソッド
+        //開催時間が１日前のイベントをカレンダーに登録しているユーザーで取得する
+        public function SelectCalendarTblByNow(){
+            //CalendarTblManagerで作成したSelectの処理を使う
+            //カレンダーテーブル・イベントテーブルを結合してSelectする
+            $selectData = $this->calendarTblCls->SelectCalendarTblByNow();
             return $selectData;
         }
 

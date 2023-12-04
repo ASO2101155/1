@@ -1,0 +1,117 @@
+<?php 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectEventCategoryTbl();
+    $selectEvent = $cls->SelectEventDetailByEventId($_POST['event_id']);
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }else{
+        header('Location: ../Login/Login.html', true, 307);
+    }
+?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ここにサイト説明を入れます">    
+        <link rel="stylesheet" href="./css/EventPost.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <main>
+            <div id="e_post_main">
+                <form action="./php/EventUpdate.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>">
+                    <div id="e_post_card">
+                        <h1>イベント編集</h1>
+                        <input type="text" id="e_title" name="e_title" placeholder="タイトル" value="<?php echo $selectEvent['title']?>" required>
+                        <div id="category_bnum">
+                            <div id="category_area">
+                                <select id="category_select" name="eve_cate_code" required>
+                                    <?php
+                                        foreach($selectArray as $row){
+                                    ?>
+                                    <option value="<?php echo $row['event_category_code'];?>" <?php if($selectEvent['event_category_code'] == $row['event_category_code']) echo 'selected';?>><?php echo $row['category_name'];?></option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div id="bnum_area">
+                                <select id="bnum_select" name="building_num">
+                                    <option value="" disabled selected style="display: none;">何号館(任意)</option>
+                                    <?php
+                                        for($i = 1; $i <= 3; $i++){
+                                    ?>
+                                        <option value="<?php echo $i?>" <?php if($selectEvent['building_number'] == $i) echo 'selected';?>><?php echo strtoupper($i)?>号館</option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- ↓ 開催日・終了日 ↓ -->
+                        <div id="date_area">
+                            <div id="calendar_icon">
+                                <i class="bi bi-calendar"></i>
+                                <i class="bi bi-calendar-check" hidden></i>
+                            </div>
+                            <div id="held_datetime_area">
+                                <input type="datetime-local" id="held_datetime" name="held_datetime" value="<?php echo $selectEvent['held_datetime'];?>">
+                                <div>任意</div>
+                            </div>
+                            <div id="kara">～</div>
+                            <div id="end_datetime_area">
+                                <input type="datetime-local" id="end_datetime" name="end_datetime" value="<?php echo $selectEvent['end_datetime'];?>" required>
+                                <div>必須</div>
+                            </div>
+                        </div>
+                        <!-- ↑ 開催日・終了日 ↑ -->
+                        <div>
+                            <textarea id="e_comment" name="e_comment" rows="10" placeholder="コメント"><?php echo $selectEvent['comment'];?></textarea>
+                            <div id="e_comment_count">512文字</div>
+                        </div>
+                        <!-- ↓ 画像アップロード ↓ -->
+                        <!-- <div id="event_image_area">
+                            画像は４枚まで入れられます
+                            <div class="event_image">
+                                <input type="file" class="event_image_input" name="event_image[]" accept="image/*">
+                                <button type="button" class="event_image_delete" hidden><i class="bi bi-x-circle"></i></button>
+                            </div> -->
+                            <!-- ↓ コピー用HTML JavaScriptでコピーして最大３つまで増やす ↓ -->
+                            <!-- <div id="event_image_clone" hidden>
+                                <input type="file" class="event_image_input" accept="image/*">
+                                <button type="button" class="event_image_delete" hidden><i class="bi bi-x-circle"></i></button>
+                            </div> -->
+                            <!-- ↑ コピー用HTML JavaScriptでコピーして最大３つまで増やす ↑ -->
+                        <!-- </div> -->
+                        <!-- ↑ 画像アップロード ↑ -->
+                        <div id="backsub">
+                            <button type="button" id="back" onclick="location.href='../Profile/Profile.html'">
+                                戻る
+                            </button>
+                            <button type="submit" id="e_post_button">
+                                確認
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+        <script src="./js/EventPost.js"></script>
+    </body>
+</html>

@@ -71,5 +71,15 @@
                 return 'Exception when calling DefaultApi->createNotification: '. $e->getMessage(). PHP_EOL;
             }
         }
+
+        public function sendCalendarNotificaion($content, $external_user_id) {
+            $notification = $this->createNotification($content, $external_user_id);
+            try {
+                $result = $this->apiInstance->createNotification($notification);
+                return $result;
+            } catch (Exception $e) {
+                return 'Exception when calling DefaultApi->createNotification: '. $e->getMessage(). PHP_EOL;
+            }
+        }
     }
 ?>

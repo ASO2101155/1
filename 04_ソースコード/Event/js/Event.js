@@ -17,7 +17,7 @@ function ShowEventPost(){
 function BookMarkUpdate(e) {
     cTarget = e.currentTarget;
     cTarget.disabled = true;
-    e.preventDefault()
+    e.preventDefault();
     console.log(cTarget.children[0].classList.contains('bi-star'));
     event_id = cTarget.parentNode.parentNode.parentNode.children[1].value;
     calendar_id = cTarget.parentNode.children[2].innerHTML;
@@ -101,5 +101,30 @@ function BookMarkUpdate(e) {
         .catch(error => {
             console.log(error); // エラー表示
         });
+    }
+}
+
+function selectCategory(categoryName) {
+    // ユーザーが選択したカテゴリー
+    const selectedCategory = categoryName;
+
+    // 各投稿をループして表示・非表示を切り替える
+    document.querySelectorAll('.event_area').forEach(box => {
+    const category = box.getAttribute('data-category');
+    if (selectedCategory === 'all' || category === selectedCategory) {
+        box.style.display = 'block'; // 選択したカテゴリーに合致する投稿を表示
+    } else {
+        box.style.display = 'none'; // それ以外の投稿を非表示
+    }
+    });
+}
+
+function categoryToggle(id) {
+    var element = document.getElementById(id);
+    var computedStyle = window.getComputedStyle(element);
+    if (computedStyle.display === "none") {
+        element.style.display = "block";
+    }else{
+        element.style.display = "none";
     }
 }
