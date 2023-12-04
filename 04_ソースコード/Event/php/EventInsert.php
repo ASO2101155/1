@@ -6,12 +6,16 @@
     }
     $user_id = $_SESSION['user_id'];
     $event_image = $_FILES['event_image'];
-    // 終了日時が入っているかどうか
-    if(isset($_POST['end_datetime'])) {
-        $last_insert_id = $dbaccess->InsertEventTbl($user_id, $_POST['eve_cate_code'], $_POST['e_title'], $_POST['e_comment'], $_POST['building_num'], $_POST['held_datetime'], $_POST['end_datetime']);
-    }else{
-        $last_insert_id = $dbaccess->InsertEventTbl($user_id, $_POST['eve_cate_code'], $_POST['e_title'], $_POST['e_comment'], $_POST['building_num'], $_POST['held_datetime'], null);
-    }
+    // 号館が入っているかどうか
+    if(isset($_POST['building_num'])) $building_num = $_POST['building_num'];
+    else $building_num = null;
+    
+    // 開催日時が入っているかどうか
+    if(isset($_POST['held_datetime'])) $held_datetime = $_POST['held_datetime'];
+    else $held_datetime = null;
+
+    $last_insert_id = $dbaccess->InsertEventTbl($user_id, $_POST['eve_cate_code'], $_POST['e_title'], $_POST['e_comment'], $building_num, $held_datetime, $_POST['end_datetime']);
+
     // 画像が入っているかどうか
     if($event_image['size'][0] > 0){
         for($i = 0; $i < count($event_image['size']) && $event_image['size'][$i] > 0; $i++){
@@ -22,6 +26,4 @@
         }
     }
     header('Location: ../Event.html',true, 307);
-    // echo count($event_image['size']);
-    // echo $last_insert_id[0]['event_id'];
 ?>

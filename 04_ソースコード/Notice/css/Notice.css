@@ -25,12 +25,17 @@ button{
     color: #FFFFFF;
 }
 
-#notice_category {
+#notice_other {
     position: fixed;
     bottom: calc(90px + 1%);
     right: 2.5%;
     height: 5%;
     width: 30%;
+}
+
+#notice_type {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,3 +45,17 @@ button{
     font-size: 120%;
 }
 
+.typeButton{
+    position: relative;
+    top: -182px;
+      display: block;
+      height: 60%;
+      width: 100%;
+    background-color: #0E397B;
+    border: #0E1331 solid 1px;
+    color: #d7bc61;
+}
+    
+#typeBox{
+    display: none;
+}

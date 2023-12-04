@@ -5,6 +5,7 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     $selectArray = $cls->SelectEventTbl();
+    $selectCategory = $cls->SelectEventCategoryTbl();
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
     }else{
@@ -37,7 +38,7 @@
                 <?php 
                     foreach($selectArray as $row) {
                  ?>
-                <div class="event_area">
+                <div class="event_area" data-category="<?php echo $row['category_name'];?>">
                     <div class="event_user">
                         <div class="user_icon"></div>
                         <div class="user_name"><?php echo $row['user_name'];?></div>
@@ -73,8 +74,16 @@
             <!-- ↓ カテゴリー・イベント投稿 ↓ -->
             <div id="event_other">
                 <div>
-                    <div id="event_category">
+                    <div id="event_category" onclick="categoryToggle('categoryBox')">
                         <div>カテゴリー<i class="bi bi-filter-left"></i></div>
+                    </div>
+                    <div id="categoryBox">
+                    <?php  
+                        foreach($selectCategory as $row){
+                            echo '<button class="categoryButton" onclick="selectCategory(\''.$row['category_name'].'\')">'.$row['category_name'].'</button>';
+                        } 
+                    ?>
+                    <button class="categoryButton" onclick="selectCategory('all')">すべて</button>
                     </div>
                     <button id="event_post">
                         <div><i class="bi bi-pencil-fill" style="height: auto; width: auto;"></i></div>
