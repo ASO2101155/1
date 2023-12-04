@@ -69,6 +69,10 @@
                         </button>
                         <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
                     </form>
+                    <form action="../Event/EventEdit.html" method="POST">
+                        <button id="editbtn">編集</button>
+                        <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
+                    </form>
             <?php
                     }
                 }
@@ -103,6 +107,10 @@
                                 </div>
                                 
                         </div>
+                    </form>';
+                    echo '<form action="../Forum/ForumEdit.html" method="POST" id="forum_edit_btn">
+                        <button>編集</button>
+                        <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
                     </form>';
                     }
                 }
