@@ -12,7 +12,28 @@
 <meta charset="UTF-8">
 <title>smple</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
+<link rel="manifest" href="../manifest.json">
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+            appId: "6e8a7b28-bfdf-4db5-9cc4-e43213398d68",
+        });
+        OneSignal.Notifications.setDefaultTitle("Powered by OneSignal!");
+        let customUserId = "<?php echo $user_id?>";
+        
+        OneSignal.User.addAlias("external_id", customUserId);
+        OneSignal.login(customUserId);
+        console.log(OneSignal.User.PushSubscription.optedIn);
+        let switch1 = document.getElementById('switch1');
+        if(OneSignal.User.PushSubscription.optedIn){
+            switch1.checked = true;
+        }
+    });
+    user_id = <?php echo $user_id;?>;
+    
+</script>
       
 </head>
 <body bgcolor="背景色">
@@ -40,6 +61,28 @@
         </div>
     </div>
 </header>
+<script>
+            
+            if ('serviceWorker' in navigator) {
+
+
+                navigator.serviceWorker.register('../sw.js').then(function() {
+
+
+                    console.log('サービスワーカーの登録成功');
+
+
+                }).catch(function(err) {
+
+
+                    console.log('サービスワーカーの登録ができませんでした：', err);
+
+
+                });
+
+
+            }
+        </script>
 <script src="../Common/js/Header.js"></script>
 </body>
 </html>

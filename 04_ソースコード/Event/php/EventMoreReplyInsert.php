@@ -16,5 +16,5 @@
     $searchArray = $dbaccess->SelectEventReplyByEventReplyId($parent_event_reply_id);
     $eventreplynoticesendcls->eventReplyNoticeSend($_POST['event_more_reply'], $searchArray[0]['re_user_id'], $user_id, $event_id);
     // echo $searchArray[0]['re_user_id'];
-    header('Location: ../EventDetail.html', true, 307);
+    header('Location: ../EventDetail.html?insert', true, 307);
 ?>

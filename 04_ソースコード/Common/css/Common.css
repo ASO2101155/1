@@ -8,36 +8,29 @@ body {
     }
 
 header {
-    position: fixed;
     display: flex;
     width: 100%;
     height: 90px;
+    
     background-color: #0E397B;
     align-items:center;
     top: 0;
     left: 0;
-    z-index: 999;
+    
     }
 
-#moji {
+.moji {
     color: #d7bc61;
 }
-
-footer {
-  width: 100%;
-  height: 90px;
-  position: fixed;
-  bottom: 0;
-}
-
 .footer {
     /*display: flex;*/
     display: grid;
     width: 100%;
-    height: 100%;
+    height: 90px;
     background-color: #0E397B;
     align-items:center;
     position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }
 
 img {
