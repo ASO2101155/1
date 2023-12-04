@@ -31,6 +31,16 @@
             return $searchArray;
         }
 
+        public function SelectCalendarTblByNow(){
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "SELECT *, c.user_id AS calendar_user_id FROM Calendar AS c
+                    INNER JOIN Event AS e
+                    ON c.event_id = e.event_id
+                    WHERE DATE_FORMAT(e.end_datetime, '%Y-%m-%d') = DATE_ADD(DATE_FORMAT(now(), '%Y-%m-%d'), INTERVAL 1 DAY);";
+            $searchArray = $pdo->query($sql);
+            return $searchArray;
+        }
+
         public function InsertCalendarMessageTbl($event_id, $user_id){
             $pdo = $this->dbConnectCls->dbConnect();
             $sql = "INSERT INTO Calendar(event_id, user_id, registration_status)
