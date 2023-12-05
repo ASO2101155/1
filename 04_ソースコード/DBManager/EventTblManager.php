@@ -10,7 +10,7 @@
 
         public function SelectEventTbl(){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT e.*, u.user_name, ec.category_name FROM Event as e 
+            $sql = "SELECT e.*, u.user_name, u.icon, ec.category_name FROM Event as e 
                     INNER JOIN User as u
                     ON e.user_id = u.user_id
                     INNER JOIN EventCategory as ec
@@ -27,7 +27,7 @@
 
         public function SelectEventDetailById($event_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT e.*, u.user_name FROM Event as e 
+            $sql = "SELECT e.*, u.user_name, u.icon FROM Event as e 
                     INNER JOIN User as u
                     ON e.user_id = u.user_id
                     WHERE event_id = ?";

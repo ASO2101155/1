@@ -57,7 +57,14 @@ button {
     height: 100%;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color:brown;
+}
+
+.user_icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .user_name {
@@ -86,6 +93,10 @@ button {
 .event_title {
     font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
     font-size: 130%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .bookmark {
@@ -97,6 +108,10 @@ button {
 .event_content {
     margin-top: 2vh;
     margin-bottom: 2vh;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 #event_other {
