@@ -50,6 +50,7 @@ button {
 
 #event{
     display:block;
+    padding: 4px;
 }
 
 #forum{
@@ -183,7 +184,7 @@ color: #D7BC61;
 }
 
 #eventToggle{
-    background-color: #0E397B;
+    background-color: #0b2957;
     color: #D7BC61;
     border-color: white;
     width: 49%;
