@@ -15,6 +15,7 @@ button {
 
 #profile_info{
     color:white;
+    height: 25vh;
 }
 
 #icon{
@@ -30,6 +31,7 @@ button {
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
+    white-space: pre-wrap;
 }
 
 #user_icon_name_gender{

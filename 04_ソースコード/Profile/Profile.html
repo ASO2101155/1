@@ -47,7 +47,7 @@
         <?php
             echo "<div>".$school_name." ".$major." ".$school_year."</div>";
         ?>
-        <textarea rows="7" cols="20" name="comment" id="comment" readonly><?php echo $comment; ?></textarea>
+        <div id="comment"><?php echo $comment; ?></div>
         </div>
         <button onclick="eventToggleVisibility('event')" id="eventToggle">イベント</button>
         <button onclick="forumToggleVisibility('forum')" id="forumToggle">掲示板</button>
@@ -87,7 +87,7 @@
                         $user_name = $row2['user_name'];
                         $user_icon = $row2['icon'];
                     }
-                    echo '<form action="ForumDetail.html" method="post">
+                    echo '<form action="../Forum/ForumDetail.html" method="post">
                         <div class="forumbox" data-category="' . $row['category_name'] . '">
                             <button type="submit" class="link"></button>
                             <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
