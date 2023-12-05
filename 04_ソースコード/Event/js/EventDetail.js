@@ -38,9 +38,17 @@ function toggle_event_more_reply(e){
 function event_more_reply(e){
 	cTarget = e.currentTarget;
 	parentTarget = cTarget;
+    var i = 0;
 	while(parentTarget.className != "event_reply_right parent_event_reply_right") {
 		parentTarget = parentTarget.parentNode;
+        i++;
 	}
+    // 枠内の返信に対する返信だったら
+    if(i == 5){
+        console.log(cTarget.parentNode.parentNode.children[0].innerHTML);
+        console.log();
+        parentTarget.children[4].children[0].children[0].value = '@'+cTarget.parentNode.parentNode.children[0].innerHTML+' ';
+    }
 	parentTarget.children[4].hidden = false;
 	parentTarget.children[4].scrollIntoView({
 		behavior: 'smooth',

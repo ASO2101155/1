@@ -5,8 +5,10 @@
     "name": "AsokoryuApp",
   
   
-    "start_url": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/Event/Event.html",
+    "start_url": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/",
   
   
-    "display": "standalone"
+    "display": "standalone",
+
+    "scope": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/"
 }
