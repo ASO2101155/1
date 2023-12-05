@@ -74,7 +74,7 @@
                     <option value="2年制2年">2</option>
                 </optgroup>
             </select>
-            <textarea rows="7" cols="20" name="comment" value="<?php echo $comment; ?>" id="comment"><?php echo $comment; ?></textarea>
+            <textarea rows="3" cols="20" name="comment" value="<?php echo $comment; ?>" id="comment"><?php echo $comment; ?></textarea>
             <input type="text" value="<?php echo $major;?>" name="major" id="input_major">
             <input type="file" name="icon" id="input_icon">
             <input type="submit" value="確定" id="btn">
@@ -83,5 +83,6 @@
         <!-- ↓ フッター読み込み ↓ -->
         <?php include("../Common/Footer.html");?>
         <!-- ↑ フッター読み込み ↑ -->
+        <script src="js/ProfileEdit.js"></script>
     </body>
 </html>

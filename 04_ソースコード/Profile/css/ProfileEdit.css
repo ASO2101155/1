@@ -25,7 +25,10 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
-    width: 80%;
+    width: 75%;
+    overflow: hidden;
+    resize: none;
+    padding: 1%;
 }
 
 #profile_info{
