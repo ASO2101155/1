@@ -2,7 +2,8 @@
     session_start();
     require_once '../../DBManager/DBAccess.php';
     $cls = new DBAccess();
-    if(isset($_POST['icon'])){
+    $iconImage = $_FILES['icon'];
+    if($iconImage['size'] > 0){
             // アップロードされたファイルの情報を取得
   $file = $_FILES['icon'];
 

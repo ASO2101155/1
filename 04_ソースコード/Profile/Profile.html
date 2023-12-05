@@ -67,11 +67,11 @@
                                     <?php echo $row['comment']; ?>
                                 </div>
                             </div>
+                            <input type="submit" id="editbtn" form="eventEdit<?php echo $row['event_id'];?>" value="✎">
                         </button>
                         <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
                     </form>
-                    <form action="../Event/EventEdit.html" method="POST">
-                        <button id="editbtn">編集</button>
+                    <form action="../Event/EventEdit.html" method="POST" id="eventEdit<?php echo $row['event_id'];?>">
                         <input type="hidden" name="event_id" value="<?php echo $row['event_id']; ?>">
                     </form>
             <?php
@@ -106,11 +106,10 @@
                                 <div id="forum_content">
                                 '.$row['post_content'].'
                                 </div>
-                                
+                                <input type="submit" id="forum_edit_btn" form="forum_edit'.$row['forum_id'].'" value="✎">
                         </div>
                     </form>';
-                    echo '<form action="../Forum/ForumEdit.html" method="POST" id="forum_edit_btn">
-                        <button>編集</button>
+                    echo '<form action="../Forum/ForumEdit.html" method="POST" id="forum_edit'.$row['forum_id'].'">
                         <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
                     </form>';
                     }

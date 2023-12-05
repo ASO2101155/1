@@ -20,9 +20,6 @@ function validateForm() {
     if(for_cate_code === "null"){
         errorMessage.innerHTML += "カテゴリーを選択してください<br>";
     }
-    if(building_num === "null"){
-        errorMessage.innerHTML += "号館を選択してください<br>";
-    }
     if(errorMessage.innerHTML === ""){
         return true;
     }else{
