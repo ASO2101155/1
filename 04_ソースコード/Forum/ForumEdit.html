@@ -11,21 +11,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="./css/ForumPost.css">
         <script src="js/ForumPost.js"></script> <!-- SignUp.js ファイルを読み込む -->
     </head>
     <body>
-        
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
         <form action="php/ForumUpdate.php" method="post" name="myForm" onsubmit="return validateForm()">
             <?php 
                 echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
             ?>
             <input type="text" name="title" placeholder="タイトル"><br>
-            <input type="text" name="post_content" placeholder="投稿内容"><br>
+            <textarea name="post_content" placeholder="投稿内容" id="content"></textarea><br>
             <select name="for_cate_code">
                 <option value="null" hidden>カテゴリー</option>
                 <?php
                 foreach($selectArray as $row){
-                    echo '<option value="'.$row['forum_category_code'].'">'.$row['forum_category_name'].'</option>';
+                    echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
                 }
             ?>
             </select>
@@ -36,9 +39,12 @@
                 <option value="3">３号館</option>
             </select>
             <br>
-            <input type="submit" value="登録">
+            <div id="errMsg"></div>
+            <input type="submit" value="登録" id="btn">
         </form>
-        <a href="../Profile/Profile.html">戻る</a>
-        <div id="errMsg"></div>
+        <a href="../Profile/Profile.html" id="backbtn">戻る</a>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
     </body>
 </html>
