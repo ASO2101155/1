@@ -75,8 +75,8 @@ function BookMarkUpdate(e) {
     cTarget.disabled = true;
     e.preventDefault()
     console.log(cTarget.children[0].classList.contains('bi-star'));
-    event_id = cTarget.parentNode.children[2].value;
-    calendar_id = cTarget.parentNode.children[3].value;
+    calendar_id = cTarget.parentNode.children[2].value;
+    event_id = cTarget.parentNode.children[3].value;
     // console.log(calendar_id);
     // console.log(!calendar_id);
     // 追加か削除か

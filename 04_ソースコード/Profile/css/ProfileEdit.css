@@ -13,11 +13,25 @@ body{
     margin-left: 5vh;
 }
 
-#icon{
+#icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* #icon{
     border-radius: 50%;
     width: 50px;
     height: 50px;
-}
+} */
 
 #user_name{
     display: flex;

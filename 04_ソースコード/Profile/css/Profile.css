@@ -18,11 +18,25 @@ button {
     height: 25vh;
 }
 
-#icon{
+#icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* #icon{
     border-radius: 50%;
     width: 50px;
     height: 50px;
-}
+} */
 
 #comment{
     background-color: #0E1331;
@@ -143,12 +157,26 @@ color: #D7BC61;
 color: #D7BC61;
 }
 
-#user_icon{
+.user_icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.user_icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* #user_icon{
     border-radius: 50%;
     width: 30px;
     height: 30px;
     margin: unset;
-}
+} */
 
 #edit{
     margin-left: auto;

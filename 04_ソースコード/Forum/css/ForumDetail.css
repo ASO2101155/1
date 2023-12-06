@@ -197,10 +197,24 @@ right:-30px;
   margin: 0px auto;
 }
 
-#user_icon{
+#user_icon {
+  height: 5vh;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+#user_icon_image {
+  margin: 0;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* #user_icon{
 width: 5vh;
 margin: unset;
-}
+} */
 
 #forum_content{
 display: contents;
