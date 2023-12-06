@@ -45,7 +45,9 @@
                         <div class="forumbox" data-category="' . $row['category_name'] . '">
                             <button type="submit" class="link"></button>
                             <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
-                            <div id="user_name"><img src="../IconImage/'.$user_icon.'"  id="user_icon">'.$user_name.'</div>
+                            <div id="user_name" style="display:flex;">
+                                <div class="user_icon"><img class="user_icon_image" src="../IconImage/'.$user_icon.'"></div>'.$user_name.'
+                            </div>
                         
                     
                                 <div id="forum_title">

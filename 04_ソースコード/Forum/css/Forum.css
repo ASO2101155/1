@@ -260,11 +260,18 @@ color: #D7BC61;
 color: #D7BC61;
 }
 
-#user_icon{
-  border-radius: 50%;
-  width: 30px;
+.user_icon {
   height: 30px;
-    margin: unset;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.user_icon_image {
+  margin: 0;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .categoryButton{

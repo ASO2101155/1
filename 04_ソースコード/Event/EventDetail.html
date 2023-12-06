@@ -37,7 +37,7 @@
             <div id="event_detail_main">
                 <div id="event_detail_area">
                     <div id="event_user">
-                        <div id="user_icon"><img id="user_icon_image" src="../IconImage/<?php echo $selectArray['icon'];?>"></div>
+                        <div id="user_icon"><img id="user_icon_image" src="../IconImage/<?php if($selectArray['icon'] == null){echo 'icon.jpg';}else{echo $selectArray['icon'];}?>"></div>
                         <div id="user_name"><?php echo $selectArray['user_name']?></div>
                     </div>
                     <!-- ↓ カード部分 ↓ -->
