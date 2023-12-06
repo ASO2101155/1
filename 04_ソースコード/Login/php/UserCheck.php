@@ -14,14 +14,14 @@
                 exit;
             } else {
                 //一致しなければログイン画面に遷移しエラーメッセージを表示する
-                header('Location:../Login.html?errMsg="メールアドレスまたはパスワードが正しくありません"');
+                header('Location:../Login.html?err');
                 exit;
             }
         }
-        header('Location:../Login.html?errMsg="メールアドレスまたはパスワードが正しくありません"');
+        header('Location:../Login.html?err');
     } catch (Exception $ex) {
         //throw $th;
-        header('Location:../Login.html?errMsg="データベースとの接続に失敗しました"');
+        header('Location:../Login.html?dataerr');
         exit;
     }
 ?>
