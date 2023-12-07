@@ -189,10 +189,10 @@
         }
 
         //イベント返信情報をUpdateするメソッド
-        public function DeleteEventReplyByEventId($event_reply_id){
+        public function DeleteEventReplyByEventReplyId($event_reply_id){
             //EventReplyTblManagerで作成したUpdateの処理を使う
             //EventReplyテーブルのevent_reply_statusカラムの値をfalseにする
-            $this->eventReplyTblCls->UpdateEventReplyStatusByEventId($event_reply_id);
+            $this->eventReplyTblCls->UpdateEventReplyStatusByEventReplyId($event_reply_id);
         }
 
         //掲示板情報をSelectするメソッド
@@ -242,10 +242,10 @@
         }
 
         //掲示板メッセージ情報をUpdateするメソッド
-        public function DeleteForumMessageByEventId($forum_message_id){
+        public function DeleteForumMessageByForumMessageId($forum_message_id){
             //ForumMessageyTblManagerで作成したUpdateの処理を使う
             //ForumMessageテーブルのforum_message_statusカラムの値をfalseにする
-            $this->forumMessageTblCls->UpdateForumMessageStatusByEventId($forum_message_id);
+            $this->forumMessageTblCls->DeleteForumMessageByForumMessageId($forum_message_id);
         }
 
         public function SelectForumMessageByForumId($forum_id){

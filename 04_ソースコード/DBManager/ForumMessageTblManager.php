@@ -19,8 +19,12 @@
             $ps->execute();
         }
 
-        public function UpdateForumMessageStatusByEventId($forum_message_id){
-
+        public function DeleteForumMessageByForumMessageId($forum_message_id){
+            $pdo = $this->dbConnectCls->dbConnect();
+            $sql = "DELETE FROM ForumMessage WHERE forum_message_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1, $forum_message_id, PDO::PARAM_INT);
+            $ps->execute();
         }
 
         public function SelectForumMessageByForumId($forum_id){
