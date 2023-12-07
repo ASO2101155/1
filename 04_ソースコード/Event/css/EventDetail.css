@@ -41,7 +41,12 @@ button{
     width: 100%;
     padding-top: 90px;
     padding-bottom: 90px;
+    overflow: scroll;
     z-index: 0;
+}
+
+#event_detail_main::-webkit-scrollbar{
+    display: none;
 }
 
 #event_detail_area {

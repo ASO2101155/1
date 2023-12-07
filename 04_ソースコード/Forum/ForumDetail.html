@@ -11,6 +11,7 @@
         $datetime = $row['datetime'];
         $title = $row['title'];
     }
+    $user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -58,9 +59,25 @@
 
                             $selectMessage = $cls->SelectForumMessageByForumId($forum_id);
                             foreach($selectMessage as $row){
-                                echo '<div id="user_name">'.$row['user_name'].'</div><div id="forum_content">'.$row['message_content'].'</div><hr>';
+                        ?>      
+                                <div class="forum_message_area">
+                                    <div id="user_name"><?php echo $row['user_name'];?></div>
+                                    <div id="forum_content"><?php echo $row['message_content'];?></div><hr>
+                                    <?php
+                                    if($user_id == $row['user_id']){
+                                    ?>
+                                    <form action="php/ForumMessageDelete.php" method="post">
+                                        <button class="forum_message_delete_button"><i class="bi bi-trash"></i></button>
+                                        <input type="hidden" name="forum_message_id" value="<?php echo $row['forum_message_id']?>">
+                                        <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']?>">
+                                    </form>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                        <?php
                             }
-                    ?>
+                        ?>
                     <form action="php/ForumMessageInsert.php" method="POST">
                         <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']; ?>"> 
                         <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 

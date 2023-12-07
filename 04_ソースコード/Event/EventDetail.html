@@ -106,8 +106,12 @@
                                     </div>
                                     <div class="event_reply_right parent_event_reply_right">
                                         <div class="event_reply_user_name"><?php echo $comment['user_name'];?></div>
+                                        <?php if($comment['event_reply_status'] == 1){?>
                                         <div class="event_reply_content"><?php echo $comment['reply_content'];?></div>
+                                        <?php }else{?>
+                                        <div class="event_reply_content" style="color: gray;"><?php echo 'この返信は削除されました';?></div>
                                         <?php 
+                                              }
                                             $replyArray = $cls->SelectEventReplyByEventReplyId($comment['event_reply_id']);
                                         ?>
                                         <div class="event_more_reply">
@@ -116,6 +120,17 @@
                                             <?php }?>
                                             <button class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</button>
                                             <data value="<?php echo count($replyArray)?>"></data>
+                                            <?php
+                                            if($user_id == $comment['user_id'] && $comment['event_reply_status'] != 0){
+                                            ?>
+                                            <button type="submit" form="event_reply_delete"><i class="bi bi-trash"></i></button>
+                                            <form action="php/EventReplyDelete.php" method="post" id="event_reply_delete">
+                                                <input type="hidden" name="event_reply_id" value="<?php echo $comment['event_reply_id']?>">
+                                                <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>"> 
+                                            </form>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="event_more_reply_main" hidden>
                                             <?php 
@@ -127,9 +142,24 @@
                                                 </div>
                                                 <div class="event_reply_right">
                                                     <div class="event_reply_user_name"><?php echo $reply['user_name'];?></div>
+                                                    <?php if($reply['event_reply_status'] == 1){?>
                                                     <div class="event_reply_content"><?php echo $reply['reply_content'];?></div>
+                                                    <?php }else{?>
+                                                    <div class="event_reply_content" style="color: gray;"><?php echo 'この返信は削除されました';?></div>
+                                                    <?php }?>
                                                     <div class="event_more_reply">
                                                         <button class="event_more_reply_button"><i class="bi bi-arrow-90deg-left"></i>返信</button>
+                                                        <?php
+                                                        if($user_id == $reply['user_id'] && $reply['event_reply_status'] != 0){
+                                                        ?>
+                                                        <button type="submit" form="event_reply_delete_<?php echo $reply['event_reply_id'];?>"><i class="bi bi-trash"></i></button>
+                                                        <form action="php/EventReplyDelete.php" method="post" id="event_reply_delete_<?php echo $reply['event_reply_id'];?>">
+                                                            <input type="hidden" name="event_reply_id" value="<?php echo $reply['event_reply_id']?>">
+                                                            <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>"> 
+                                                        </form>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
