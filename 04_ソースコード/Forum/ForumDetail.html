@@ -68,7 +68,11 @@
                         <input type="submit" value="▷" id="sendbtn">
                     </form>
                 </div>
-                <button onclick="reload()" id="loadbtn"><i class="bi bi-arrow-clockwise"></i></button>
+                <form action="ForumDetail.html?insert" method="POST">
+                    <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']; ?>"> 
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 
+                    <button id="loadbtn"><i class="bi bi-arrow-clockwise"></i></button>
+                </form>
                 <!-- 戻るボタン -->
                 <?php if(isset($_GET['insert'])){?>
                     <button type="button" onclick="location.href='Forum.html'" class="backbutton">戻る</button>
