@@ -221,3 +221,15 @@ form{
 position: relative;
   top: -7px;
 }
+
+#loadbtn{
+    position: fixed;
+    top: 20px;
+    right: 80px;
+    width: 50px;
+    z-index: 1000;
+    background-color: #0E397B;
+    color: #d7bc61;
+    border: none;
+    font-size: xx-large;
+}
