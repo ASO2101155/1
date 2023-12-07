@@ -21,7 +21,6 @@
      $searchArray = $cls->SelectForumDetailById($_POST['forum_id']);
      $forumnoticesendcls->forumNoticeSend($_POST['message_content'], $searchArray[0]['user_id'], $user_id, $_POST['forum_id']);
 
-     $_SESSION['forum_id'] = $_POST['forum_id'];
      //掲示板詳細画面に遷移
      header('Location: ../ForumDetail.html?insert',true, 307);
      exit;
