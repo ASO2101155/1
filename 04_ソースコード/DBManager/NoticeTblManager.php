@@ -24,8 +24,8 @@
 
         public function InsertNoticeTbl($rec_user_id, $tra_user_id, $notification_type, $event_id, $forum_id) {
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "INSERT INTO Notification(reception_user_id, transmission_user_id, notification_type, event_id, forum_id)
-                               VALUES(?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Notification(reception_user_id, transmission_user_id, notification_type, datetime, event_id, forum_id)
+                               VALUES(?, ?, ?, cast(NOW() AS DATETIME), ?, ?)";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $rec_user_id, PDO::PARAM_INT);
             $ps->bindValue(2, $tra_user_id, PDO::PARAM_INT);

@@ -32,6 +32,7 @@
             ?>
             <form action="../<?php echo $action;?>" method="post">
                 <button class="notice_area" data-type="<?php echo $row['notification_type']?>">
+                    <div style="color:white;"><?php echo $row['datetime']?></div>
                     <div class="notice_content">
                         <?php
                             switch($row['notification_type']){
