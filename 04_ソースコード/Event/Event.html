@@ -41,7 +41,7 @@
                  ?>
                 <div class="event_area" data-category="<?php echo $row['category_name'];?>">
                     <div class="event_user">
-                        <div class="user_icon"><img class="user_icon_image" src="../IconImage/<?php echo $row['icon'];?>"></div>
+                        <div class="user_icon"><img class="user_icon_image" src="../IconImage/<?php echo $row['icon'] == null ? 'icon.jpg' : $row['icon'];?>"></div>
                         <div class="user_name"><?php echo $row['user_name'];?></div>
                     </div>
                     <form action="EventDetail.html" method="post">

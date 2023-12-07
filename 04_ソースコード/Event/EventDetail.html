@@ -37,7 +37,7 @@
             <div id="event_detail_main">
                 <div id="event_detail_area">
                     <div id="event_user">
-                        <div id="user_icon"><img id="user_icon_image" src="../IconImage/<?php if($selectArray['icon'] == null){echo 'icon.jpg';}else{echo $selectArray['icon'];}?>"></div>
+                        <div id="user_icon"><img id="user_icon_image" src="../IconImage/<?php echo $selectArray['icon'] == null ? 'icon.jpg' : $selectArray['icon'];?>"></div>
                         <div id="user_name"><?php echo $selectArray['user_name']?></div>
                     </div>
                     <!-- ↓ カード部分 ↓ -->
@@ -102,7 +102,9 @@
                                 ?>
                                 <div class="event_reply_show_area">
                                     <div class="event_reply_left">
-                                        <div class="event_reply_icon"></div>
+                                        <div class="event_reply_icon">
+                                            <img class="event_reply_icon_image" src="../IconImage/<?php echo $comment['icon'] == null ? 'icon.jpg' : $comment['icon'];?>">
+                                        </div>
                                     </div>
                                     <div class="event_reply_right parent_event_reply_right">
                                         <div class="event_reply_user_name"><?php echo $comment['user_name'];?></div>
@@ -138,7 +140,9 @@
                                             ?>
                                             <div class="event_more_reply_area">
                                                 <div class="event_reply_left">
-                                                    <div class="event_reply_icon"></div>
+                                                    <div class="event_reply_icon">
+                                                        <img class="event_reply_icon_image" src="../IconImage/<?php echo $reply['icon'] == null ? 'icon.jpg' : $reply['icon'];?>">
+                                                    </div>
                                                 </div>
                                                 <div class="event_reply_right">
                                                     <div class="event_reply_user_name"><?php echo $reply['user_name'];?></div>

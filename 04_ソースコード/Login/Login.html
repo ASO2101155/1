@@ -16,16 +16,21 @@
     </header>
     <form action="php/UserCheck.php" method="post">
       <div class="flexbox">
-        <input type='text' name='mail' placeholder="Mail">
-        <input type='text' name='password' placeholder="Password">
+        <input type='text' name='mail' placeholder="Mail" required>
+        <input type='text' name='password' placeholder="Password" required>
       </div>
       <div class="button-panel">
-        <button class="btn btn-secondary" type="submit">Login</button><br>
+        <button id="loginbutton" class="btn btn-secondary" type="submit">Login</button><br>
       </div>
     </form>
     <div class="button-panel2">
       <a class="btn2 btn-secondary" href="SignUp.html">新規登録はこちら</a>
     </div>
+    <?php if(isset($_GET['err'])){?>
+    <div id="error">メールアドレスまたはパスワードが正しくありません</div>
+    <?php }else if(isset($_GET['dataerr'])){?>
+    <div id="error">予期せぬエラーが発生しました</div>
+    <?php }?>
     <!-- フッダー -->
     <footer>
       <h1 class="footer">

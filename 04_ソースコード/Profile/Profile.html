@@ -12,7 +12,7 @@
         $school_code = $row['school_code'];
         $school_year = $row['school_year'];
         $major = $row['major'];
-        $icon = $row['icon'];
+        $icon = $row['icon'] == null ? $icon = 'icon.jpg' : $icon = $row['icon'];
         $comment = $row['comment'];
     }
     $selectArray = $dbcls->SelectForumTbl();
@@ -88,7 +88,7 @@
                     $selectUser = $dbcls->SelectUserTblById($row['user_id']);
                     foreach($selectUser as $row2){
                         $user_name = $row2['user_name'];
-                        $user_icon = $row2['icon'];
+                        $user_icon = $row2['icon'] == null ? $user_icon = 'icon.jpg' : $user_icon = $row2['icon'];
                     }
                     echo '<form action="../Forum/ForumDetail.html" method="post">
                         <div class="forumbox" data-category="' . $row['category_name'] . '">
