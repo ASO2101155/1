@@ -7,6 +7,7 @@
     foreach($selectArray as $row){
         $user_name = $row['user_name'];
         $icon = $row['icon'];
+        $icon = $row['icon'] == null ? $icon = 'icon.jpg' : $icon = $row['icon'];
         $post_content = $row['post_content'];
         $datetime = $row['datetime'];
         $title = $row['title'];

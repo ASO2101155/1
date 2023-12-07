@@ -13,7 +13,7 @@
         $school_code = $row['school_code'];
         $school_year = $row['school_year'];
         $major = $row['major'];
-        $icon = $row['icon'];
+        $icon = $row['icon'] == null ? $icon = 'icon.jpg' : $icon = $row['icon'];
         $comment = $row['comment'];
     }
 ?>

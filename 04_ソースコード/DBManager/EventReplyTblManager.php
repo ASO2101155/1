@@ -25,7 +25,7 @@
 
         public function SelectEventReplyByEventReplyId($event_reply_id) {
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT le.*, user_name, re.user_id AS re_user_id, re.event_reply_status AS re_event_reply_status FROM EventReply AS le
+            $sql = "SELECT le.*, user_name, icon, re.user_id AS re_user_id, re.event_reply_status AS re_event_reply_status FROM EventReply AS le
                     INNER JOIN EventReply AS re
                     ON le.parent_event_reply_id = re.event_reply_id
                     INNER JOIN User AS u

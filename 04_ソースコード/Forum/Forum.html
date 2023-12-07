@@ -39,7 +39,7 @@
                     $selectUser = $cls->SelectUserTblById($row['user_id']);
                     foreach($selectUser as $row2){
                         $user_name = $row2['user_name'];
-                        $user_icon = $row2['icon'];
+                        $user_icon = $row2['icon'] == null ? $user_icon = 'icon.jpg' : $user_icon = $row2['icon'];
                     }
                     echo '<form action="ForumDetail.html" method="post">
                         <div class="forumbox" data-category="' . $row['category_name'] . '">

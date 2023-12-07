@@ -139,6 +139,9 @@ main{
 
 #held_datetime {
     width: 100%;
+    -webkit-appearance: none;
+    height: 1.5em;
+    font-size: 0.8em;
 }
 
 #kara {
@@ -158,6 +161,9 @@ main{
 
 #end_datetime {
     width: 100%;
+    -webkit-appearance: none;
+    height: 1.5em;
+    font-size: 0.8em;
 }
 
 #e_comment {

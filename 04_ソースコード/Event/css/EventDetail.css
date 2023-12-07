@@ -164,7 +164,15 @@ button{
     width: 90%;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: aqua;
+    /* background-color: aqua; */
+}
+
+.event_reply_icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .event_reply_right {
