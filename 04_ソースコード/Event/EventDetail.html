@@ -81,11 +81,11 @@
                                     $selectArray = $cls->SelectImageTblById($_POST['event_id']);
                                     if(count($selectArray) > 0){
                                 ?>
-                                <div class="flickity-syncer">
+                                <div class="main-carousel" data-flickity='{"lazyLoad": true }'>
                                     <?php
                                         foreach($selectArray as $image){
                                     ?>
-                                    <img style="width: 100%;" src="../Image/Event/<?php echo $image['file_path']?>"/>
+                                    <img style="width: 100%;" data-flickity-lazyload="../Image/Event/<?php echo $image['file_path']?>"/>
                                     <?php
                                         }
                                     ?>
