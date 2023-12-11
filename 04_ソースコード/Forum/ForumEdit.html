@@ -29,13 +29,13 @@
             <select name="for_cate_code">
             <?php
             $selectCategory = $row['forum_category_code'];
-            foreach($selectArray as $row){
-		        if($selectCategory == $row['forum_category_code']){
-			        echo '<option value="'.$row['forum_category_code'].'" selected>'.$row['category_name'].'</option>';
+            foreach($selectArray as $row2){
+		        if($selectCategory == $row2['forum_category_code']){
+			        echo '<option value="'.$row['forum_category_code'].'" selected>'.$row2['category_name'].'</option>';
 		        }else{
-			        echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
+			        echo '<option value="'.$row['forum_category_code'].'">'.$row2['category_name'].'</option>';
                 }
-		    }
+		    }   
             ?>
             </select>
             <select name="building_num">
