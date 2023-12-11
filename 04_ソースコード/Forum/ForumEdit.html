@@ -20,12 +20,14 @@
         <!-- ↑ ヘッダー読み込み ↑ -->
         <form action="php/ForumUpdate.php" method="post" name="myForm" onsubmit="return validateForm()">
             <?php 
+                foreach($selectData as $row){
                 echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
+                echo '<input type="hidden" name="forum_id" value="'.$row['forum_id'].'">';
             ?>
-            <input type="text" name="title" placeholder="タイトル"><br>
-            <textarea name="post_content" placeholder="投稿内容" id="content"></textarea><br>
+            <input type="text" name="title" value="<?php echo $row['title'];?>"><br>
+            <textarea name="post_content" id="content"><?php echo $row['post_content'];?></textarea><br>
             <select name="for_cate_code">
-                <option value="null" hidden>カテゴリー</option>
+                <option value="<?php echo $row['forum_category_code'];?>" hidden>カテゴリー</option>
                 <?php
                 foreach($selectArray as $row){
                     echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
@@ -33,7 +35,7 @@
             ?>
             </select>
             <select name="building_num">
-                <option value="null" hidden>号館</option>
+                <option value="<?php echo $row['building_number'];?>" hidden>号館</option>
                 <option value="1">１号館</option>
                 <option value="2">2号館</option>
                 <option value="3">３号館</option>
@@ -43,6 +45,9 @@
             <input type="submit" value="登録" id="btn">
         </form>
         <a href="../Profile/Profile.html" id="backbtn">戻る</a>
+        <?php 
+        }
+        ?>
         <!-- ↓ フッター読み込み ↓ -->
         <?php include("../Common/Footer.html");?>
         <!-- ↑ フッター読み込み ↑ -->
