@@ -48,6 +48,7 @@
             <button onclick="pastToggleVisibility('past')" id="pastToggle">期限を超過</button>
             <div id="calendar_main">
                     <?php
+                    $cnt = 0;
                     foreach($Calendar as $row){
                         if($row['registration_status'] == 1 && new DateTime('now')<=$row['end_datetime']){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
@@ -61,12 +62,17 @@
                                 echo '</button>';
                                 echo '<input type="hidden" name="event_id" value="'.$row['event_id'].'">';
                                 echo '</form>';
+                                $cnt++;
                         }
                    } 
+                   if($cnt == 0){
+                        echo '<div class="noneMsg">ブックマークされたイベントがありません</div>';
+                   }
                    ?>
             </div>
             <div id="past">
                     <?php
+                    $cnt = 0;
                     foreach($Calendar as $row){
                         if($row['registration_status'] == 1 && new DateTime('now')>$row['end_datetime']){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
@@ -80,8 +86,12 @@
                                 echo '</button>';
                                 echo '<input type="hidden" name="event_id" value="'.$row['event_id'].'">';
                                 echo '</form>';
+                                $cnt++;
                         }
                    } 
+                   if($cnt == 0){
+                        echo '<div class="noneMsg">ブックマークされたイベントがありません</div>';
+                   }
                    ?>
             </div>
             <!-- ↓ フッター読み込み ↓ -->

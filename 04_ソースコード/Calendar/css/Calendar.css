@@ -63,3 +63,9 @@ button {
     width: 49%;
     height: 5vh;
 }
+
+.noneMsg{
+    color: white;
+    text-align: center;
+    margin-top: 25vh;
+}
