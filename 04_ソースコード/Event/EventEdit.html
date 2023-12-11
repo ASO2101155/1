@@ -50,10 +50,11 @@
                             <div id="bnum_area">
                                 <select id="bnum_select" name="building_num">
                                     <option value="" disabled selected style="display: none;">何号館(任意)</option>
+                                    <option value="" style="display:none;">選択解除</option>
                                     <?php
-                                        for($i = 1; $i <= 3; $i++){
+                                        for($i = 1; $i <= 10; $i++){
                                     ?>
-                                        <option value="<?php echo $i?>" <?php if($selectEvent['building_number'] == $i) echo 'selected';?>><?php echo strtoupper($i)?>号館</option>
+                                        <option value="<?php echo $i?>" <?php if($selectEvent['building_number'] == $i) echo 'selected';?>><?php echo mb_convert_kana($i, "N")?>号館</option>
                                     <?php
                                         }
                                     ?>
@@ -111,6 +112,6 @@
         <!-- ↓ フッター読み込み ↓ -->
         <?php include("../Common/Footer.html");?>
         <!-- ↑ フッター読み込み ↑ -->
-        <script src="./js/EventPost.js"></script>
+        <script src="./js/EventEdit.js"></script>
     </body>
 </html>

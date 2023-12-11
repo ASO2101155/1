@@ -22,6 +22,13 @@ function ChangeCategorySelectColor(){
 
 function ChangeBnumSelectColor(){
     bnum_select.style.color = "black";
+    if(bnum_select.value == ""){
+        bnum_select.style.color = "#777777";
+        bnum_select.options[0].selected = true; 
+        bnum_select.options[1].style.display = "none";
+    }else{
+        bnum_select.options[1].style.display = "block";
+    }
 }
 
 function EnabledHeldTime(){
