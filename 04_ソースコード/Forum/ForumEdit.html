@@ -27,11 +27,15 @@
             <input type="text" name="title" value="<?php echo $row['title'];?>"><br>
             <textarea name="post_content" id="content"><?php echo $row['post_content'];?></textarea><br>
             <select name="for_cate_code">
-                <option value="<?php echo $row['forum_category_code'];?>" hidden>カテゴリー</option>
-                <?php
-                foreach($selectArray as $row){
-                    echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
+            <?php
+            $selectCategory = $row['forum_category_code'];
+            foreach($selectArray as $row){
+		        if($selectCategory == $row['forum_category_code']){
+			        echo '<option value="'.$row['forum_category_code'].'" selected>'.$row['category_name'].'</option>';
+		        }else{
+			        echo '<option value="'.$row['forum_category_code'].'">'.$row['category_name'].'</option>';
                 }
+		    }
             ?>
             </select>
             <select name="building_num">
