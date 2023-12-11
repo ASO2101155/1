@@ -40,3 +40,12 @@ document.getElementById('notification_info_button').addEventListener('click',fun
 notification_info.addEventListener("click", function(){
     notification_info.hidden = true;
 });
+
+nofitication_blocked = document.getElementById("nofitication_blocked");
+document.getElementById('nofitication_blocked_button').addEventListener('click',function(){
+    nofitication_blocked.hidden = false;
+});
+   
+nofitication_blocked.addEventListener("click", function(){
+    nofitication_blocked.hidden = true;
+});
