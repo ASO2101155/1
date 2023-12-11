@@ -265,4 +265,10 @@ color: #D7BC61;
     display: contents;
     overflow-wrap: anywhere;
   }
+
+  .noneMsg{
+    color: white;
+    text-align: center;
+    margin-top: 15vh;
+  }
   
