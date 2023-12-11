@@ -7,7 +7,7 @@
     $selectArray = $cls->SelectForumTbl();
     $selectCategory = $cls->SelectForumCategoryTbl();
     if(isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
+        $session_user_id = $_SESSION['user_id'];
     }else{
         header('Location: ../Login/Login.html', true, 307);
     }

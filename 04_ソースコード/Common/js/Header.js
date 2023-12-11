@@ -24,9 +24,19 @@ switch(pname){
 let switch1 = document.getElementById('switch1');
 switch1.addEventListener('change', (e) => {
     console.log(e.target.checked);
+    console.log(OneSignal.Notifications.permissionNative)
     if(e.target.checked){
         OneSignal.User.PushSubscription.optIn();
     }else{
         OneSignal.User.PushSubscription.optOut();
     }
-})
+});
+
+notification_info = document.getElementById("notification_info");
+document.getElementById('notification_info_button').addEventListener('click',function(){
+    notification_info.hidden = false;
+});
+   
+notification_info.addEventListener("click", function(){
+    notification_info.hidden = true;
+});

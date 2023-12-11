@@ -2,8 +2,6 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,16 +9,26 @@
 <head>
 <meta charset="UTF-8">
 <title>smple</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        // PWA環境ではない
+        if(!window.matchMedia('(display-mode: standalone)').matches){
+            // スマホ環境である
+            if(navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+                document.getElementById('notification_info_button').hidden = false;
+            }
+        }
+    });
+
     window.OneSignalDeferred = window.OneSignalDeferred || [];
     OneSignalDeferred.push(async function(OneSignal) {
         await OneSignal.init({
             appId: "6e8a7b28-bfdf-4db5-9cc4-e43213398d68",
         });
         OneSignal.Notifications.setDefaultTitle("Powered by OneSignal!");
-        let customUserId = "<?php echo $user_id?>";
+        let customUserId = "<?php echo $session_user_id?>";
         
         OneSignal.User.addAlias("external_id", customUserId);
         OneSignal.login(customUserId);
@@ -29,9 +37,14 @@
         if(OneSignal.User.PushSubscription.optedIn){
             switch1.checked = true;
         }
+        if(OneSignal.Notifications.permissionNative != 'denied'){
+            document.getElementsByClassName('switchArea')[0].hidden = false;
+        }else{
+            document.getElementById('nofitication_blocked').hidden = false;
+        }
+        // console.log(OneSignal.Notifications.permissionNative);
     });
-    user_id = <?php echo $user_id;?>;
-    
+    user_id = <?php echo $session_user_id;?>;
 </script>
       
 </head>
@@ -48,7 +61,17 @@
             <ul class="dropdown_menu">
 
                 <div class="box">
-                <li class="switchArea">
+                <li id="notification_info_button" hidden>アプリ化・通知を使用するには</li>
+                <div id="notification_info" hidden>
+                    <div id="notification_info_area">
+                        <img src="../Image/Header/NotificationInfo.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationInfo2.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationInfo3.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationInfo4.png" style="width:100%;">
+                    </div>
+                </div>
+                <li id="nofitication_blocked" hidden>通知をブロックしています</li>
+                <li class="switchArea" hidden>
                     <a class="text">通知on/off</a>
                     <input type="checkbox" id="switch1">
                     <label for="switch1"><span></span></label>
