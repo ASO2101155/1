@@ -11,14 +11,18 @@
 <title>smple</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <script>
     document.addEventListener("DOMContentLoaded", (event) => {
-        // PWA環境ではない
-        if(!window.matchMedia('(display-mode: standalone)').matches){
-            // スマホ環境である
-            if(navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+        // スマホ環境である
+        if(navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+            // PWA環境ではない
+            if(!window.matchMedia('(display-mode: standalone)').matches){
                 document.getElementById('notification_info_button').hidden = false;
             }
+            document.getElementById('nofitication_blocked_area_iphone').hidden = false;
+        }else{
+            document.getElementById('nofitication_blocked_area_windows').hidden = false;
         }
     });
 
@@ -40,7 +44,7 @@
         if(OneSignal.Notifications.permissionNative != 'denied'){
             document.getElementsByClassName('switchArea')[0].hidden = false;
         }else{
-            document.getElementById('nofitication_blocked').hidden = false;
+            document.getElementById('nofitication_blocked_button').hidden = false;
         }
         // console.log(OneSignal.Notifications.permissionNative);
     });
@@ -61,7 +65,7 @@
             <ul class="dropdown_menu">
 
                 <div class="box">
-                <li id="notification_info_button" hidden>アプリ化・通知を使用するには</li>
+                <li id="notification_info_button" hidden><i class="bi bi-info-circle"></i>アプリ化・通知を使用するには</li>
                 <div id="notification_info" hidden>
                     <div id="notification_info_area">
                         <img src="../Image/Header/NotificationInfo.png" style="width:100%;">
@@ -70,7 +74,20 @@
                         <img src="../Image/Header/NotificationInfo4.png" style="width:100%;">
                     </div>
                 </div>
-                <li id="nofitication_blocked" hidden>通知をブロックしています</li>
+                <li id="nofitication_blocked_button" hidden><i class="bi bi-info-circle"></i>通知をブロックしています</li>
+                <div id="nofitication_blocked" hidden>
+                    <div id="nofitication_blocked_area_iphone" hidden>
+                        <div id="nofitication_blocked_title">通知のブロックを解除する方法(iphone)</div>
+                        <img src="../Image/Header/NotificationBlockedIphone.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationBlockedIphone2.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationBlockedIphone3.png" style="width:100%;">
+                        <img src="../Image/Header/NotificationBlockedIphone4.png" style="width:100%;">
+                    </div>
+                    <div id="nofitication_blocked_area_windows" hidden>
+                        <div id="nofitication_blocked_title">通知のブロックを解除する方法(Windows)</div>
+                        <img src="../Image/Header/NotificationBlockedWindows.png" style="width:100%;">
+                    </div>
+                </div>
                 <li class="switchArea" hidden>
                     <a class="text">通知on/off</a>
                     <input type="checkbox" id="switch1">

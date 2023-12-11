@@ -79,7 +79,7 @@ top:15px;
 .dropdown_menu{
     display: none;  /*非表示にする*/
     position: relative;
-    
+    color: #0E1331;
 }
 #toggle:checked+.dropdown_menu{
     display: block; /*リストを表示する*/
@@ -187,6 +187,36 @@ top:15px;
 }
 
 #notification_info_area {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+}
+
+#nofitication_blocked {
+  position:fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+  overflow: scroll;
+}
+
+#nofitication_blocked_area_iphone {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+}
+
+#nofitication_blocked_title {
+  margin-top: 5%;
+  margin-bottom: 2%;
+  background-color: white;
+  text-align: center;
+}
+
+#nofitication_blocked_area_windows {
   margin-left: auto;
   margin-right: auto;
   width: 60vw;
