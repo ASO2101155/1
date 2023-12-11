@@ -22,6 +22,7 @@
             <?php 
                 foreach($selectData as $row){
                 echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
+                echo '<input type="hidden" name="forum_id" value="'.$row['forum_id'].'">';
             ?>
             <input type="text" name="title" value="<?php echo $row['title'];?>"><br>
             <textarea name="post_content" id="content"><?php echo $row['post_content'];?></textarea><br>
