@@ -12,7 +12,7 @@
         $datetime = $row['datetime'];
         $title = $row['title'];
     }
-    $user_id = $_SESSION['user_id'];
+    $session_user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +65,7 @@
                                     <div id="user_name"><?php echo $row['user_name'];?></div>
                                     <div id="forum_content"><?php echo $row['message_content'];?></div><hr>
                                     <?php
-                                    if($user_id == $row['user_id']){
+                                    if($session_user_id == $row['user_id']){
                                     ?>
                                     <form action="php/ForumMessageDelete.php" method="post">
                                         <button class="forum_message_delete_button"><i class="bi bi-trash"></i></button>

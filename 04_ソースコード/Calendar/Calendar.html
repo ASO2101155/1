@@ -5,7 +5,7 @@
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
     if(isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
+        $session_user_id = $_SESSION['user_id'];
     }else{
         header('Location: ../Login/Login.html', true, 307);
     }
@@ -25,18 +25,7 @@
         <link rel="stylesheet" href="./css/Calendar.css">
         <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
         <script>
-            window.OneSignalDeferred = window.OneSignalDeferred || [];
-            OneSignalDeferred.push(async function(OneSignal) {
-                await OneSignal.init({
-                    appId: "6e8a7b28-bfdf-4db5-9cc4-e43213398d68",
-                });
-                OneSignal.Notifications.setDefaultTitle("Powered by OneSignal!");
-                let customUserId = "<?php echo $user_id?>";
-                
-                OneSignal.User.addAlias("external_id", customUserId);
-                OneSignal.login(customUserId);
-            });
-            user_id = <?php echo $user_id;?>;
+            
         </script>
     </head>
     <body>

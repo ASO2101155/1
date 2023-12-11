@@ -7,7 +7,7 @@
     $selectArray = $cls->SelectEventTbl();
     $selectCategory = $cls->SelectEventCategoryTbl();
     if(isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
+        $session_user_id = $_SESSION['user_id'];
     }else{
         header('Location: ../Login/Login.html', true, 307);
     }
@@ -52,7 +52,7 @@
                                 </div>
                                 <!-- ↓ ボタンとして実装 ↓ -->
                                 <?php 
-                                    $isbookmark = $cls->SelectCalendarTblByEventIdUserId($row['event_id'], $user_id);
+                                    $isbookmark = $cls->SelectCalendarTblByEventIdUserId($row['event_id'], $session_user_id);
                                 ?>
                                 <div class="bookmark">
                                     <i class="bi bi-star<?php if(count($isbookmark) >= 1 && $isbookmark[0]['registration_status'] == 1) echo '-fill'?>"></i>

@@ -4,8 +4,8 @@
     }
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
-    $user_id = $_SESSION['user_id'];
-    $selectArray = $cls->SelectNoticeTblByUserId($user_id);
+    $session_user_id = $_SESSION['user_id'];
+    $selectArray = $cls->SelectNoticeTblByUserId($session_user_id);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
