@@ -44,10 +44,31 @@
             <!-- ↓ ヘッダー読み込み ↓ -->
             <?php include("../Common/Header.html");?>
             <!-- ↑ ヘッダー読み込み ↑ -->
+            <button onclick="futureToggleVisibility('calendar_main')" id="futureToggle">今後の予定</button>
+            <button onclick="pastToggleVisibility('past')" id="pastToggle">期限を超過</button>
             <div id="calendar_main">
                     <?php
                     foreach($Calendar as $row){
-                        if($row['registration_status'] == 1){
+                        if($row['registration_status'] == 1 && new DateTime('now')<=$row['end_datetime']){
+                            $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
+                            if(date('Y年m月d日') == $dateOnly){
+                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';
+                            }else{
+                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar">';
+                                
+                            }
+                                echo $dateOnly." ".$row['title'];
+                                echo '</button>';
+                                echo '<input type="hidden" name="event_id" value="'.$row['event_id'].'">';
+                                echo '</form>';
+                        }
+                   } 
+                   ?>
+            </div>
+            <div id="past">
+                    <?php
+                    foreach($Calendar as $row){
+                        if($row['registration_status'] == 1 && new DateTime('now')>$row['end_datetime']){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
                             if(date('Y年m月d日') == $dateOnly){
                                 echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';
@@ -88,7 +109,7 @@
     
                 }
             </script>
-            <script src=""></script>
+            <script src="js/Calendar.js"></script>
         </main>
     </body>
 </html>

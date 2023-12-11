@@ -23,7 +23,7 @@
     
         public function SelectCalendarTblByUserId($user_id){
             $pdo = $this->dbConnectCls->dbConnect();
-            $sql = "SELECT * FROM Calendar INNER JOIN Event ON Event.event_id = Calendar.event_id AND Calendar.user_id = ? AND Event.end_datetime >= cast(NOW() AS DATETIME) ORDER BY Event.end_datetime ASC";
+            $sql = "SELECT * FROM Calendar INNER JOIN Event ON Event.event_id = Calendar.event_id AND Calendar.user_id = ? ORDER BY Event.end_datetime ASC";
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1, $user_id, PDO::PARAM_INT);
             $ps->execute();
