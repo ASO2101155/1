@@ -149,3 +149,13 @@ function BookMarkUpdate(e) {
         });
     }
 }
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    // スマホ環境である
+    if(navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+        // PWA環境ではない
+        if(!window.matchMedia('(display-mode: standalone)').matches){
+            document.getElementById("space_area").style.height = "100px";
+        }
+    }
+});
