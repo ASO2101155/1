@@ -125,7 +125,7 @@
                                             <?php
                                             if($session_user_id == $comment['user_id'] && $comment['event_reply_status'] != 0){
                                             ?>
-                                            <button type="submit" form="event_reply_delete"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" form="event_reply_delete" style="color:black;"><i class="bi bi-trash"></i></button>
                                             <form action="php/EventReplyDelete.php" method="post" id="event_reply_delete">
                                                 <input type="hidden" name="event_reply_id" value="<?php echo $comment['event_reply_id']?>">
                                                 <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>"> 
@@ -156,7 +156,7 @@
                                                         <?php
                                                         if($session_user_id == $reply['user_id'] && $reply['event_reply_status'] != 0){
                                                         ?>
-                                                        <button type="submit" form="event_reply_delete_<?php echo $reply['event_reply_id'];?>"><i class="bi bi-trash"></i></button>
+                                                        <button type="submit" form="event_reply_delete_<?php echo $reply['event_reply_id'];?>" style="color:black;"><i class="bi bi-trash"></i></button>
                                                         <form action="php/EventReplyDelete.php" method="post" id="event_reply_delete_<?php echo $reply['event_reply_id'];?>">
                                                             <input type="hidden" name="event_reply_id" value="<?php echo $reply['event_reply_id']?>">
                                                             <input type="hidden" name="event_id" value="<?php echo $_POST['event_id']?>"> 

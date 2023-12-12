@@ -253,12 +253,20 @@ color: #D7BC61;
 .event_title {
     font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
     font-size: 130%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
  
- 
+
 .event_content {
     margin-top: 2vh;
     margin-bottom: 2vh;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 #forum_content{
