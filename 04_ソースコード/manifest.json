@@ -10,5 +10,12 @@
   
     "display": "standalone",
 
-    "scope": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/"
+    "scope": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/",
+
+    "icons": [
+        {
+          "src": "icon.png",
+          "sizes": "48x48"
+        }
+      ]
 }
