@@ -1,0 +1,186 @@
+html{
+    height:100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    color: #D7BC61;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    background-color: #0E1331;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    color: #D7BC61;
+}
+
+#event_main {
+    /* position: relative; */
+    padding-top: 90px;
+    padding-bottom: 90px;
+    z-index: 0;
+}
+
+.event_area {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+    height: auto;
+    width: 85vw;
+    /* background-color: aliceblue; */
+}
+
+.event_user {
+    height: 4vh;
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+}
+
+.user_icon {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.user_icon_image {
+    margin: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.user_name {
+    margin-left: 2%;
+    font-size: 120%;
+}
+
+.event_card {
+    margin-top: 1%;
+    padding: 0.5% 3%;
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    text-align: left;
+    color: black;
+    box-shadow: 0 4px 15px rgba(213, 240, 255, 0.418);
+}
+
+.event_card > div{
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.event_title {
+    font-family: "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO", "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro", sans-serif;
+    font-size: 130%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.bookmark {
+    position: absolute;
+    top: 2%;
+    right: 0;
+}
+
+.event_content {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+#event_other {
+    position: fixed;
+    bottom: calc(90px + 1%);
+    right: 2.5%;
+    height: 8%;
+    width: 50%;
+    /* background-color: #d0ffde; */
+}
+
+#event_other > div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#event_category {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 65%;
+    border-radius: 15px;
+    background-color: #0E397B;
+}
+
+#event_category > div {
+    /* font-size: 22px; */
+    font-size: 120%;
+}
+
+#event_post {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #0E397B;
+}
+
+#event_post > div {
+    /* font-size: 18px; */
+    font-size: 110%;
+}
+
+.categoryButton{
+    position: relative;
+    top: -104px;
+      display: block;
+      height: 60%;
+      width: 65%;
+    background-color: #0E397B;
+    border: #0E1331 solid 1px;
+}
+    
+#categoryBox{
+    display: none;
+}

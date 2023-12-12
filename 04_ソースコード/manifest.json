@@ -1,0 +1,21 @@
+{
+    "short_name": "Aso",
+  
+  
+    "name": "AsokoryuApp",
+  
+  
+    "start_url": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/",
+  
+  
+    "display": "standalone",
+
+    "scope": "https://pepper-japan-02.ssl-lolipop.jp/AsokoryuApp/",
+
+    "icons": [
+        {
+          "src": "icon.png",
+          "sizes": "48x48"
+        }
+      ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/signup.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/SignUp.js"></script> <!-- SignUp.js ファイルを読み込む -->
+        <link rel="manifest" href="../manifest.json">
+    </head>
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <h1 class="header">
+                <a class="moji"></a>
+            </h1>
+        </header>
+        <!-- ヘッダー -->
+
+        <div class="box">
+        <form action="SignUp2.html" method="post" name="myForm" onsubmit="return validateForm()">
+            <input type="text" class="textbox" name="mail" placeholder="Mail">
+            <input type="text" class="textbox" name="password" placeholder="Password"><br>
+            <input type="submit" class="next" value="次へ">
+        </form>
+        <div class="link">
+        <a href="Login.html" class="moji">Loginに戻る</a>
+        </div>
+
+        </div>
+        <?php
+            if(isset($_GET['errMsg'])){
+                echo '<div id="errMsg">'.$_GET['errMsg'].'</div>';
+            }
+        ?>
+
+        <div id="errMsg"></div>
+
+        <!-- フッダー -->
+    <footer>
+        <h1 class="footer">
+            <a class="moji"></a>
+        </h1>
+    </footer>
+    <!-- フッダー -->
+    </body>
+</html>

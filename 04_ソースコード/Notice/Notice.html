@@ -1,0 +1,70 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $session_user_id = $_SESSION['user_id'];
+    $selectArray = $cls->SelectNoticeTblByUserId($session_user_id);
+?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <meta name="description" content="ここにサイト説明を入れます">
+        <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="./css/Notice.css">
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <div id="notice_main">
+            <?php
+                foreach($selectArray as $row){
+                    if($row['event_id'] != null){ $action = "Event/EventDetail.html"; $sendname="event_id"; $sendvalue=$row['event_id'];}
+                    if($row['forum_id'] != null){ $action = "Forum/ForumDetail.html"; $sendname="forum_id"; $sendvalue=$row['forum_id'];}
+            ?>
+            <form action="../<?php echo $action;?>" method="post">
+                <button class="notice_area" data-type="<?php echo $row['notification_type']?>">
+                    <div style="color:white;"><?php echo $row['datetime']?></div>
+                    <div class="notice_content">
+                        <?php
+                            switch($row['notification_type']){
+                                case 0: echo $row['user_name']."さんがあなたのイベントにコメントしました"; break;
+                                case 1: echo $row['user_name']."さんがあなたのコメントに返信しました"; break;
+                                case 2: echo $row['user_name']."さんがあなたの掲示板にメッセージを送信しました"; break;
+                                case 3: echo "イベントの終了日時が１日前になりました"; break;
+                            }
+                        ?>
+                    </div>
+                </button>
+                <input type="hidden" name="<?php echo $sendname;?>" value="<?php echo $sendvalue;?>">
+            </form>
+            <?php
+                }
+            ?>
+        </div>
+        <div id="notice_other">
+            <div id="notice_type" onclick="categoryToggle('typeBox')">
+                <div>フィルター<i class="bi bi-filter-left"></i></div>
+            </div>
+            <div id="typeBox">
+                <button class="typeButton" onclick="selectType('0')">イベントコメント</button>
+                <button class="typeButton" onclick="selectType('1')">イベント返信</button>
+                <button class="typeButton" onclick="selectType('2')">掲示板コメント</button>
+                <button class="typeButton" onclick="selectType('3')">カレンダー</button>
+                <button class="typeButton" onclick="selectType('all')">すべて</button>
+            </div>
+        </div>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+        <script src="./js/Notice.js"></script>
+    </body>
+</html>

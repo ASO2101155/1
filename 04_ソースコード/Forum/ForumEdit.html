@@ -1,0 +1,70 @@
+<?php 
+    session_start();
+    require_once '../DBManager/DBAccess.php';
+    $cls = new DBAccess();
+    $selectArray = $cls->SelectForumCategoryTbl();
+    $selectData = $cls->SelectForumDetailByid($_POST['forum_id']);
+    if(isset($_SESSION['user_id'])){
+        $session_user_id = $_SESSION['user_id'];
+    }else{
+        header('Location: ../Login/Login.html', true, 307);
+    }
+?>
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="./css/ForumPost.css">
+        <script src="js/ForumPost.js"></script> <!-- SignUp.js ファイルを読み込む -->
+    </head>
+    <body>
+        <!-- ↓ ヘッダー読み込み ↓ -->
+        <?php include("../Common/Header.html");?>
+        <!-- ↑ ヘッダー読み込み ↑ -->
+        <form action="php/ForumUpdate.php" method="post" name="myForm" onsubmit="return validateForm()">
+            <?php 
+                foreach($selectData as $row){
+                echo '<input type="hidden" name="user_id" value="'.$_SESSION['user_id'].'">';
+                echo '<input type="hidden" name="forum_id" value="'.$row['forum_id'].'">';
+            ?>
+            <input type="text" name="title" value="<?php echo $row['title'];?>"><br>
+            <textarea name="post_content" id="content"><?php echo $row['post_content'];?></textarea><br>
+            <select name="for_cate_code">
+            <?php
+            $selectCategory = $row['forum_category_code'];
+            foreach($selectArray as $row2){
+		        if($selectCategory == $row2['forum_category_code']){
+			        echo '<option value="'.$row['forum_category_code'].'" selected>'.$row2['category_name'].'</option>';
+		        }else{
+			        echo '<option value="'.$row['forum_category_code'].'">'.$row2['category_name'].'</option>';
+                }
+		    }   
+            ?>
+            </select>
+            <select name="building_num">
+                <?php
+                for($i=1; $i < 11; $i++){
+                    if($i == $row['building_number']){
+                        echo '<option value="'.$i.'" selected>'.$i.'号館</option>';
+                    }else{
+                        echo '<option value="'.$i.'">'.$i.'号館</option>';
+                    }
+                }
+                ?>
+            </select>
+            <br>
+            <div id="errMsg"></div>
+            <input type="submit" value="登録" id="btn">
+        </form>
+        <a href="../Profile/Profile.html" id="backbtn">戻る</a>
+        <?php 
+        }
+        ?>
+        <!-- ↓ フッター読み込み ↓ -->
+        <?php include("../Common/Footer.html");?>
+        <!-- ↑ フッター読み込み ↑ -->
+    </body>
+</html>
