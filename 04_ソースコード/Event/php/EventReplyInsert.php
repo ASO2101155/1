@@ -14,5 +14,5 @@
     // 通知送信
     $searchArray = $dbaccess->SelectEventDetailByEventId($event_id);
     $eventnoticesendcls->eventNoticeSend($_POST['event_reply'], $searchArray['user_id'], $user_id, $event_id);
-    header('Location: ../EventDetail.html?insert', true, 307);
+    header('Location: ../EventDetail.html?id='.$event_id, true, 307);
 ?>

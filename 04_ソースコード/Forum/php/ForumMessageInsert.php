@@ -6,22 +6,23 @@
      if(!isset($_SESSION)){
          session_start();
      }
+     $forum_id = $_POST['forum_id'];
      $user_id = $_SESSION['user_id'];
 
      try {
          //ForumPost.htmlからpostで受け取ったデータを引数にしてInsert処理
-         $cls->InsertForumMessageTbl($_POST['forum_id'],$_POST['user_id'],$_POST['message_content']);
+         $cls->InsertForumMessageTbl($forum_id,$_POST['user_id'],$_POST['message_content']);
      } catch (Exception $ex) {
          //throw $th;
-         header('Location: ../ForumDetail.html?insert',true, 307);
+         header('Location: ../ForumDetail.html?id='.$forum_id,true, 308);
          exit;
      }
 
      //通知送信
-     $searchArray = $cls->SelectForumDetailById($_POST['forum_id']);
+     $searchArray = $cls->SelectForumDetailById($forum_id);
      $forumnoticesendcls->forumNoticeSend($_POST['message_content'], $searchArray[0]['user_id'], $user_id, $_POST['forum_id']);
 
      //掲示板詳細画面に遷移
-     header('Location: ../ForumDetail.html?insert',true, 307);
+     header('Location: ../ForumDetail.html?id='.$forum_id,true, 308);
      exit;
 ?>
