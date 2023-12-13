@@ -42,9 +42,9 @@
                         if($row['registration_status'] == 1 && date('Y年m月d日')<=date('Y年m月d日', strtotime($row['end_datetime']))){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
                             if(date('Y年m月d日') == $dateOnly){
-                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';
+                                echo '<form action="../Event/EventDetail.html?id='.$row['event_id'].'" method="post"><button class="calendar2">';
                             }else{
-                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar">';
+                                echo '<form action="../Event/EventDetail.html?id='.$row['event_id'].'" method="post"><button class="calendar">';
                                 
                             }
                                 echo $dateOnly." ".$row['title'];
@@ -62,13 +62,14 @@
             <div id="past">
                     <?php
                     $cnt = 0;
-                    foreach($Calendar as $row){
+                    $CalendarDesc = array_reverse($Calendar);
+                    foreach($CalendarDesc as $row){
                         if($row['registration_status'] == 1 && date('Y年m月d日')>date('Y年m月d日', strtotime($row['end_datetime']))){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
                             if(date('Y年m月d日') == $dateOnly){
-                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';
+                                echo '<form action="../Event/EventDetail.html?id='.$row['event_id'].'" method="post"><button class="calendar2">';
                             }else{
-                                echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar">';
+                                echo '<form action="../Event/EventDetail.html?id='.$row['event_id'].'" method="post"><button class="calendar">';
                                 
                             }
                                 echo $dateOnly." ".$row['title'];
