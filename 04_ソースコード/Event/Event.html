@@ -44,7 +44,7 @@
                         <div class="user_icon"><img class="user_icon_image" src="../IconImage/<?php echo $row['icon'] == null ? 'icon.jpg' : $row['icon'];?>"></div>
                         <div class="user_name"><?php echo $row['user_name'];?></div>
                     </div>
-                    <form action="EventDetail.html" method="post">
+                    <form action="EventDetail.html?id=<?php echo $row['event_id']?>" method="post">
                         <button class="event_card">
                             <div>
                                 <div class="event_title">
@@ -64,7 +64,6 @@
                                 </div>
                             </div>
                         </button>
-                        <input type="hidden" name="event_id" value="<?php echo $row['event_id']?>">
                     </form>
                 </div>
                 <?php 

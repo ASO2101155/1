@@ -27,8 +27,8 @@
         <div id="notice_main">
             <?php
                 foreach($selectArray as $row){
-                    if($row['event_id'] != null){ $action = "Event/EventDetail.html"; $sendname="event_id"; $sendvalue=$row['event_id'];}
-                    if($row['forum_id'] != null){ $action = "Forum/ForumDetail.html"; $sendname="forum_id"; $sendvalue=$row['forum_id'];}
+                    if($row['event_id'] != null){ $action = "Event/EventDetail.html?id=".$row['event_id'];}
+                    if($row['forum_id'] != null){ $action = "Forum/ForumDetail.html?id=".$row['forum_id'];}
             ?>
             <form action="../<?php echo $action;?>" method="post">
                 <button class="notice_area" data-type="<?php echo $row['notification_type']?>">
@@ -44,7 +44,6 @@
                         ?>
                     </div>
                 </button>
-                <input type="hidden" name="<?php echo $sendname;?>" value="<?php echo $sendvalue;?>">
             </form>
             <?php
                 }
