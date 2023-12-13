@@ -2,7 +2,7 @@
     session_start();
     require_once '../DBManager/DBAccess.php';
     $cls = new DBAccess();
-    $forum_id = $_POST['forum_id'];
+    $forum_id = $_GET['id'];
     $selectArray = $cls->SelectForumDetailById($forum_id);
     foreach($selectArray as $row){
         $user_name = $row['user_name'];
@@ -38,7 +38,6 @@
             <!-- ↑ ヘッダー読み込み ↑ -->
 
             <div id="forum_detail_area">
-                
                 <div class="forumbox">
                     <?php
                     echo '
@@ -70,7 +69,7 @@
                                     <form action="php/ForumMessageDelete.php" method="post">
                                         <button class="forum_message_delete_button"><i class="bi bi-trash"></i></button>
                                         <input type="hidden" name="forum_message_id" value="<?php echo $row['forum_message_id']?>">
-                                        <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']?>">
+                                        <input type="hidden" name="forum_id" value="<?php echo $forum_id?>">
                                     </form>
                                     <?php
                                     }
@@ -80,23 +79,15 @@
                             }
                         ?>
                     <form action="php/ForumMessageInsert.php" method="POST">
-                        <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']; ?>"> 
+                        <input type="hidden" name="forum_id" value="<?php echo $forum_id; ?>"> 
                         <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 
                         <input type="text" name="message_content" id="message_content">
-                        <input type="submit" value="▷" id="sendbtn">
+                        <input type="submit" value="▷" id="sendbtn" style="color:black;">
                     </form>
                 </div>
-                <form action="ForumDetail.html?insert" method="POST">
-                    <input type="hidden" name="forum_id" value="<?php echo $_POST['forum_id']; ?>"> 
-                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>"> 
-                    <button id="loadbtn"><i class="bi bi-arrow-clockwise"></i></button>
-                </form>
+                <button id="loadbtn" onclick="window.location.reload()"><i class="bi bi-arrow-clockwise"></i></button>
                 <!-- 戻るボタン -->
-                <?php if(isset($_GET['insert'])){?>
-                    <button type="button" onclick="location.href='Forum.html'" class="backbutton">戻る</button>
-                <?php }else{?>
-                    <button type="button" onclick="history.back()" class="backbutton">戻る</button>
-                <?php }?>
+                <button type="button" onclick="history.back()" class="backbutton">戻る</button>
             </div>
 <!-- フッダー -->
 <!-- ↓ フッター読み込み ↓ -->

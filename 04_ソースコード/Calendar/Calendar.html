@@ -39,7 +39,7 @@
                     <?php
                     $cnt = 0;
                     foreach($Calendar as $row){
-                        if($row['registration_status'] == 1 && new DateTime('now')<=$row['end_datetime']){
+                        if($row['registration_status'] == 1 && date('Y年m月d日')<=date('Y年m月d日', strtotime($row['end_datetime']))){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
                             if(date('Y年m月d日') == $dateOnly){
                                 echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';
@@ -63,7 +63,7 @@
                     <?php
                     $cnt = 0;
                     foreach($Calendar as $row){
-                        if($row['registration_status'] == 1 && new DateTime('now')>$row['end_datetime']){
+                        if($row['registration_status'] == 1 && date('Y年m月d日')>date('Y年m月d日', strtotime($row['end_datetime']))){
                             $dateOnly = date('Y年m月d日', strtotime($row['end_datetime']));
                             if(date('Y年m月d日') == $dateOnly){
                                 echo '<form action="../Event/EventDetail.html" method="post"><button class="calendar2">';

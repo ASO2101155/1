@@ -41,10 +41,9 @@
                         $user_name = $row2['user_name'];
                         $user_icon = $row2['icon'] == null ? $user_icon = 'icon.jpg' : $user_icon = $row2['icon'];
                     }
-                    echo '<form action="ForumDetail.html" method="post">
+                    echo '<form action="ForumDetail.html?id='.$row['forum_id'].'" method="post">
                         <div class="forumbox" data-category="' . $row['category_name'] . '">
                             <button type="submit" class="link"></button>
-                            <input type="hidden" name="forum_id" value="'.$row['forum_id'].'">
                             <div id="user_name" style="display:flex;">
                                 <div class="user_icon"><img class="user_icon_image" src="../IconImage/'.$user_icon.'"></div>'.$user_name.'
                             </div>
